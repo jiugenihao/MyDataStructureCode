@@ -4,26 +4,56 @@
 #include "pch.h"
 #include "BaseDefine.h"
 #include "MyQueue.h"
-
+#include "MyStack.h"
 
 int main()
 {
-	MyQueue g_MyQueue(10);
-	int data[] = { 111,222,333,444,777,888,999 };
+	// queue test
+	int elements[] = { 111,222,333,444,777,888,999 };
+
+	/*MyQueue g_MyQueue(10);
 	float data2[]{ 1.0, 2.0, 3.0 };
-	for (auto value : data)
+	for (auto value : elements)
 	{
 		if (!g_MyQueue.PushBack(value))
 		{
 			cout << "My queue is full ..." << endl;
 		}
 	}
+
+	g_MyQueue.Print();
 	cout << "size=" << g_MyQueue.GetSize() << endl;
-	cout << "pop=" << g_MyQueue.PopFront() << endl;
-	cout << "pop=" << g_MyQueue.PopFront() << endl;
+	cout << "pop list is:";
+	cout << g_MyQueue.PopFront() << "-";
+	cout << g_MyQueue.PopFront() << "-";
+	cout << g_MyQueue.PopFront() << "-";
+	cout << g_MyQueue.PopFront() << endl;
+	
+	g_MyQueue.Print();
 	cout << "size=" << g_MyQueue.GetSize() << endl;
 	g_MyQueue.PushBack(9999);
-	cout << "size=" << g_MyQueue.GetSize() << endl;
+	g_MyQueue.Print();
+	cout << "size=" << g_MyQueue.GetSize() << endl;*/
+
+	// stack test
+	MyStack stack(6);
+	for (auto value : elements)
+	{
+		if (!stack.Push(value))
+		{
+			cout << "My stack is full ..." << endl;
+		}
+	}
+
+	stack.Print();
+	cout << "pop elements :";
+	cout << stack.Pop() << "-";
+	cout << stack.Pop() << "-";
+	cout << endl;
+	stack.Print();
+	stack.Push(1234);
+	stack.Push(2345);
+	stack.Print();
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

@@ -10,23 +10,24 @@
 struct StackItem
 {
 	int nData;
-	bool bUsed;
+	//bool bUsed;
 };
 
 class MyStack
 {
 public:
-	MyStack();
+	MyStack(int max_size = MAX_STACK_SIZE);
 	~MyStack();
 
 	bool Push(int value);
 	int Pop();
 	bool IsFull();
 	bool IsEmpty();
+	void Print();
 
 private:
 	StackItem* m_pData;
-	int m_Top;
+	int m_Top;			// Õ»¶¥Öµ
 	int m_MaxSize;
-	int m_Size;
+	//int m_Size;
 };

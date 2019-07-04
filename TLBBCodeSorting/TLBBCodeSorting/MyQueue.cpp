@@ -2,10 +2,15 @@
 #include "MyQueue.h"
 #include "BaseDefine.h"
 
-MyQueue::MyQueue(int maxSize)
+MyQueue::MyQueue(int maxSize):m_MaxSize(maxSize)
 {
-	m_MaxSize = maxSize;
+	//m_MaxSize = maxSize;
 	m_pData = new QueueItem[m_MaxSize];
+	for (int i = 0; i < m_MaxSize; ++i)
+	{
+		m_pData[i].nData = 0;
+		m_pData[i].bUsed = false;
+	}
 	m_Head = 0;
 	m_Tail = 0;
 	m_Size = 0;
@@ -18,6 +23,7 @@ MyQueue::~MyQueue()
 
 bool MyQueue::IsFull()
 {
+	// if (m_Size >= m_MaxSize) return true;
 	if(m_pData[m_Tail].bUsed == true)
 	{
 		return true;
@@ -27,6 +33,7 @@ bool MyQueue::IsFull()
 
 bool MyQueue::IsEmpty()
 {
+	// if (m_Size == 0) return true;
 	if (m_pData[m_Head].bUsed == false)
 	{
 		return true;
@@ -41,7 +48,7 @@ bool MyQueue::PushBack(int value)
 	m_pData[m_Tail].bUsed = true;
 	m_Tail++;
 	m_Size++;
-	if (m_Tail >= MAX_QUEUE_SIZE) m_Tail = 0;
+	if (m_Tail >= m_MaxSize) m_Tail = 0;
 
 	return true;
 }
@@ -55,7 +62,7 @@ int MyQueue::PopFront()
 	m_pData[m_Head].bUsed = false;
 	m_Head++;
 	m_Size--;
-	if (m_Head >= MAX_QUEUE_SIZE) m_Head = 0;
+	if (m_Head >= m_MaxSize) m_Head = 0;
 
 	return tmp;
 }
@@ -80,4 +87,18 @@ int MyQueue::PopFront()
 int MyQueue::GetSize()
 {
 	return m_Size;
+}
+
+void MyQueue::Print()
+{
+	if (NULL != m_pData)
+	{
+		cout << "The element of queue are ";
+		for (int i = 0; i < m_MaxSize; ++i)
+		{
+			cout << m_pData[i].nData << " ";
+		}
+		cout << "\n";
+	}
+	cout << "my queue : head[" << m_Head << "] tail[" << m_Tail << "]" << endl;
 }

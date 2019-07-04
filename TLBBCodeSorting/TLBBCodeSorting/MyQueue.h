@@ -24,6 +24,7 @@ public:
 	int  GetSize();
 	bool IsFull();
 	bool IsEmpty();
+	void Print();
 
 private:
 	QueueItem* m_pData;
