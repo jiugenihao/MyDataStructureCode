@@ -2,15 +2,14 @@
 #include "MyQueue.h"
 #include "BaseDefine.h"
 
-MyQueue g_MyQueue;
-MyQueue::MyQueue()
+MyQueue::MyQueue(int maxSize)
 {
-	m_Size  = MAX_QUEUE_SIZE;
-	m_pData = new QueueItem[m_Size];
-	m_Head  = 0;
-	m_Tail  = 0;
+	m_MaxSize = maxSize;
+	m_pData = new QueueItem[m_MaxSize];
+	m_Head = 0;
+	m_Tail = 0;
+	m_Size = 0;
 }
-
 
 MyQueue::~MyQueue()
 {
@@ -41,6 +40,7 @@ bool MyQueue::PushBack(int value)
 	m_pData[m_Tail].nData = value;
 	m_pData[m_Tail].bUsed = true;
 	m_Tail++;
+	m_Size++;
 	if (m_Tail >= MAX_QUEUE_SIZE) m_Tail = 0;
 
 	return true;
@@ -54,25 +54,30 @@ int MyQueue::PopFront()
 	m_pData[m_Head].nData = 0;
 	m_pData[m_Head].bUsed = false;
 	m_Head++;
+	m_Size--;
 	if (m_Head >= MAX_QUEUE_SIZE) m_Head = 0;
 
 	return tmp;
 }
 
 // m_Head==m_Tail有两种情况：0个元素和队列满
+//int MyQueue::GetSize()
+//{
+//	if (IsFull()) return MAX_QUEUE_SIZE;
+//	if (m_Head < m_Tail)
+//	{
+//		return m_Tail - m_Head;
+//	}
+//	else if (m_Tail < m_Head)
+//	{
+//		return MAX_QUEUE_SIZE - (m_Head - m_Tail);
+//	}
+//	else
+//	{
+//		return 0;
+//	}
+//}
 int MyQueue::GetSize()
 {
-	if (IsFull()) return MAX_QUEUE_SIZE;
-	if (m_Head < m_Tail)
-	{
-		return m_Tail - m_Head;
-	}
-	else if (m_Tail < m_Head)
-	{
-		return MAX_QUEUE_SIZE - (m_Head - m_Tail);
-	}
-	else
-	{
-		return 0;
-	}
+	return m_Size;
 }

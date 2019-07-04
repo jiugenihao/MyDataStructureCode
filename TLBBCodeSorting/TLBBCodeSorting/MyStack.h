@@ -3,33 +3,30 @@
 //功能描述：利用数组实现的循环队列
 //
 /////////////////////////////////////////////////////////////////////////////////
-
 #pragma once
 
-#define MAX_QUEUE_SIZE 5
+#define MAX_STACK_SIZE 5
 
-struct QueueItem
+struct StackItem
 {
-	int  nData;
+	int nData;
 	bool bUsed;
 };
-class MyQueue
+
+class MyStack
 {
 public:
-	MyQueue(int maxSize = MAX_QUEUE_SIZE);
-	~MyQueue();
+	MyStack();
+	~MyStack();
 
-	bool PushBack(int value);
-	int  PopFront();
-	int  GetSize();
+	bool Push(int value);
+	int Pop();
 	bool IsFull();
 	bool IsEmpty();
 
 private:
-	QueueItem* m_pData;
-	int m_Head;
-	int m_Tail;
-	int m_MaxSize;		// 最大队列大小
-	int m_Size;			// 实际队列容量
+	StackItem* m_pData;
+	int m_Top;
+	int m_MaxSize;
+	int m_Size;
 };
-

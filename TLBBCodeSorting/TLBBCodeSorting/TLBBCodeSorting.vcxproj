@@ -155,10 +155,12 @@
   <ItemGroup>
     <ClInclude Include="BaseDefine.h" />
     <ClInclude Include="MyQueue.h" />
+    <ClInclude Include="MyStack.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyQueue.cpp" />
+    <ClCompile Include="MyStack.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

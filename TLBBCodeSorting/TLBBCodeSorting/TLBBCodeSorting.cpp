@@ -8,7 +8,9 @@
 
 int main()
 {
+	MyQueue g_MyQueue(10);
 	int data[] = { 111,222,333,444,777,888,999 };
+	float data2[]{ 1.0, 2.0, 3.0 };
 	for (auto value : data)
 	{
 		if (!g_MyQueue.PushBack(value))
