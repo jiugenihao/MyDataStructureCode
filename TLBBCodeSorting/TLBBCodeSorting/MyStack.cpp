@@ -54,6 +54,15 @@ int MyStack::Pop()
 	return tmp;
 }
 
+int MyStack::GetTop()
+{
+	if (IsEmpty())
+	{
+		return 0;
+	}
+	return m_pData[m_Top - 1].nData;
+}
+
 void MyStack::Print()
 {
 	if (NULL != m_pData)

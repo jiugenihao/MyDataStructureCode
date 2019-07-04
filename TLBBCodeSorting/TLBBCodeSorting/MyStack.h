@@ -19,10 +19,11 @@ public:
 	MyStack(int max_size = MAX_STACK_SIZE);
 	~MyStack();
 
-	bool Push(int value);
-	int Pop();
 	bool IsFull();
 	bool IsEmpty();
+	bool Push(int value);
+	int Pop();
+	int GetTop();
 	void Print();
 
 private:
