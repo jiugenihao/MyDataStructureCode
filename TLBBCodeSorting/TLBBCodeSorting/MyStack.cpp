@@ -65,7 +65,7 @@ int MyStack::GetTop()
 
 void MyStack::Print()
 {
-	if (NULL != m_pData)
+	if (nullptr != m_pData)
 	{
 		cout << "The element of Stack:";
 		for (int i = 0; i < m_Top; ++i)

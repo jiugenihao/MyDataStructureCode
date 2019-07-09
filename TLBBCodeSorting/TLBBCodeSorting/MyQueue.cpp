@@ -91,7 +91,7 @@ int MyQueue::GetSize()
 
 void MyQueue::Print()
 {
-	if (NULL != m_pData)
+	if (nullptr != m_pData)
 	{
 		cout << "The element of queue are ";
 		for (int i = 0; i < m_MaxSize; ++i)

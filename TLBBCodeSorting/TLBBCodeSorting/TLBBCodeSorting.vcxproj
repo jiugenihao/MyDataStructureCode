@@ -154,11 +154,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BaseDefine.h" />
+    <ClInclude Include="MyList.h" />
     <ClInclude Include="MyQueue.h" />
     <ClInclude Include="MyStack.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="MyList.cpp" />
     <ClCompile Include="MyQueue.cpp" />
     <ClCompile Include="MyStack.cpp" />
     <ClCompile Include="pch.cpp">

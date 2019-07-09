@@ -17,11 +17,11 @@ using namespace std;
 
 
 #ifndef SAFE_DELETE
-#define SAFE_DELETE(x) if(NULL!=(x)){delete (x); (x)=NULL;}
+#define SAFE_DELETE(x) if(nullptr!=(x)){delete (x); (x)=nullptr;}
 #endif
 
 #ifndef SAFE_DELETE_ARRAY
-#define SAFE_DELETE_ARRAY(x) if(NULL!=(x)){delete[] (x); (x)=NULL;}
+#define SAFE_DELETE_ARRAY(x) if(nullptr!=(x)){delete[] (x); (x)=nullptr;}
 #endif
 
 
