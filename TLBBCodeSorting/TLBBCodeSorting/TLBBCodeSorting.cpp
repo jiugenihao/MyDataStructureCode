@@ -5,9 +5,35 @@
 #include "BaseDefine.h"
 #include "MyQueue.h"
 #include "MyStack.h"
+#include "MyList.h"
+
+enum enum111 {
+	x1,
+	x2,
+	x3 = 10,
+	x4,
+	x5,
+} x;
 
 int main()
 {
+	cout << x << endl;
+	cout << x << endl;
+	cout << x << endl;
+	// list test
+	MyList g_MyList(4);
+	bool ret;
+	ret = g_MyList.Insert(0, 111);
+	ret = g_MyList.Insert(1, 222);
+	ret = g_MyList.Insert(2, 333);
+	ret = g_MyList.Insert(2, 444);
+	ret = g_MyList.Insert(2, 555);
+
+	g_MyList.Print();
+
+	int oldElem = 0;
+	g_MyList.Remove(1, oldElem);
+	g_MyList.Print();
 	// queue test
 	int elements[] = { 111,222,333,444,777,888,999 };
 

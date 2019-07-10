@@ -90,31 +90,38 @@ bool MyList::GetNextElem(int cur, int& next)
 	return false;
 }
 
+// pos的前一个位置插入elem, pos...length后移 pos+1...length+1
 bool MyList::Insert(int pos, int elem)
 {
-	if (IsFull() || pos < 0 || pos >= m_nSize) 
+	if (pos < 1 || pos > m_nSize + 1)
 		return false;
-	
-	m_nSize++;
-	for (int i = m_nSize-1; i >= pos; --i)
+
+	if (IsFull())
+		return false;
+
+	// 后移
+	for (int i = m_nSize; i >= pos; --i)
 	{
 		m_pData[i] = m_pData[i - 1];
 	}
-
-	m_pData[pos - 1] = elem;
+	//
+	m_pData[pos-1] = elem;
+	m_nSize++;
 	return true;
 }
 
+// pos位置的元素为Elem[pos-1]
 bool MyList::Remove(int pos, int& elem)
 {
-	if (pos < 0 || pos >= m_nSize)
+	if (pos < 1 || pos > m_nSize)
 		return false;
 
-	elem = m_pData[pos];
+	elem = m_pData[pos-1];
 	for (int i = pos; i < m_nSize-1; ++i)
 	{
-		m_pData[i] = m_pData[i + 1];
+		m_pData[i] = m_pData[i+1];
 	}
+	m_pData[m_nSize - 1] = 0;
 	m_nSize--;
 	return true;
 }
@@ -122,4 +129,17 @@ bool MyList::Remove(int pos, int& elem)
 void MyList::Traverse()
 {
 
+}
+
+void MyList::Print()
+{
+	if (nullptr != m_pData)
+	{
+		cout << "The element of List:";
+		for (int i = 0; i < m_nSize; ++i)
+		{
+			cout << m_pData[i] << " ";
+		}
+		cout << endl;
+	}
 }

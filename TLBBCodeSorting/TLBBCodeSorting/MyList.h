@@ -25,6 +25,7 @@ public:
 	bool Insert(int pos, int elem);
 	bool Remove(int pos, int& elem);
 	void Traverse();
+	void Print();
 
 private:
 	int* m_pData;
