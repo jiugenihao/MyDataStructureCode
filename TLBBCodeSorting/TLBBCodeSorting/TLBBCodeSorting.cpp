@@ -6,6 +6,8 @@
 #include "MyQueue.h"
 #include "MyStack.h"
 #include "MyList.h"
+#include "MySqList.h"
+#include "MySqList.cpp"
 
 enum enum111 {
 	x1,
@@ -17,6 +19,22 @@ enum enum111 {
 
 int main()
 {
+	//MySqList<char> str(4);
+	MySqList<int> mySqList(10);
+	cout << "len = " << mySqList.Len() << endl;
+	cout << "size = " << mySqList.Capacity() << endl;
+	cout << sizeof(mySqList) << endl;
+	mySqList.Insert(111);
+	mySqList.Insert(222);
+	mySqList.Insert(333);
+	mySqList.Insert(444);
+	cout << mySqList;
+	cout << "len = " << mySqList.Len() << endl;
+	cout << "size = " << mySqList.Capacity() << endl;
+	int old = 0;
+	mySqList.Remove(2, old);
+	cout << old << endl;
+
 	cout << x << endl;
 	cout << x << endl;
 	cout << x << endl;
@@ -30,6 +48,7 @@ int main()
 	ret = g_MyList.Insert(2, 555);
 
 	g_MyList.Print();
+	cout << "g_MyList[2]=" << g_MyList[2] << endl;
 
 	int oldElem = 0;
 	g_MyList.Remove(1, oldElem);

@@ -30,6 +30,12 @@
     <ClInclude Include="MyList.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="MyLinkedList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MySqList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -45,6 +51,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="MyList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MyLinkedList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MySqList.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

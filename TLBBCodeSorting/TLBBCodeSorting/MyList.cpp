@@ -53,6 +53,16 @@ bool MyList::GetElem(int pos, int& elem)
 	return true;
 }
 
+int MyList::operator[](int pos)
+{
+	if (pos < 0 || pos >= m_nSize)
+	{
+		return 0;
+	}
+
+	return m_pData[pos];
+}
+
 bool MyList::Find(int elem, int& pos)
 {
 	for (int i = 0; i < m_nSize; ++i)
