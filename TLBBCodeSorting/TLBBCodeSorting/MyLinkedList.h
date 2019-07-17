@@ -46,7 +46,7 @@ public:
 	bool Get(int pos, T& value);
 	bool Set(int pos, T value);
 	LinkListNode<T>* GetNode(int pos);
-	LinkListNode<T>* Insert(int pos, T value);
+	LinkListNode<T>* Insert(int pos, T value);	// pos位置插入新节点
 	bool Remove(int pos, T& old);
 	void Clear();
 	void Concat(MySinglyLinkedList<T>& list);

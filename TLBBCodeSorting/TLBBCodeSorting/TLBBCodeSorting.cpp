@@ -8,6 +8,8 @@
 #include "MyList.h"
 #include "MySqList.h"
 #include "MySqList.cpp"
+#include "MyLinkedList.h"
+#include "MyLinkedList.cpp"
 
 enum enum111 {
 	x1,
@@ -19,8 +21,17 @@ enum enum111 {
 
 int main()
 {
+	int elements[] = { 111,222,333,444,777,888,999 };
+
+	MySinglyLinkedList<int>* singly_list = new MySinglyLinkedList<int>(elements, sizeof(elements)/sizeof(int));
+	int old = 0;
+	singly_list->Get(0, old);
+	cout << old << endl;
+	LinkListNode<int>* singly_node = singly_list->GetNode(3);
+	cout << singly_node->m_Data << endl;
+
 	//MySqList<char> str(4);
-	MySqList<int> mySqList(10);
+	/*MySqList<int> mySqList(10);
 	cout << "len = " << mySqList.Len() << endl;
 	cout << "size = " << mySqList.Capacity() << endl;
 	cout << sizeof(mySqList) << endl;
@@ -33,13 +44,14 @@ int main()
 	cout << "size = " << mySqList.Capacity() << endl;
 	int old = 0;
 	mySqList.Remove(2, old);
-	cout << old << endl;
+	cout << old << endl;*/
 
+	// enum111
+	/*cout << x << endl;
 	cout << x << endl;
-	cout << x << endl;
-	cout << x << endl;
+	cout << x << endl;*/
 	// list test
-	MyList g_MyList(4);
+	/*MyList g_MyList(4);
 	bool ret;
 	ret = g_MyList.Insert(0, 111);
 	ret = g_MyList.Insert(1, 222);
@@ -52,9 +64,9 @@ int main()
 
 	int oldElem = 0;
 	g_MyList.Remove(1, oldElem);
-	g_MyList.Print();
+	g_MyList.Print();*/
+
 	// queue test
-	int elements[] = { 111,222,333,444,777,888,999 };
 
 	/*MyQueue g_MyQueue(10);
 	float data2[]{ 1.0, 2.0, 3.0 };

@@ -6,14 +6,13 @@
 //ÐÞ¸ÄÇé¿ö£º
 //
 /////////////////////////////////////////////////////////////////////////////////
-#ifndef __BASEDEFINE_H__
-#define __BASEDEFINE_H__
+#pragma once
 
 #include <iostream>
 
 using namespace std;
 
-#pragma once
+
 
 
 #ifndef SAFE_DELETE
@@ -22,7 +21,4 @@ using namespace std;
 
 #ifndef SAFE_DELETE_ARRAY
 #define SAFE_DELETE_ARRAY(x) if(nullptr!=(x)){delete[] (x); (x)=nullptr;}
-#endif
-
-
 #endif
