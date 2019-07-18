@@ -13,28 +13,37 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="SequenceTable">
+      <UniqueIdentifier>{309da5fd-206c-435a-aa09-df7e308baeda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SequenceTemplate">
+      <UniqueIdentifier>{aa51e918-5ca8-4e12-bb44-49df065a4b7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LinkedListTemplate">
+      <UniqueIdentifier>{a497bda7-404a-4bb7-a6d8-c314d534241f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="MyQueue.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="BaseDefine.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="MyStack.h">
-      <Filter>头文件</Filter>
+    <ClInclude Include="MyLinkedList.h">
+      <Filter>LinkedListTemplate</Filter>
     </ClInclude>
     <ClInclude Include="MyList.h">
-      <Filter>头文件</Filter>
+      <Filter>SequenceTable</Filter>
     </ClInclude>
-    <ClInclude Include="MyLinkedList.h">
-      <Filter>头文件</Filter>
+    <ClInclude Include="MyQueue.h">
+      <Filter>SequenceTable</Filter>
+    </ClInclude>
+    <ClInclude Include="MyStack.h">
+      <Filter>SequenceTable</Filter>
     </ClInclude>
     <ClInclude Include="MySqList.h">
-      <Filter>头文件</Filter>
+      <Filter>SequenceTemplate</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -44,20 +53,20 @@
     <ClCompile Include="TLBBCodeSorting.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="MyQueue.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="MyStack.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="MyLinkedList.cpp">
+      <Filter>LinkedListTemplate</Filter>
     </ClCompile>
     <ClCompile Include="MyList.cpp">
-      <Filter>源文件</Filter>
+      <Filter>SequenceTable</Filter>
     </ClCompile>
-    <ClCompile Include="MyLinkedList.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="MyQueue.cpp">
+      <Filter>SequenceTable</Filter>
+    </ClCompile>
+    <ClCompile Include="MyStack.cpp">
+      <Filter>SequenceTable</Filter>
     </ClCompile>
     <ClCompile Include="MySqList.cpp">
-      <Filter>源文件</Filter>
+      <Filter>SequenceTemplate</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

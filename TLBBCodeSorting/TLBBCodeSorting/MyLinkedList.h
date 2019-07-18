@@ -31,7 +31,7 @@ public:
 	}
 };
 
-// 单链表
+// 单链表-不带头结点
 template <class T>
 class MySinglyLinkedList
 {
@@ -45,7 +45,7 @@ public:
 	int	 Len();
 	bool Get(int pos, T& value);
 	bool Set(int pos, T value);
-	LinkListNode<T>* GetNode(int pos);
+	LinkListNode<T>* GetNode(int pos);	// 无法用于头结点的某些操作
 	LinkListNode<T>* Insert(int pos, T value);	// pos位置插入新节点
 	bool Remove(int pos, T& old);
 	void Clear();
@@ -69,7 +69,10 @@ public:
 
 private:
 	LinkListNode<T>* m_Head;
-	int m_Len;
+	//int m_Len;
 
 };
+
+
+// 带头结点的单链表
 

@@ -24,11 +24,22 @@ int main()
 	int elements[] = { 111,222,333,444,777,888,999 };
 
 	MySinglyLinkedList<int>* singly_list = new MySinglyLinkedList<int>(elements, sizeof(elements)/sizeof(int));
+	singly_list->Visit();
+
 	int old = 0;
 	singly_list->Get(0, old);
 	cout << old << endl;
 	LinkListNode<int>* singly_node = singly_list->GetNode(3);
 	cout << singly_node->m_Data << endl;
+	if (singly_list->Remove(7, old))
+	{
+		cout << "remove 3th:" << old << endl;
+	}
+	else
+	{
+		cout << "remove failed..." << endl;
+	}
+	singly_list->Visit();
 
 	//MySqList<char> str(4);
 	/*MySqList<int> mySqList(10);
