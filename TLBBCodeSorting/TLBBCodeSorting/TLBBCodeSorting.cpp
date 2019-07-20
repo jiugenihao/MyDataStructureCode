@@ -10,6 +10,8 @@
 #include "MySqList.cpp"
 #include "MyLinkedList.h"
 #include "MyLinkedList.cpp"
+#include "MySqStackT.h"
+#include "MySqStackT.cpp"
 
 enum enum111 {
 	x1,
@@ -22,7 +24,19 @@ enum enum111 {
 int main()
 {
 	int elements[] = { 111,222,333,444,777,888,999 };
+	/*--------------- MySqStackT ---------------*/
+	MySqStackT<char> char_stack(5);
+	char_stack.Push('q');
+	char_stack.Push('w');
+	char_stack.Push('e');
+	char_stack.Push('r');
+	char c0 = char_stack.Pop();
+	char c1 = char_stack.GetTop();
+	cout << "pop:" << c0 << endl; 
+	cout << "top:" << c1 << endl;
 
+
+	/*--------------- MySinglyLinkedList ---------------*/
 	MySinglyLinkedList<int>* singly_list = new MySinglyLinkedList<int>(elements, sizeof(elements)/sizeof(int));
 	singly_list->Visit();
 

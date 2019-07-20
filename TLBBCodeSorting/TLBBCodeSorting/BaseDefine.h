@@ -13,8 +13,6 @@
 using namespace std;
 
 
-
-
 #ifndef SAFE_DELETE
 #define SAFE_DELETE(x) if(nullptr!=(x)){delete (x); (x)=nullptr;}
 #endif
@@ -22,3 +20,27 @@ using namespace std;
 #ifndef SAFE_DELETE_ARRAY
 #define SAFE_DELETE_ARRAY(x) if(nullptr!=(x)){delete[] (x); (x)=nullptr;}
 #endif
+
+// 单链表节点类，不带头结点
+template <class T>
+class LinkListNode
+{
+public:
+	T m_Data;
+	LinkListNode<T>* m_pNext;
+
+public:
+	LinkListNode()
+	{
+		m_pNext = nullptr;
+	}
+	LinkListNode(T data, LinkListNode<T>* next = nullptr)
+	{
+		m_Data = data;
+		m_pNext = next;
+	}
+	~LinkListNode()
+	{
+		m_pNext = nullptr;
+	}
+};

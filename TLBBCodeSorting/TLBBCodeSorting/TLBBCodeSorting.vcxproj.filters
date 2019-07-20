@@ -45,6 +45,12 @@
     <ClInclude Include="MySqList.h">
       <Filter>SequenceTemplate</Filter>
     </ClInclude>
+    <ClInclude Include="MySqStackT.h">
+      <Filter>SequenceTemplate</Filter>
+    </ClInclude>
+    <ClInclude Include="MyLinkStackT.h">
+      <Filter>LinkedListTemplate</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -67,6 +73,12 @@
     </ClCompile>
     <ClCompile Include="MySqList.cpp">
       <Filter>SequenceTemplate</Filter>
+    </ClCompile>
+    <ClCompile Include="MySqStackT.cpp">
+      <Filter>SequenceTemplate</Filter>
+    </ClCompile>
+    <ClCompile Include="MyLinkStackT.cpp">
+      <Filter>LinkedListTemplate</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

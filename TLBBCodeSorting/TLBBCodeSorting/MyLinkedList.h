@@ -8,29 +8,6 @@
 
 #include "BaseDefine.h"
 
-template <class T>
-class LinkListNode
-{
-public:
-	T m_Data;
-	LinkListNode<T>* m_pNext;
-
-public:
-	LinkListNode()
-	{
-		m_pNext = nullptr;
-	}
-	LinkListNode(T data, LinkListNode<T>* next = nullptr)
-	{
-		m_Data = data;
-		m_pNext = next;
-	}
-	~LinkListNode()
-	{
-		m_pNext = nullptr;
-	}
-};
-
 // 单链表-不带头结点
 template <class T>
 class MySinglyLinkedList

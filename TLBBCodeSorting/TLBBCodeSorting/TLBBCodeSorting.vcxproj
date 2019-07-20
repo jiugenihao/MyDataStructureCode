@@ -155,17 +155,21 @@
   <ItemGroup>
     <ClInclude Include="BaseDefine.h" />
     <ClInclude Include="MyLinkedList.h" />
+    <ClInclude Include="MyLinkStackT.h" />
     <ClInclude Include="MyList.h" />
     <ClInclude Include="MyQueue.h" />
     <ClInclude Include="MySqList.h" />
+    <ClInclude Include="MySqStackT.h" />
     <ClInclude Include="MyStack.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyLinkedList.cpp" />
+    <ClCompile Include="MyLinkStackT.cpp" />
     <ClCompile Include="MyList.cpp" />
     <ClCompile Include="MyQueue.cpp" />
     <ClCompile Include="MySqList.cpp" />
+    <ClCompile Include="MySqStackT.cpp" />
     <ClCompile Include="MyStack.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
