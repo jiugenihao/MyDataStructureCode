@@ -20,7 +20,7 @@ public:
 
 public:
 	bool IsEmpty();
-	int	 Len();
+	int	 Size();
 	bool Get(int pos, T& value);
 	bool Set(int pos, T value);
 	LinkListNode<T>* GetNode(int pos);	// 无法用于头结点的某些操作
