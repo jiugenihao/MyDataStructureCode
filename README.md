@@ -1,4 +1,3 @@
-# TLBBCodeSorting
 # 数据结构代码整理
 ### 顺序表
 MySqListT
