@@ -154,30 +154,32 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BaseDefine.h" />
-    <ClInclude Include="MyLinkedList.h" />
+    <ClInclude Include="MyDLinkedListT.h" />
+    <ClInclude Include="MyLinkedListT.h" />
     <ClInclude Include="MyLinkStackT.h" />
-    <ClInclude Include="MyList.h" />
-    <ClInclude Include="MyQueue.h" />
-    <ClInclude Include="MySqList.h" />
+    <ClInclude Include="MyIntList.h" />
+    <ClInclude Include="MyIntQueue.h" />
+    <ClInclude Include="MySqListT.h" />
     <ClInclude Include="MySqStackT.h" />
-    <ClInclude Include="MyStack.h" />
+    <ClInclude Include="MyIntStack.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MyLinkedList.cpp" />
+    <ClCompile Include="MyDLinkedListT.cpp" />
+    <ClCompile Include="MyLinkedListT.cpp" />
     <ClCompile Include="MyLinkStackT.cpp" />
-    <ClCompile Include="MyList.cpp" />
-    <ClCompile Include="MyQueue.cpp" />
-    <ClCompile Include="MySqList.cpp" />
+    <ClCompile Include="MyIntList.cpp" />
+    <ClCompile Include="MyIntQueue.cpp" />
+    <ClCompile Include="MySqListT.cpp" />
     <ClCompile Include="MySqStackT.cpp" />
-    <ClCompile Include="MyStack.cpp" />
+    <ClCompile Include="MyIntStack.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="TLBBCodeSorting.cpp" />
+    <ClCompile Include="MyMain.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

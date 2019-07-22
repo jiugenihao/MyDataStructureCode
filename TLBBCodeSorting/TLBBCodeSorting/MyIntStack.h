@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////////
-//文件名称：MyStack.h
+//文件名称：MyIntStack.h
 //功能描述：利用数组实现的栈FILO
 //
 /////////////////////////////////////////////////////////////////////////////////
@@ -13,11 +13,11 @@ struct StackItem
 	//bool bUsed;
 };
 
-class MyStack
+class MyIntStack
 {
 public:
-	MyStack(int max_size = MAX_STACK_SIZE);
-	~MyStack();
+	MyIntStack(int max_size = MAX_STACK_SIZE);
+	~MyIntStack();
 
 	bool IsFull();
 	bool IsEmpty();

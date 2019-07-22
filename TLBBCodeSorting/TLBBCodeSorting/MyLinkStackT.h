@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////////////////
 //文件名称：MySqStackT.h
 //功能描述：链表表实现的栈FILO
-//
+//        自动扩张大小，实时分配，无需提前分配或者中途扩充容量
 /////////////////////////////////////////////////////////////////////////////////
 #pragma once
 
@@ -14,12 +14,14 @@ public:
 	MyLinkStackT();
 	~MyLinkStackT();
 
-	bool IsEmpty();
 	void Clear();
+	bool IsEmpty();
+	int  Size();
+	T    GetTop();
 	void Push(T value);		// 始终是头部插入
 	T	 Pop();
-	T    GetTop();
-	int  Size();
+	
+	void Print();
 
 private:
 	LinkListNode<T>* m_pTop;

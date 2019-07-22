@@ -1,8 +1,8 @@
 #include "pch.h"
-#include "MyStack.h"
+#include "MyIntStack.h"
 #include "BaseDefine.h"
 
-MyStack::MyStack(int maxSize):m_MaxSize(maxSize)
+MyIntStack::MyIntStack(int maxSize):m_MaxSize(maxSize)
 {
 	m_pData = new StackItem[m_MaxSize];
 	for (int i = 0; i < m_MaxSize; ++i)
@@ -15,20 +15,20 @@ MyStack::MyStack(int maxSize):m_MaxSize(maxSize)
 }
 
 
-MyStack::~MyStack()
+MyIntStack::~MyIntStack()
 {
 	SAFE_DELETE_ARRAY(m_pData);
 }
 
-bool MyStack::IsFull()
+bool MyIntStack::IsFull()
 {
 	return m_Top >= m_MaxSize;
 }
-bool MyStack::IsEmpty()
+bool MyIntStack::IsEmpty()
 {
 	return (m_Top == 0);
 }
-bool MyStack::Push(int value)
+bool MyIntStack::Push(int value)
 {
 	if (IsFull())
 	{
@@ -41,7 +41,7 @@ bool MyStack::Push(int value)
 	return true;
 }
 
-int MyStack::Pop()
+int MyIntStack::Pop()
 {
 	if (IsEmpty())
 	{
@@ -54,7 +54,7 @@ int MyStack::Pop()
 	return tmp;
 }
 
-int MyStack::GetTop()
+int MyIntStack::GetTop()
 {
 	if (IsEmpty())
 	{
@@ -63,7 +63,7 @@ int MyStack::GetTop()
 	return m_pData[m_Top - 1].nData;
 }
 
-void MyStack::Print()
+void MyIntStack::Print()
 {
 	if (nullptr != m_pData)
 	{

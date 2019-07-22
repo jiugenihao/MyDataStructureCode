@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////////////////
-//文件名称：MySqList.h
-//功能描述：模板顺序表，数组实现
+//文件名称：MySqListT.h
+//功能描述：顺序表实现的线性表
 //   随机存取，插入删除慢
 /////////////////////////////////////////////////////////////////////////////////
 
@@ -11,16 +11,19 @@
 #define MAX_SQLIST_SIZE 64
 
 template <class T>
-class MySqList
+class MySqListT
 {
 public:
-	MySqList(int size = MAX_SQLIST_SIZE);
-	MySqList(T value[], int len);
-	~MySqList();
+	MySqListT(int size = MAX_SQLIST_SIZE);
+	MySqListT(T value[], int len);
+	~MySqListT();
 
+	// immutable function
 	bool IsEmpty();
 	int  Len();
 	int  Capacity();
+
+	// mutable
 	bool Get(int pos, T& value);
 	bool Set(int pos, T value);
 	void Insert(int pos, T value);
@@ -28,7 +31,7 @@ public:
 	bool Remove(int pos, T& value);
 	void Clear();
 
-	friend ostream& operator << (ostream& out, MySqList<T> list)
+	friend ostream& operator << (ostream& out, MySqListT<T> list)
 	{
 		out << "output all elements:" << endl;
 		if (list.m_Len > 0)

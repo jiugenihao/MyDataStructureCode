@@ -1,8 +1,9 @@
 /////////////////////////////////////////////////////////////////////////////////
 //文件名称：MyLinkedList.h
-//功能描述：利用链表实现的顺序表
-//   MySinglyLinkedList 单链表
+//功能描述：利用链表实现的线性表
+//   MySinglyLinkedListT 单链表
 //   查找速度慢，插入删除不需要移动，特别快
+//   适合向后插入，不适合向前
 /////////////////////////////////////////////////////////////////////////////////
 #pragma once
 
@@ -10,12 +11,12 @@
 
 // 单链表-不带头结点
 template <class T>
-class MySinglyLinkedList
+class MySinglyLinkedListT
 {
 public:
-	MySinglyLinkedList();
-	MySinglyLinkedList(T value[], int n);
-	~MySinglyLinkedList();
+	MySinglyLinkedListT();
+	MySinglyLinkedListT(T value[], int n);
+	~MySinglyLinkedListT();
 
 public:
 	bool IsEmpty();
@@ -26,10 +27,10 @@ public:
 	LinkListNode<T>* Insert(int pos, T value);	// pos位置插入新节点
 	bool Remove(int pos, T& old);
 	void Clear();
-	void Concat(MySinglyLinkedList<T>& list);
+	void Concat(MySinglyLinkedListT<T>& list);
 	void Visit();
 
-	friend ostream& operator << (ostream& out, MySinglyLinkedList<T>& list)
+	friend ostream& operator << (ostream& out, MySinglyLinkedListT<T>& list)
 	{
 		out << "output all elements:" << endl;
 		LinkListNode<T>* p = list.m_Head;

@@ -44,3 +44,33 @@ public:
 		m_pNext = nullptr;
 	}
 };
+
+// 双链表节点类
+template <typename T>
+class DLinkListNode
+{
+public:
+	T m_Data;
+	DLinkListNode<T>* m_pPrev;
+	DLinkListNode<T>* m_pNext;
+
+public:
+	DLinkListNode()
+	{
+		m_pPrev = nullptr;
+		m_pNext = nullptr;
+	}
+
+	DLinkListNode(T data, DLinkListNode<T>* prev = nullptr, DLinkListNode<T>* next = nullptr)
+	{
+		m_Data  = data;
+		m_pPrev = prev;
+		m_pNext = next;
+	}
+
+	~DLinkListNode()
+	{
+		m_pPrev = nullptr;
+		m_pNext = nullptr;
+	}
+};

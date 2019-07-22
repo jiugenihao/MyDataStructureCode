@@ -16,6 +16,12 @@ MySqStackT<T>::~MySqStackT()
 }
 
 template <class T>
+void MySqStackT<T>::Clear()
+{
+	m_Top = -1;
+}
+
+template <class T>
 bool MySqStackT<T>::IsEmpty()
 {
 	return (m_Top == -1);
@@ -25,6 +31,12 @@ template <class T>
 bool MySqStackT<T>::IsFull()
 {
 	return (m_Top == m_Size-1);
+}
+
+template <class T>
+int MySqStackT<T>::Size()
+{
+	return (m_Top + 1);
 }
 
 template <class T>
@@ -62,4 +74,16 @@ T MySqStackT<T>::GetTop()
 		throw "¶ÑÕ»Îª¿Õ£¡£¡£¡";
 
 	return m_pElem[m_Top];
+}
+
+template <class T>
+void MySqStackT<T>::Print()
+{
+	cout << "Size:" << m_Top + 1 << endl;
+	for (int i = 0; i <= m_Top; ++i)
+	{
+		cout << m_pElem[i] << " ";
+	}
+	cout << endl;
+	cout << ".........." << endl;
 }

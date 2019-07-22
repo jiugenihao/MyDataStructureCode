@@ -1,16 +1,16 @@
 #include "pch.h"
-#include "MyLinkedList.h"
+#include "MyLinkedListT.h"
 
 
 template <class T>
-MySinglyLinkedList<T>::MySinglyLinkedList()
+MySinglyLinkedListT<T>::MySinglyLinkedListT()
 {
 	m_Head = nullptr;
 //	m_Len = 0;
 }
 
 template <class T>
-MySinglyLinkedList<T>::MySinglyLinkedList(T value[], int n)
+MySinglyLinkedListT<T>::MySinglyLinkedListT(T value[], int n)
 {
 	m_Head = nullptr;
 	if (n > 0)
@@ -23,19 +23,19 @@ MySinglyLinkedList<T>::MySinglyLinkedList(T value[], int n)
 }
 
 template <class T>
-MySinglyLinkedList<T>::~MySinglyLinkedList()
+MySinglyLinkedListT<T>::~MySinglyLinkedListT()
 {
 	Clear();
 }
 
 template <class T>
-bool MySinglyLinkedList<T>::IsEmpty()
+bool MySinglyLinkedListT<T>::IsEmpty()
 {
 	return (m_Head == nullptr);
 }
 
 template <class T>
-void MySinglyLinkedList<T>::Clear()
+void MySinglyLinkedListT<T>::Clear()
 {
 	LinkListNode<T>* p = m_Head;
 	while (nullptr != p)
@@ -49,7 +49,7 @@ void MySinglyLinkedList<T>::Clear()
 }
 
 template <class T>
-int MySinglyLinkedList<T>::Len()
+int MySinglyLinkedListT<T>::Len()
 {
 	int len = 0;
 	LinkListNode<T>* p = m_Head;
@@ -62,7 +62,7 @@ int MySinglyLinkedList<T>::Len()
 }
 
 template <class T>
-LinkListNode<T>* MySinglyLinkedList<T>::GetNode(int pos)
+LinkListNode<T>* MySinglyLinkedListT<T>::GetNode(int pos)
 {
 	if (pos < 0 || IsEmpty())
 		return nullptr;
@@ -78,7 +78,7 @@ LinkListNode<T>* MySinglyLinkedList<T>::GetNode(int pos)
 }
 
 template <class T>
-bool MySinglyLinkedList<T>::Get(int pos, T& value)
+bool MySinglyLinkedListT<T>::Get(int pos, T& value)
 {
 	LinkListNode<T>* p = GetNode(pos);
 	if (nullptr != p)
@@ -90,7 +90,7 @@ bool MySinglyLinkedList<T>::Get(int pos, T& value)
 }
 
 template <class T>
-bool MySinglyLinkedList<T>::Set(int pos, T value)
+bool MySinglyLinkedListT<T>::Set(int pos, T value)
 {
 	LinkListNode<T>* p = GetNode(pos);
 	if (nullptr != p)
@@ -105,7 +105,7 @@ bool MySinglyLinkedList<T>::Set(int pos, T value)
 // 1.空表，无pos-1结点
 // 2.非空表，找到pos-1位置结点p:
 template <class T>
-LinkListNode<T>* MySinglyLinkedList<T>::Insert(int pos, T value)
+LinkListNode<T>* MySinglyLinkedListT<T>::Insert(int pos, T value)
 {
 	LinkListNode<T>* q = new LinkListNode<T>(value);
 	if (nullptr == m_Head || pos <= 0)
@@ -133,7 +133,7 @@ LinkListNode<T>* MySinglyLinkedList<T>::Insert(int pos, T value)
 
 
 template <class T>
-bool MySinglyLinkedList<T>::Remove(int pos, T& old)
+bool MySinglyLinkedListT<T>::Remove(int pos, T& old)
 {
 	// 空链表判断
 	if (IsEmpty() || pos < 0)
@@ -166,7 +166,7 @@ bool MySinglyLinkedList<T>::Remove(int pos, T& old)
 }
 
 template <class T>
-void MySinglyLinkedList<T>::Concat(MySinglyLinkedList<T>& list)
+void MySinglyLinkedListT<T>::Concat(MySinglyLinkedListT<T>& list)
 {
 	if (nullptr == m_Head)
 	{
@@ -185,7 +185,7 @@ void MySinglyLinkedList<T>::Concat(MySinglyLinkedList<T>& list)
 }
 
 template <class T>
-void MySinglyLinkedList<T>::Visit()
+void MySinglyLinkedListT<T>::Visit()
 {
 	LinkListNode<T>* p = m_Head;
 	while (nullptr != p)

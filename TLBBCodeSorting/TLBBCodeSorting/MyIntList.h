@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////////
-//文件名称：MyList.h
+//文件名称：MyIntList.h
 //功能描述：利用数组实现的列表
 //   查找速度快，插入删除要移动列表，速度慢
 /////////////////////////////////////////////////////////////////////////////////
@@ -8,11 +8,11 @@
 #define MAX_LIST_SIZE 5
 
 //template <typename T>
-class MyList
+class MyIntList
 {
 public:
-	MyList(int maxSize = MAX_LIST_SIZE);
-	~MyList();
+	MyIntList(int maxSize = MAX_LIST_SIZE);
+	~MyIntList();
 
 	void Clear();
 	bool IsEmpty();

@@ -1,8 +1,8 @@
 #include "pch.h"
-#include "MyList.h"
+#include "MyIntList.h"
 #include "BaseDefine.h"
 
-MyList::MyList(int maxSize):m_nMaxSize(maxSize)
+MyIntList::MyIntList(int maxSize):m_nMaxSize(maxSize)
 {
 	m_pData = new int[m_nMaxSize]();
 	//for (int i = 0; i < m_nMaxSize; ++i)
@@ -14,12 +14,12 @@ MyList::MyList(int maxSize):m_nMaxSize(maxSize)
 }
 
 
-MyList::~MyList()
+MyIntList::~MyIntList()
 {
 	SAFE_DELETE_ARRAY(m_pData);
 }
 
-void MyList::Clear()
+void MyIntList::Clear()
 {
 	for (int i = 0; i < m_nSize; ++i)
 	{
@@ -28,22 +28,22 @@ void MyList::Clear()
 	m_nSize = 0;
 }
 
-bool MyList::IsEmpty()
+bool MyIntList::IsEmpty()
 {
 	return (m_nSize == 0);
 }
 
-bool MyList::IsFull()
+bool MyIntList::IsFull()
 {
 	return (m_nSize == m_nMaxSize);
 }
 
-int MyList::GetSize()
+int MyIntList::GetSize()
 {
 	return m_nSize;
 }
 
-bool MyList::GetElem(int pos, int& elem)
+bool MyIntList::GetElem(int pos, int& elem)
 {
 	if (pos < 0 || pos >= m_nSize)
 	{
@@ -53,7 +53,7 @@ bool MyList::GetElem(int pos, int& elem)
 	return true;
 }
 
-int MyList::operator[](int pos)
+int MyIntList::operator[](int pos)
 {
 	if (pos < 0 || pos >= m_nSize)
 	{
@@ -63,7 +63,7 @@ int MyList::operator[](int pos)
 	return m_pData[pos];
 }
 
-bool MyList::Find(int elem, int& pos)
+bool MyIntList::Find(int elem, int& pos)
 {
 	for (int i = 0; i < m_nSize; ++i)
 	{
@@ -77,7 +77,7 @@ bool MyList::Find(int elem, int& pos)
 	return false;
 }
 
-bool MyList::GetPriorElem(int cur, int& prior)
+bool MyIntList::GetPriorElem(int cur, int& prior)
 {
 	int pos = 0;
 	if (Find(cur, pos) && pos > 0)
@@ -89,7 +89,7 @@ bool MyList::GetPriorElem(int cur, int& prior)
 	return false;
 }
 
-bool MyList::GetNextElem(int cur, int& next)
+bool MyIntList::GetNextElem(int cur, int& next)
 {
 	int pos = 0;
 	if (Find(cur, pos) && pos < m_nSize - 1)
@@ -101,7 +101,7 @@ bool MyList::GetNextElem(int cur, int& next)
 }
 
 // pos的前一个位置插入elem, pos...length后移 pos+1...length+1
-bool MyList::Insert(int pos, int elem)
+bool MyIntList::Insert(int pos, int elem)
 {
 	if (pos < 1 || pos > m_nSize + 1)
 		return false;
@@ -121,7 +121,7 @@ bool MyList::Insert(int pos, int elem)
 }
 
 // pos位置的元素为Elem[pos-1]
-bool MyList::Remove(int pos, int& elem)
+bool MyIntList::Remove(int pos, int& elem)
 {
 	if (pos < 1 || pos > m_nSize)
 		return false;
@@ -136,12 +136,12 @@ bool MyList::Remove(int pos, int& elem)
 	return true;
 }
 
-void MyList::Traverse()
+void MyIntList::Traverse()
 {
 
 }
 
-void MyList::Print()
+void MyIntList::Print()
 {
 	if (nullptr != m_pData)
 	{

@@ -31,18 +31,22 @@ void MyLinkStackT<T>::Clear()
 		delete q;
 	}
 	m_pTop = nullptr;
+	m_Size = 0;
 }
 
 template <class T>
 void MyLinkStackT<T>::Push(T value)
 {
+	LinkListNode<T>* p = new LinkListNode<T>(value);
+	p->m_pNext = m_pTop;
+	m_pTop = p;
 	m_Size++;
 }
 
 template <class T>
 T MyLinkStackT<T>::Pop()
 {
-	if (IsEmpty)
+	if (IsEmpty())
 		throw "¶ÑÕ»Îª¿Õ£¡£¡£¡";
 	
 	LinkListNode<T>* p = m_pTop;
@@ -57,7 +61,7 @@ T MyLinkStackT<T>::Pop()
 template <class T>
 T MyLinkStackT<T>::GetTop()
 {
-	if (IsEmpty)
+	if (IsEmpty())
 		throw "¶ÑÕ»Îª¿Õ£¡£¡£¡";
 	
 	return m_pTop->m_Data;
@@ -67,4 +71,18 @@ template <class T>
 int MyLinkStackT<T>::Size()
 {
 	return m_Size;
+}
+
+template <class T>
+void MyLinkStackT<T>::Print()
+{
+	cout << "Size:" << m_Size << endl;
+	LinkListNode<T>* p = m_pTop;
+	while (p)
+	{
+		cout << p->m_Data << " ";
+		p = p->m_pNext;
+	}
+	cout << endl;
+	cout << ".........." << endl;
 }

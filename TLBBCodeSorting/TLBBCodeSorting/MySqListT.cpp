@@ -1,8 +1,8 @@
 #include "pch.h"
-#include "MySqList.h"
+#include "MySqListT.h"
 
 template <class T>
-MySqList<T>::MySqList(int size)
+MySqListT<T>::MySqListT(int size)
 {
 	m_Size = size > MAX_SQLIST_SIZE ? size : MAX_SQLIST_SIZE;
 	m_pData = new T[m_Size];
@@ -10,7 +10,7 @@ MySqList<T>::MySqList(int size)
 }
 
 template <class T>
-MySqList<T>::MySqList(T value[], int len)
+MySqListT<T>::MySqListT(T value[], int len)
 {
 	if (len > 0)
 	{
@@ -26,31 +26,31 @@ MySqList<T>::MySqList(T value[], int len)
 }
 
 template <class T>
-MySqList<T>::~MySqList()
+MySqListT<T>::~MySqListT()
 {
 	SAFE_DELETE_ARRAY(m_pData);
 }
 
 template <class T>
-bool MySqList<T>::IsEmpty()
+bool MySqListT<T>::IsEmpty()
 {
 	return (m_Len == 0);
 }
 
 template <class T>
-int MySqList<T>::Len()
+int MySqListT<T>::Len()
 {
 	return m_Len;
 }
 
 template <class T>
-int MySqList<T>::Capacity()
+int MySqListT<T>::Capacity()
 {
 	return m_Size;
 }
 
 template <class T>
-bool MySqList<T>::Get(int pos, T& value)
+bool MySqListT<T>::Get(int pos, T& value)
 {
 	if (0 <= pos && pos < m_Len)
 	{
@@ -61,7 +61,7 @@ bool MySqList<T>::Get(int pos, T& value)
 }
 
 template <class T>
-bool MySqList<T>::Set(int pos, T value)
+bool MySqListT<T>::Set(int pos, T value)
 {
 	if (0 <= pos && pos < m_Len)
 	{
@@ -72,7 +72,7 @@ bool MySqList<T>::Set(int pos, T value)
 }
 
 template <class T>
-void MySqList<T>::Insert(int pos, T value)
+void MySqListT<T>::Insert(int pos, T value)
 {
 	if (m_Len >= m_Size)
 	{
@@ -99,7 +99,7 @@ void MySqList<T>::Insert(int pos, T value)
 }
 
 template <class T>
-void MySqList<T>::Insert(T value)
+void MySqListT<T>::Insert(T value)
 {
 	Insert(m_Len, value);
 }
@@ -107,7 +107,7 @@ void MySqList<T>::Insert(T value)
 // 删除第pos位的元素，pos之后的元素都要前移，最后一个元素前移后保存在m_Len-2的位置，但是m_Len-1位置的
 // 对象还是原对象，应该是需要释放掉的，vector的erase是destroy掉最后一个元素的
 template <class T>
-bool MySqList<T>::Remove(int pos, T& value)
+bool MySqListT<T>::Remove(int pos, T& value)
 {
 	if (0 <= pos && pos < m_Len)
 	{
@@ -130,13 +130,13 @@ bool MySqList<T>::Remove(int pos, T& value)
 }
 
 template <class T>
-void MySqList<T>::Clear()
+void MySqListT<T>::Clear()
 {
 	m_Len = 0;
 }
 
 //template <class T>
-//ostream& operator << (ostream& out, MySqList<T> list)
+//ostream& operator << (ostream& out, MySqListT<T> list)
 //{
 //	out << "output all elements:" << endl;
 //	if (list.m_Len > 0)

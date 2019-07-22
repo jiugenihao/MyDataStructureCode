@@ -1,8 +1,8 @@
 #include "pch.h"
-#include "MyQueue.h"
+#include "MyIntQueue.h"
 #include "BaseDefine.h"
 
-MyQueue::MyQueue(int maxSize):m_MaxSize(maxSize)
+MyIntQueue::MyIntQueue(int maxSize):m_MaxSize(maxSize)
 {
 	//m_MaxSize = maxSize;
 	m_pData = new QueueItem[m_MaxSize];
@@ -16,12 +16,12 @@ MyQueue::MyQueue(int maxSize):m_MaxSize(maxSize)
 	m_Size = 0;
 }
 
-MyQueue::~MyQueue()
+MyIntQueue::~MyIntQueue()
 {
 	SAFE_DELETE_ARRAY(m_pData);
 }
 
-bool MyQueue::IsFull()
+bool MyIntQueue::IsFull()
 {
 	// if (m_Size >= m_MaxSize) return true;
 	if(m_pData[m_Tail].bUsed == true)
@@ -31,7 +31,7 @@ bool MyQueue::IsFull()
 	return false;
 }
 
-bool MyQueue::IsEmpty()
+bool MyIntQueue::IsEmpty()
 {
 	// if (m_Size == 0) return true;
 	if (m_pData[m_Head].bUsed == false)
@@ -41,7 +41,7 @@ bool MyQueue::IsEmpty()
 	return false;
 }
 
-bool MyQueue::PushBack(int value)
+bool MyIntQueue::PushBack(int value)
 {
 	if (IsFull()) return false;
 	m_pData[m_Tail].nData = value;
@@ -53,7 +53,7 @@ bool MyQueue::PushBack(int value)
 	return true;
 }
 
-int MyQueue::PopFront()
+int MyIntQueue::PopFront()
 {
 	if (m_pData[m_Head].bUsed == false) return false;
 
@@ -68,7 +68,7 @@ int MyQueue::PopFront()
 }
 
 // m_Head==m_Tail有两种情况：0个元素和队列满
-//int MyQueue::GetSize()
+//int MyIntQueue::GetSize()
 //{
 //	if (IsFull()) return MAX_QUEUE_SIZE;
 //	if (m_Head < m_Tail)
@@ -84,12 +84,12 @@ int MyQueue::PopFront()
 //		return 0;
 //	}
 //}
-int MyQueue::GetSize()
+int MyIntQueue::GetSize()
 {
 	return m_Size;
 }
 
-void MyQueue::Print()
+void MyIntQueue::Print()
 {
 	if (nullptr != m_pData)
 	{

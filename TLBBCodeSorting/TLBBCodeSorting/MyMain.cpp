@@ -3,15 +3,14 @@
 
 #include "pch.h"
 #include "BaseDefine.h"
-#include "MyQueue.h"
-#include "MyStack.h"
-#include "MyList.h"
-#include "MySqList.h"
-#include "MySqList.cpp"
-#include "MyLinkedList.h"
-#include "MyLinkedList.cpp"
-#include "MySqStackT.h"
+#include "MyIntQueue.h"
+#include "MyIntStack.h"
+#include "MyIntList.h"
+#include "MySqListT.h"
+#include "MySqListT.cpp"
+#include "MyLinkedListT.cpp"
 #include "MySqStackT.cpp"
+#include "MyLinkStackT.cpp"
 
 enum enum111 {
 	x1,
@@ -24,20 +23,49 @@ enum enum111 {
 int main()
 {
 	int elements[] = { 111,222,333,444,777,888,999 };
+	/*--------------- MyLinkStackT ---------------*/
+	MyLinkStackT<int> int_stack;
+	for (auto value : elements)
+	{
+		int_stack.Push(value);
+	}
+	int_stack.Print();
+	cout << "top:" << int_stack.GetTop() << endl;
+	cout << "pop:" << int_stack.Pop() << endl;
+	cout << "top:" << int_stack.GetTop() << endl;
+	cout << "pop:" << int_stack.Pop() << endl;
+	cout << "top:" << int_stack.GetTop() << endl;
+	cout << "pop:" << int_stack.Pop() << endl;
+	cout << "top:" << int_stack.GetTop() << endl;
+	
+	int_stack.Print();
+	int_stack.Clear();
+	int_stack.Print();
+	
 	/*--------------- MySqStackT ---------------*/
 	MySqStackT<char> char_stack(5);
 	char_stack.Push('q');
 	char_stack.Push('w');
 	char_stack.Push('e');
 	char_stack.Push('r');
+	char_stack.Print();
+	
 	char c0 = char_stack.Pop();
 	char c1 = char_stack.GetTop();
+	
 	cout << "pop:" << c0 << endl; 
 	cout << "top:" << c1 << endl;
-
+	char_stack.Push('+');
+	char_stack.Push('-');
+	cout << "top:" << char_stack.GetTop() << endl;
+	cout << "pop:" << char_stack.Pop() << endl;
+	cout << "top:" << char_stack.GetTop() << endl;
+	char_stack.Print();
+	char_stack.Clear();
+	char_stack.Print();
 
 	/*--------------- MySinglyLinkedList ---------------*/
-	MySinglyLinkedList<int>* singly_list = new MySinglyLinkedList<int>(elements, sizeof(elements)/sizeof(int));
+	MySinglyLinkedListT<int>* singly_list = new MySinglyLinkedListT<int>(elements, sizeof(elements)/sizeof(int));
 	singly_list->Visit();
 
 	int old = 0;
@@ -118,7 +146,7 @@ int main()
 	cout << "size=" << g_MyQueue.GetSize() << endl;*/
 
 	// stack test
-	MyStack stack(6);
+	MyIntStack stack(6);
 	for (auto value : elements)
 	{
 		if (!stack.Push(value))

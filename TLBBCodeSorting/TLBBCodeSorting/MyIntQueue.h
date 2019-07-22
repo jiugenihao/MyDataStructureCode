@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////////
-//文件名称：MyQueue.h
+//文件名称：MyIntQueue.h
 //功能描述：利用数组实现的循环队列FIFO
 //
 /////////////////////////////////////////////////////////////////////////////////
@@ -13,11 +13,11 @@ struct QueueItem
 	int  nData;
 	bool bUsed;
 };
-class MyQueue
+class MyIntQueue
 {
 public:
-	MyQueue(int maxSize = MAX_QUEUE_SIZE);
-	~MyQueue();
+	MyIntQueue(int maxSize = MAX_QUEUE_SIZE);
+	~MyIntQueue();
 
 	bool PushBack(int value);
 	int  PopFront();
