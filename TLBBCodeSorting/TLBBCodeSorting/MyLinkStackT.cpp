@@ -84,5 +84,5 @@ void MyLinkStackT<T>::Print()
 		p = p->m_pNext;
 	}
 	cout << endl;
-	cout << ".........." << endl;
+	//cout << ".........." << endl;
 }

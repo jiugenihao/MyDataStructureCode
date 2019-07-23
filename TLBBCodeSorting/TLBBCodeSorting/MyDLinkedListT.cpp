@@ -4,7 +4,7 @@
 template <class T>
 MyDLinkedListT<T>::MyDLinkedListT()
 {
-	m_Head = m_Rear = nullptr;
+	m_Head = nullptr;
 	//m_Size = 0;
 }
 
@@ -17,7 +17,7 @@ MyDLinkedListT<T>::~MyDLinkedListT()
 template <class T>
 bool MyDLinkedListT<T>::IsEmpty()
 {
-	return (m_Head == nullptr && m_Rear == nullptr);
+	return (m_Head == nullptr);
 	//return (m_Size == 0);
 }
 
@@ -88,34 +88,39 @@ void MyDLinkedListT<T>::Clear()
 	}
 
 	m_Head = nullptr;
-	m_Rear = nullptr;
+	//m_Rear = nullptr;
 }
 
+// pos=0代表插入头结点
+// pos>0代表头结点后面插入
 template <class T>
 DLinkListNode<T>* MyDLinkedListT<T>::Insert(int pos, T value)
 {
 	DLinkListNode<T>* q = new DLinkListNode<T>(value);
 	if (!q) return nullptr;
 
-	if (IsEmpty() || pos <= 0)
+	if (nullptr == m_Head || pos <= 0)
 	{
-		q->m_pNext = nullptr;
-		q->m_pPrev = nullptr;
+		q->m_pNext = m_Head;
 		m_Head = q;
 	}
 	else
 	{
+		// 寻找pos-1结点
 		int i = 1;
 		DLinkListNode<T>* p = m_Head;
 		while (nullptr != p->m_pNext && i < pos)
 		{
-			i++;
 			p = p->m_pNext;
+			++i;
 		}
-		q->m_pPrev = p->m_pPrev;
-		p->m_pPrev->m_pNext = q;
-		q->m_pNext = p;
-		p->m_pPrev = q;
+		q->m_pNext = p->m_pNext;
+		q->m_pPrev = p;
+
+		if (p->m_pNext)
+			p->m_pNext->m_pPrev = q;
+		p->m_pNext = q;
+
 	}
 	//m_Size++;
 	return q;
@@ -140,13 +145,14 @@ bool MyDLinkedListT<T>::Remove(int pos, T& old)
 	}
 	else
 	{
-		p = GetNode(pos);
-		if (nullptr != p)
+		p = GetNode(pos-1);
+		if (nullptr != p && nullptr != p->m_pNext)
 		{
-			old = p;
-			p->m_pPrev->m_pNext = p->m_pNext;
-			p->m_pNext->m_pPrev = p->m_pPrev;
-			delete p;
+			DLinkListNode<T>* q = p->m_pNext;
+			old = q->m_Data;
+			p->m_pNext = q->m_pNext;
+			q->m_pNext->m_pPrev = p;
+			delete q;
 			return true;
 		}
 	}
@@ -156,5 +162,19 @@ bool MyDLinkedListT<T>::Remove(int pos, T& old)
 template <class T>
 void MyDLinkedListT<T>::Concat(MyDLinkedListT<T>& list)
 {
-
+	if (nullptr == m_Head)
+	{
+		m_Head = list.m_Head;
+	}
+	else
+	{
+		DLinkListNode<T>* p = m_Head;
+		while (nullptr != p->m_pNext)
+		{
+			p = p->m_pNext;
+		}
+		p->m_pNext = list.m_Head;
+		list.m_Head->m_pPrev = p;
+	}
+	list.m_Head = nullptr;
 }

@@ -61,6 +61,10 @@ int MySinglyLinkedListT<T>::Size()
 	return len;
 }
 
+// 当pos大于现有链表长度时，返回的是尾结点
+// 用pos做参数对于链表来说，确实不是个好事情，因为链表毕竟不是随机存取的
+// 应该以结点为参数，在结点前后插入和删除元素
+// pos大于链表长度，会返回nullptr
 template <class T>
 LinkListNode<T>* MySinglyLinkedListT<T>::GetNode(int pos)
 {
@@ -177,7 +181,7 @@ void MySinglyLinkedListT<T>::Concat(MySinglyLinkedListT<T>& list)
 	else
 	{
 		LinkListNode<T>* p = m_Head;
-		while (nullptr != p)
+		while (nullptr != p->m_pNext)
 		{
 			p = p->m_pNext;
 		}

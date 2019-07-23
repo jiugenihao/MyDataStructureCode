@@ -85,5 +85,5 @@ void MySqStackT<T>::Print()
 		cout << m_pElem[i] << " ";
 	}
 	cout << endl;
-	cout << ".........." << endl;
+	//cout << ".........." << endl;
 }

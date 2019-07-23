@@ -9,6 +9,7 @@
 #include "MySqListT.h"
 #include "MySqListT.cpp"
 #include "MyLinkedListT.cpp"
+#include "MyDLinkedListT.cpp"
 #include "MySqStackT.cpp"
 #include "MyLinkStackT.cpp"
 
@@ -23,7 +24,35 @@ enum enum111 {
 int main()
 {
 	int elements[] = { 111,222,333,444,777,888,999 };
+	int elements2[] = { 1,2,3,4,5,6,7,8,9 };
+
+	int old = 0;
+	/*--------------- MyDLinkedListT ---------------*/
+	cout << "/*--------------- MyDLinkedListT ---------------*/" << endl;
+	MyDLinkedListT<int> int_dlist;
+	for (size_t i = 0; i < 5; ++i)
+	{
+		int_dlist.Insert(i, elements[i]);
+	}
+	cout << int_dlist;
+	int_dlist.Insert(0, 100);
+	int_dlist.Insert(3, 345);
+	cout << int_dlist;
+	int_dlist.Remove(1, old);
+	cout << "remove[1]=" << old << endl;
+	cout << int_dlist;
+
+	MyDLinkedListT<int>* int_dlist2 = new MyDLinkedListT<int>();
+	for (size_t i = 0; i < sizeof(elements2)/sizeof(elements[0]); i++)
+	{
+		int_dlist2->Insert(0, elements2[i]);
+	}
+	cout << *int_dlist2;
+	int_dlist.Concat(*int_dlist2);
+	cout << int_dlist;
+	cout << *int_dlist2;
 	/*--------------- MyLinkStackT ---------------*/
+	cout << "/*--------------- MyLinkStackT ---------------*/" << endl;
 	MyLinkStackT<int> int_stack;
 	for (auto value : elements)
 	{
@@ -43,6 +72,7 @@ int main()
 	int_stack.Print();
 	
 	/*--------------- MySqStackT ---------------*/
+	cout << "/*--------------- MySqStackT ---------------*/" << endl;
 	MySqStackT<char> char_stack(5);
 	char_stack.Push('q');
 	char_stack.Push('w');
@@ -64,16 +94,19 @@ int main()
 	char_stack.Clear();
 	char_stack.Print();
 
-	/*--------------- MySinglyLinkedList ---------------*/
+	/*--------------- MySinglyLinkedListT ---------------*/
+	cout << "/*--------------- MySinglyLinkedListT ---------------*/" << endl;
 	MySinglyLinkedListT<int>* singly_list = new MySinglyLinkedListT<int>(elements, sizeof(elements)/sizeof(int));
-	singly_list->Visit();
+	//singly_list->Visit();
+	cout << *singly_list;
 
-	int old = 0;
+	//int old = 0;
 	singly_list->Get(0, old);
-	cout << old << endl;
+	cout << "old=" << old << endl;
 	LinkListNode<int>* singly_node = singly_list->GetNode(3);
 	cout << singly_node->m_Data << endl;
-	if (singly_list->Remove(7, old))
+
+	if (singly_list->Remove(4, old))
 	{
 		cout << "remove 3th:" << old << endl;
 	}
@@ -81,8 +114,18 @@ int main()
 	{
 		cout << "remove failed..." << endl;
 	}
-	singly_list->Visit();
+	cout << *singly_list;
 
+	MySinglyLinkedListT<int> singly_list2;
+	for (size_t i = 0; i < 5; ++i)
+	{
+		singly_list2.Insert(i, elements2[i]);
+	}
+	cout << singly_list2;
+	singly_list->Concat(singly_list2);
+	cout << *singly_list;
+	cout << singly_list2;
+	/*--------------- MySqList ---------------*/
 	//MySqList<char> str(4);
 	/*MySqList<int> mySqList(10);
 	cout << "len = " << mySqList.Len() << endl;
