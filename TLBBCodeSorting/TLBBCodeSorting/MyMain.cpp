@@ -12,6 +12,7 @@
 #include "MyDLinkedListT.cpp"
 #include "MySqStackT.cpp"
 #include "MyLinkStackT.cpp"
+#include "MySqQueueT.cpp"
 
 enum enum111 {
 	x1,
@@ -27,6 +28,33 @@ int main()
 	int elements2[] = { 1,2,3,4,5,6,7,8,9 };
 
 	int old = 0;
+	/*--------------- MySqQueueT ---------------*/
+	cout << "/*--------------- MySqQueueT ---------------*/" << endl;
+	MySqQueueT<int> int_sq_queue(3);
+	int_sq_queue.EnQueue(100);
+	int_sq_queue.EnQueue(35);
+	cout << "size=" << int_sq_queue.Size() << endl;
+	cout << int_sq_queue;
+	
+	for (size_t i = 0; i < 5; ++i)
+	{
+		int_sq_queue.EnQueue(elements[i]);
+	}
+	cout << "size=" << int_sq_queue.Size() << endl;
+	cout << int_sq_queue;
+
+	cout << "remove:" << int_sq_queue.DeQueue() << endl;
+	cout << "remove:" << int_sq_queue.DeQueue() << endl;
+	cout << "remove:" << int_sq_queue.DeQueue() << endl;
+	cout << "size=" << int_sq_queue.Size() << endl;
+	cout << int_sq_queue;
+
+	int_sq_queue.EnQueue(12345);
+	int_sq_queue.EnQueue(54321);
+	int_sq_queue.EnQueue(34343);
+	int_sq_queue.EnQueue(123321);
+	cout << "size=" << int_sq_queue.Size() << endl;
+	cout << int_sq_queue;
 	/*--------------- MyDLinkedListT ---------------*/
 	cout << "/*--------------- MyDLinkedListT ---------------*/" << endl;
 	MyDLinkedListT<int> int_dlist;
@@ -47,6 +75,15 @@ int main()
 	{
 		int_dlist2->Insert(0, elements2[i]);
 	}
+	cout << *int_dlist2;
+	int_dlist2->Remove(0, old);
+	cout << "remove[1]=" << old << endl;
+	int_dlist2->Remove(0, old);
+	cout << "remove[1]=" << old << endl;
+	int_dlist2->Remove(0, old);
+	cout << "remove[1]=" << old << endl;
+	int_dlist2->Remove(0, old);
+	cout << "remove[1]=" << old << endl;
 	cout << *int_dlist2;
 	int_dlist.Concat(*int_dlist2);
 	cout << int_dlist;

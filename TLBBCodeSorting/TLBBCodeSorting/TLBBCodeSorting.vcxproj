@@ -156,10 +156,12 @@
     <ClInclude Include="BaseDefine.h" />
     <ClInclude Include="MyDLinkedListT.h" />
     <ClInclude Include="MyLinkedListT.h" />
+    <ClInclude Include="MyLinkQueueT.h" />
     <ClInclude Include="MyLinkStackT.h" />
     <ClInclude Include="MyIntList.h" />
     <ClInclude Include="MyIntQueue.h" />
     <ClInclude Include="MySqListT.h" />
+    <ClInclude Include="MySqQueueT.h" />
     <ClInclude Include="MySqStackT.h" />
     <ClInclude Include="MyIntStack.h" />
     <ClInclude Include="pch.h" />
@@ -167,10 +169,12 @@
   <ItemGroup>
     <ClCompile Include="MyDLinkedListT.cpp" />
     <ClCompile Include="MyLinkedListT.cpp" />
+    <ClCompile Include="MyLinkQueueT.cpp" />
     <ClCompile Include="MyLinkStackT.cpp" />
     <ClCompile Include="MyIntList.cpp" />
     <ClCompile Include="MyIntQueue.cpp" />
     <ClCompile Include="MySqListT.cpp" />
+    <ClCompile Include="MySqQueueT.cpp" />
     <ClCompile Include="MySqStackT.cpp" />
     <ClCompile Include="MyIntStack.cpp" />
     <ClCompile Include="pch.cpp">

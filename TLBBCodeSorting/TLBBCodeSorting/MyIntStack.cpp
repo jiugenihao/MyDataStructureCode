@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "MyIntStack.h"
-#include "BaseDefine.h"
 
 MyIntStack::MyIntStack(int maxSize):m_MaxSize(maxSize)
 {

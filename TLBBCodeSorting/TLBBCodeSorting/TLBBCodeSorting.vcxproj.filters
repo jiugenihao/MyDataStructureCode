@@ -60,6 +60,12 @@
     <ClInclude Include="MyDLinkedListT.h">
       <Filter>LinkedListTemplate</Filter>
     </ClInclude>
+    <ClInclude Include="MyLinkQueueT.h">
+      <Filter>LinkedListTemplate</Filter>
+    </ClInclude>
+    <ClInclude Include="MySqQueueT.h">
+      <Filter>SequenceTemplate</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -91,6 +97,12 @@
     </ClCompile>
     <ClCompile Include="MyDLinkedListT.cpp">
       <Filter>LinkedListTemplate</Filter>
+    </ClCompile>
+    <ClCompile Include="MyLinkQueueT.cpp">
+      <Filter>LinkedListTemplate</Filter>
+    </ClCompile>
+    <ClCompile Include="MySqQueueT.cpp">
+      <Filter>SequenceTemplate</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

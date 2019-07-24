@@ -11,7 +11,7 @@ template <class T>
 class MySqStackT
 {
 public:
-	MySqStackT(int size = 64);
+	MySqStackT(int size = MAX_STACK_SIZE);
 	~MySqStackT();
 
 	// immutable function

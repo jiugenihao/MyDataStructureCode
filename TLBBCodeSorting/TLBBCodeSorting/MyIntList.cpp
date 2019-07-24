@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "MyIntList.h"
-#include "BaseDefine.h"
 
 MyIntList::MyIntList(int maxSize):m_nMaxSize(maxSize)
 {

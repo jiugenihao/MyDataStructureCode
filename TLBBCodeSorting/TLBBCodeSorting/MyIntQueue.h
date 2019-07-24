@@ -6,7 +6,7 @@
 
 #pragma once
 
-#define MAX_QUEUE_SIZE 5
+#include "BaseDefine.h"
 
 struct QueueItem
 {

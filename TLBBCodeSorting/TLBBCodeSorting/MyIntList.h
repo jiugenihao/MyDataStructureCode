@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////////
 #pragma once
 
-#define MAX_LIST_SIZE 5
+#include "BaseDefine.h"
 
 //template <typename T>
 class MyIntList

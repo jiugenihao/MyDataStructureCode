@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "MyIntQueue.h"
-#include "BaseDefine.h"
 
 MyIntQueue::MyIntQueue(int maxSize):m_MaxSize(maxSize)
 {

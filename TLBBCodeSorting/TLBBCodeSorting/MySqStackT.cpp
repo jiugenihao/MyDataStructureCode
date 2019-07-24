@@ -2,9 +2,9 @@
 #include "MySqStackT.h"
 
 template <class T>
-MySqStackT<T>::MySqStackT(int size /*= 64*/)
+MySqStackT<T>::MySqStackT(int size /*= MAX_STACK_SIZE*/)
 {
-	m_Size  = size < 64 ? 64 : size;
+	m_Size  = size < MAX_STACK_SIZE ? MAX_STACK_SIZE : size;
 	m_pElem = new T[m_Size];
 	m_Top   = -1;
 }

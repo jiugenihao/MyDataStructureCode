@@ -92,7 +92,7 @@ void MyDLinkedListT<T>::Clear()
 }
 
 // pos=0代表插入头结点
-// pos>0代表头结点后面插入
+// pos>0 pos结点前插入，跟单链表一样
 template <class T>
 DLinkListNode<T>* MyDLinkedListT<T>::Insert(int pos, T value)
 {
@@ -107,7 +107,7 @@ DLinkListNode<T>* MyDLinkedListT<T>::Insert(int pos, T value)
 	else
 	{
 		// 寻找pos-1结点
-		int i = 1;
+		int i = 0;
 		DLinkListNode<T>* p = m_Head;
 		while (nullptr != p->m_pNext && i < pos)
 		{
