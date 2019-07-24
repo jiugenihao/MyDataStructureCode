@@ -48,6 +48,7 @@ void MySinglyLinkedListT<T>::Clear()
 //	m_Len = 0;
 }
 
+// 遍历
 template <class T>
 int MySinglyLinkedListT<T>::Size()
 {
@@ -73,11 +74,18 @@ LinkListNode<T>* MySinglyLinkedListT<T>::GetNode(int pos)
 
 	int i = 0;
 	LinkListNode<T>* p = m_Head;
+
+	//for (i = 0; i < pos, nullptr! = p; i++)
+	//{
+	//	p = p->m_pNext;
+	//}
+
 	while (nullptr != p && i < pos)
 	{
 		p = p->m_pNext;
 		i++;
 	}
+	
 	return p;
 }
 
@@ -121,9 +129,11 @@ LinkListNode<T>* MySinglyLinkedListT<T>::Insert(int pos, T value)
 	}
 	else
 	{
-		int i = 1;
+		// 寻找pos-1结点
+		int i = 0;
 		LinkListNode<T>* p = m_Head;
-		while (nullptr != p->m_pNext && i < pos)
+		
+		while (nullptr != p->m_pNext && i < pos-1)
 		{
 			p = p->m_pNext;
 			++i;
@@ -138,6 +148,7 @@ LinkListNode<T>* MySinglyLinkedListT<T>::Insert(int pos, T value)
 
 
 // 单链表删除，需要找到前一个结点来删除本结点
+// pos是空结点，可以进行insert但是不可以delete
 template <class T>
 bool MySinglyLinkedListT<T>::Remove(int pos, T& old)
 {

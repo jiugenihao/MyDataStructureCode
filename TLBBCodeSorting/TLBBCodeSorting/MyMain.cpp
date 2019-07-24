@@ -116,6 +116,8 @@ int main()
 	}
 	cout << *singly_list;
 
+	bool bRet = singly_list->Remove(10, old);
+
 	MySinglyLinkedListT<int> singly_list2;
 	for (size_t i = 0; i < 5; ++i)
 	{

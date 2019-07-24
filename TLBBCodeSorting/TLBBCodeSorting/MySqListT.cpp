@@ -113,12 +113,9 @@ bool MySqListT<T>::Remove(int pos, T& value)
 	{
 		value = m_pData[pos];
 
-		if (pos != m_Len - 1)
+		for (int i = pos; i < m_Len; ++i)
 		{
-			for (int i = pos; i < m_Len - 1; ++i)
-			{
-				m_pData[i] = m_pData[i + 1];
-			}
+			m_pData[i] = m_pData[i + 1];
 		}
 		
 		m_Len--;			// 缩小长度，最后一个元素就不被包含在表里了，但是大表中该位置还是有数据的
