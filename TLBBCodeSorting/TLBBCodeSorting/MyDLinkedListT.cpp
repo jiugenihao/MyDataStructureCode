@@ -5,7 +5,7 @@ template <class T>
 MyDLinkedListT<T>::MyDLinkedListT()
 {
 	m_Head = nullptr;
-	//m_Size = 0;
+	m_Size = 0;
 }
 
 template <class T>

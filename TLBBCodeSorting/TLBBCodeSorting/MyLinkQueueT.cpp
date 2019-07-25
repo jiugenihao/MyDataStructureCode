@@ -1,12 +1,12 @@
 #include "pch.h"
 #include "MyLinkQueueT.h"
 
-
-MyLinkQueueT::MyLinkQueueT()
+template <class T>
+MyLinkQueueT<T>::MyLinkQueueT()
 {
 }
 
-
-MyLinkQueueT::~MyLinkQueueT()
+template <class T>
+MyLinkQueueT<T>::~MyLinkQueueT()
 {
 }

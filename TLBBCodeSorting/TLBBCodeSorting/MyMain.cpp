@@ -13,6 +13,7 @@
 #include "MySqStackT.cpp"
 #include "MyLinkStackT.cpp"
 #include "MySqQueueT.cpp"
+#include <time.h>
 
 enum enum111 {
 	x1,
@@ -24,6 +25,22 @@ enum enum111 {
 
 int main()
 {
+	char FileAllPath[100] = { 0 };
+	time_t _time;
+	time(&_time);
+	struct tm _tm;
+	localtime_s(&_tm, &_time);
+
+	struct tm *ptm = &_tm;
+	snprintf(FileAllPath, sizeof(FileAllPath) - 1, "%s%s.%d-%02d-%02d.%02d%02d%02d.svr_%d.log",
+		"hello", "-world", 1900 + ptm->tm_year, 1 + ptm->tm_mon, ptm->tm_mday, ptm->tm_hour, ptm->tm_min, ptm->tm_sec, 111);
+
+	cout << FileAllPath << endl;
+	int len = strnlen_s(FileAllPath, 100);
+	cout << "len=" << len << "   " << FileAllPath[len - 1] << endl;
+	FileAllPath[len] = '\0';
+	len = strnlen_s(FileAllPath, 100);
+	cout << "len=" << len << "   " << FileAllPath[len - 1] << endl;
 	int elements[] = { 111,222,333,444,777,888,999 };
 	int elements2[] = { 1,2,3,4,5,6,7,8,9 };
 
