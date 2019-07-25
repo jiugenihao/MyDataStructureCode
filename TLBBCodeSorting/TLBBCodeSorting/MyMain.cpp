@@ -6,13 +6,16 @@
 #include "MyIntQueue.h"
 #include "MyIntStack.h"
 #include "MyIntList.h"
-#include "MySqListT.h"
+
 #include "MySqListT.cpp"
+#include "MySqStackT.cpp"
+#include "MySqQueueT.cpp"
+
 #include "MyLinkedListT.cpp"
 #include "MyDLinkedListT.cpp"
-#include "MySqStackT.cpp"
 #include "MyLinkStackT.cpp"
-#include "MySqQueueT.cpp"
+#include "MyLinkQueueT.cpp"
+
 #include <time.h>
 
 enum enum111 {
@@ -25,7 +28,7 @@ enum enum111 {
 
 int main()
 {
-	char FileAllPath[100] = { 0 };
+	/*char FileAllPath[100] = { 0 };
 	time_t _time;
 	time(&_time);
 	struct tm _tm;
@@ -40,11 +43,29 @@ int main()
 	cout << "len=" << len << "   " << FileAllPath[len - 1] << endl;
 	FileAllPath[len] = '\0';
 	len = strnlen_s(FileAllPath, 100);
-	cout << "len=" << len << "   " << FileAllPath[len - 1] << endl;
+	cout << "len=" << len << "   " << FileAllPath[len - 1] << endl;*/
 	int elements[] = { 111,222,333,444,777,888,999 };
 	int elements2[] = { 1,2,3,4,5,6,7,8,9 };
 
 	int old = 0;
+	/*--------------- MyLinkQueueT ---------------*/
+	cout << "/*--------------- MyLinkQueueT ---------------*/" << endl;
+	MyLinkQueueT<int> int_link_queue;
+	int_link_queue.EnQueue(1212);
+	int_link_queue.EnQueue(2323);
+	int_link_queue.EnQueue(3434);
+	int_link_queue.EnQueue(4545);
+	cout << int_link_queue;
+	old = int_link_queue.DeQueue();
+	cout << int_link_queue;
+	old = int_link_queue.DeQueue();
+	cout << int_link_queue;
+	int_link_queue.EnQueue(99999);
+	int_link_queue.EnQueue(85344);
+	cout << int_link_queue;
+	int_link_queue.Clear();
+	cout << int_link_queue;
+
 	/*--------------- MySqQueueT ---------------*/
 	cout << "/*--------------- MySqQueueT ---------------*/" << endl;
 	MySqQueueT<int> int_sq_queue(3);
