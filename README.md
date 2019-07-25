@@ -10,4 +10,6 @@ MySqStackT
 ### 栈的的链式实现
 MyLinkStackT
 ### 队列的顺序实现
+MySqQueueT
 ### 队列的链式实现
+MyLinkQueueT
