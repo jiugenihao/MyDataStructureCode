@@ -1,0 +1,20 @@
+/////////////////////////////////////////////////////////////////////////////////
+//文件名称：MyBinaryTreeT.h
+//功能描述：二叉链表实现的二叉树
+//        
+/////////////////////////////////////////////////////////////////////////////////
+#pragma once
+
+#include "BaseDefine.h"
+
+template <class T>
+class MyBinaryTreeT
+{
+public:
+	MyBinaryTreeT();
+	~MyBinaryTreeT();
+
+private:
+	BinaryNode<T>* m_pRoot;
+};
+

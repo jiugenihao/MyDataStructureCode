@@ -5,14 +5,14 @@ template <class T>
 MySqQueueT<T>::MySqQueueT(int size /*= MAX_QUEUE_SIZE*/)
 {
 	m_Size = size < MAX_QUEUE_SIZE ? MAX_QUEUE_SIZE : size;
-	m_Data = new T[m_Size];
+	m_pData = new T[m_Size];
 	m_Head = m_Tail = 0;
 }
 
 template <class T>
 MySqQueueT<T>::~MySqQueueT()
 {
-	SAFE_DELETE_ARRAY(m_Data);
+	SAFE_DELETE_ARRAY(m_pData);
 }
 
 template <class T>
@@ -45,7 +45,7 @@ T MySqQueueT<T>::GetHead()
 {
 	if (IsEmpty())
 		throw "The Queue Is NULL !!!";
-	return m_Data[m_Head];
+	return m_pData[m_Head];
 }
 
 template <class T>
@@ -53,7 +53,7 @@ T MySqQueueT<T>::GetTail()
 {
 	if (IsEmpty())
 		throw "The Queue Is NULL !!!";
-	return m_Data[m_Tail - 1];
+	return m_pData[m_Tail - 1];
 }
 
 template <class T>
@@ -61,14 +61,14 @@ void MySqQueueT<T>::EnQueue(T value)
 {
 	if (IsFull())
 	{
-		T* tmp = m_Data;
-		m_Data = new T[m_Size * 2];
+		T* tmp = m_pData;
+		m_pData = new T[m_Size * 2];
 		
 		int i = m_Head;
 		int j = 0;
 		while (i != m_Tail)
 		{
-			m_Data[j] = tmp[i];
+			m_pData[j] = tmp[i];
 			i = (i + 1) % m_Size;
 			j++;
 		}
@@ -78,7 +78,7 @@ void MySqQueueT<T>::EnQueue(T value)
 		SAFE_DELETE(tmp);
 	}
 	
-	m_Data[m_Tail] = value;
+	m_pData[m_Tail] = value;
 	m_Tail = (m_Tail + 1) % m_Size;
 }
 
@@ -88,7 +88,7 @@ T MySqQueueT<T>::DeQueue()
 	if (IsEmpty())
 		throw "The Queue Is NULL !!!";
 
-	T tmp = m_Data[m_Head];
+	T tmp = m_pData[m_Head];
 	m_Head = (m_Head + 1) % m_Size;
 	return tmp;
 }

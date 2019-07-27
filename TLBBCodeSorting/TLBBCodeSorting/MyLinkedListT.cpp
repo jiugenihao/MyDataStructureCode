@@ -5,14 +5,14 @@
 template <class T>
 MySinglyLinkedListT<T>::MySinglyLinkedListT()
 {
-	m_Head = nullptr;
+	m_pHead = nullptr;
 //	m_Len = 0;
 }
 
 template <class T>
 MySinglyLinkedListT<T>::MySinglyLinkedListT(T value[], int n)
 {
-	m_Head = nullptr;
+	m_pHead = nullptr;
 	if (n > 0)
 	{
 		for (int i = 0; i < n; ++i)
@@ -31,20 +31,20 @@ MySinglyLinkedListT<T>::~MySinglyLinkedListT()
 template <class T>
 bool MySinglyLinkedListT<T>::IsEmpty()
 {
-	return (m_Head == nullptr);
+	return (m_pHead == nullptr);
 }
 
 template <class T>
 void MySinglyLinkedListT<T>::Clear()
 {
-	LinkListNode<T>* p = m_Head;
+	LinkListNode<T>* p = m_pHead;
 	while (nullptr != p)
 	{
 		LinkListNode<T>* q = p;
 		p = p->m_pNext;
 		delete q;
 	}
-	m_Head = nullptr;
+	m_pHead = nullptr;
 //	m_Len = 0;
 }
 
@@ -53,7 +53,7 @@ template <class T>
 int MySinglyLinkedListT<T>::Size()
 {
 	int len = 0;
-	LinkListNode<T>* p = m_Head;
+	LinkListNode<T>* p = m_pHead;
 	while (nullptr != p)
 	{
 		len++;
@@ -73,7 +73,7 @@ LinkListNode<T>* MySinglyLinkedListT<T>::GetNode(int pos)
 		return nullptr;
 
 	int i = 0;
-	LinkListNode<T>* p = m_Head;
+	LinkListNode<T>* p = m_pHead;
 
 	//for (i = 0; i < pos, nullptr! = p; i++)
 	//{
@@ -122,16 +122,16 @@ LinkListNode<T>* MySinglyLinkedListT<T>::Insert(int pos, T value)
 	LinkListNode<T>* q = new LinkListNode<T>(value);
 	if (!q) return nullptr;
 
-	if (nullptr == m_Head || pos <= 0)
+	if (nullptr == m_pHead || pos <= 0)
 	{
-		q->m_pNext = m_Head;
-		m_Head = q;
+		q->m_pNext = m_pHead;
+		m_pHead = q;
 	}
 	else
 	{
 		// —∞’“pos-1Ω·µ„
 		int i = 0;
-		LinkListNode<T>* p = m_Head;
+		LinkListNode<T>* p = m_pHead;
 		
 		while (nullptr != p->m_pNext && i < pos-1)
 		{
@@ -161,9 +161,9 @@ bool MySinglyLinkedListT<T>::Remove(int pos, T& old)
 	LinkListNode<T>* p = nullptr;
 	if (pos == 0)
 	{
-		p = m_Head;
+		p = m_pHead;
 		old = p->m_Data;
-		m_Head = m_Head->m_pNext;
+		m_pHead = m_pHead->m_pNext;
 		delete p;
 		return true;
 	}
@@ -185,26 +185,26 @@ bool MySinglyLinkedListT<T>::Remove(int pos, T& old)
 template <class T>
 void MySinglyLinkedListT<T>::Concat(MySinglyLinkedListT<T>& list)
 {
-	if (nullptr == m_Head)
+	if (nullptr == m_pHead)
 	{
-		m_Head = list.m_Head;
+		m_pHead = list.m_pHead;
 	}
 	else
 	{
-		LinkListNode<T>* p = m_Head;
+		LinkListNode<T>* p = m_pHead;
 		while (nullptr != p->m_pNext)
 		{
 			p = p->m_pNext;
 		}
-		p->m_pNext = list.m_Head;
+		p->m_pNext = list.m_pHead;
 	}
-	list.m_Head = nullptr;
+	list.m_pHead = nullptr;
 }
 
 template <class T>
 void MySinglyLinkedListT<T>::Visit()
 {
-	LinkListNode<T>* p = m_Head;
+	LinkListNode<T>* p = m_pHead;
 	while (nullptr != p)
 	{
 		cout << p->m_Data << endl;

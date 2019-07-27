@@ -28,6 +28,9 @@
     <Filter Include="Question">
       <UniqueIdentifier>{baf74f6d-ed1f-40a3-a351-f2468af7d615}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TreeTemplate">
+      <UniqueIdentifier>{e1d459d4-772d-4595-88dc-6099073a517c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -66,6 +69,9 @@
     <ClInclude Include="MySqQueueT.h">
       <Filter>SequenceTemplate</Filter>
     </ClInclude>
+    <ClInclude Include="MyBinaryTreeT.h">
+      <Filter>TreeTemplate</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -103,6 +109,9 @@
     </ClCompile>
     <ClCompile Include="MySqQueueT.cpp">
       <Filter>SequenceTemplate</Filter>
+    </ClCompile>
+    <ClCompile Include="MyBinaryTreeT.cpp">
+      <Filter>TreeTemplate</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

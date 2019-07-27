@@ -39,7 +39,7 @@ public:
 	friend ostream& operator << (ostream& out, MySinglyLinkedListT<T>& list)
 	{
 		out << "output all elements:" << endl;
-		LinkListNode<T>* p = list.m_Head;
+		LinkListNode<T>* p = list.m_pHead;
 		while (nullptr != p)
 		{
 			out << p->m_Data;
@@ -52,7 +52,7 @@ public:
 	}
 
 private:
-	LinkListNode<T>* m_Head;
+	LinkListNode<T>* m_pHead;
 	//int m_Len;
 
 };

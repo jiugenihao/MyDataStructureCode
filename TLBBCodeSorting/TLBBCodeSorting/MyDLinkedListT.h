@@ -43,7 +43,7 @@ public:
 	{
 		//out << "dlinklist's size is:" << Size() << endl;
 		out << "output all elements:" << endl;
-		DLinkListNode<T>* p = list.m_Head;
+		DLinkListNode<T>* p = list.m_pHead;
 		while (nullptr != p)
 		{
 			out << p->m_Data;
@@ -56,7 +56,7 @@ public:
 	}
 
 private:
-	DLinkListNode<T>* m_Head;
+	DLinkListNode<T>* m_pHead;
 	//DLinkListNode<T>* m_Rear;
 	int m_Size;
 };

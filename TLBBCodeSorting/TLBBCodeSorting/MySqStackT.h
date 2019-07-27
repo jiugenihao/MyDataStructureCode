@@ -29,7 +29,7 @@ public:
 	void Print();
 
 private:
-	T*  m_pElem;
+	T*  m_pData;
 	int m_Top;
 	int m_Size;
 };

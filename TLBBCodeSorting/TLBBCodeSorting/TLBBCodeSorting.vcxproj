@@ -157,6 +157,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BaseDefine.h" />
+    <ClInclude Include="MyBinaryTreeT.h" />
     <ClInclude Include="MyDLinkedListT.h" />
     <ClInclude Include="MyLinkedListT.h" />
     <ClInclude Include="MyLinkQueueT.h" />
@@ -170,6 +171,7 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="MyBinaryTreeT.cpp" />
     <ClCompile Include="MyDLinkedListT.cpp" />
     <ClCompile Include="MyLinkedListT.cpp" />
     <ClCompile Include="MyLinkQueueT.cpp" />

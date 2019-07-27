@@ -4,7 +4,7 @@
 template <class T>
 MyDLinkedListT<T>::MyDLinkedListT()
 {
-	m_Head = nullptr;
+	m_pHead = nullptr;
 	m_Size = 0;
 }
 
@@ -17,7 +17,7 @@ MyDLinkedListT<T>::~MyDLinkedListT()
 template <class T>
 bool MyDLinkedListT<T>::IsEmpty()
 {
-	return (m_Head == nullptr);
+	return (m_pHead == nullptr);
 	//return (m_Size == 0);
 }
 
@@ -25,7 +25,7 @@ template <class T>
 int MyDLinkedListT<T>::Size()
 {
 	int len = 0;
-	DLinkListNode<T>* p = m_Head;
+	DLinkListNode<T>* p = m_pHead;
 	while (nullptr != p)
 	{
 		len++;
@@ -43,7 +43,7 @@ DLinkListNode<T>* MyDLinkedListT<T>::GetNode(int pos)
 		return nullptr;
 
 	int i = 0;
-	DLinkListNode<T>* p = m_Head;
+	DLinkListNode<T>* p = m_pHead;
 	while (nullptr != p && i < pos)
 	{
 		p = p->m_pNext;
@@ -79,7 +79,7 @@ bool MyDLinkedListT<T>::Set(int pos, T value)
 template <class T>
 void MyDLinkedListT<T>::Clear()
 {
-	DLinkListNode<T>* p = m_Head;
+	DLinkListNode<T>* p = m_pHead;
 	while (nullptr != p)
 	{
 		DLinkListNode<T>* q = p;
@@ -87,7 +87,7 @@ void MyDLinkedListT<T>::Clear()
 		delete q;
 	}
 
-	m_Head = nullptr;
+	m_pHead = nullptr;
 	//m_Rear = nullptr;
 }
 
@@ -99,16 +99,16 @@ DLinkListNode<T>* MyDLinkedListT<T>::Insert(int pos, T value)
 	DLinkListNode<T>* q = new DLinkListNode<T>(value);
 	if (!q) return nullptr;
 
-	if (nullptr == m_Head || pos <= 0)
+	if (nullptr == m_pHead || pos <= 0)
 	{
-		q->m_pNext = m_Head;
-		m_Head = q;
+		q->m_pNext = m_pHead;
+		m_pHead = q;
 	}
 	else
 	{
 		// —∞’“pos-1Ω·µ„
 		int i = 0;
-		DLinkListNode<T>* p = m_Head;
+		DLinkListNode<T>* p = m_pHead;
 		while (nullptr != p->m_pNext && i < pos)
 		{
 			p = p->m_pNext;
@@ -136,10 +136,10 @@ bool MyDLinkedListT<T>::Remove(int pos, T& old)
 	DLinkListNode<T>* p = nullptr;
 	if (0 == pos)
 	{ 
-		p = m_Head;
+		p = m_pHead;
 		old = p->m_Data;
 		p->m_pNext->m_pPrev = nullptr;
-		m_Head = p->m_pNext;
+		m_pHead = p->m_pNext;
 		delete p;
 		return true;
 	}
@@ -162,19 +162,19 @@ bool MyDLinkedListT<T>::Remove(int pos, T& old)
 template <class T>
 void MyDLinkedListT<T>::Concat(MyDLinkedListT<T>& list)
 {
-	if (nullptr == m_Head)
+	if (nullptr == m_pHead)
 	{
-		m_Head = list.m_Head;
+		m_pHead = list.m_pHead;
 	}
 	else
 	{
-		DLinkListNode<T>* p = m_Head;
+		DLinkListNode<T>* p = m_pHead;
 		while (nullptr != p->m_pNext)
 		{
 			p = p->m_pNext;
 		}
-		p->m_pNext = list.m_Head;
-		list.m_Head->m_pPrev = p;
+		p->m_pNext = list.m_pHead;
+		list.m_pHead->m_pPrev = p;
 	}
-	list.m_Head = nullptr;
+	list.m_pHead = nullptr;
 }

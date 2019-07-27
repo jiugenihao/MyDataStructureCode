@@ -26,8 +26,39 @@ enum enum111 {
 	x5,
 } x;
 
+void get_rate1() 
+{
+	cout << "rate1" << endl;
+}
+void get_rate2()
+{
+	cout << "rate2" << endl;
+}
+void get_rate3()
+{
+	cout << "rate3" << endl;
+}
+
+// 交换4个字节，比如x=12345 16进制0x00003039 bswap_32(x)=0x39300000
+static inline uint32_t bswap_32(uint32_t x)
+{
+	x = ((x << 8) & 0xFF00FF00) | ((x >> 8) & 0x00FF00FF);
+	return (x >> 16) | (x << 16);
+}
+
+#define CALL_FUNC(x) get_rate##x()
 int main()
 {
+	uint32_t u_test1 = bswap_32(0);
+	uint32_t u_test2 = bswap_32(1);
+	uint32_t u_test3 = bswap_32(10);
+	uint32_t u_test4 = bswap_32(12345);
+	uint32_t u_test5 = bswap_32(234567);
+	int index = 0;
+	int new_index = index + 1;
+	//CALL_FUNC(new_index);   // ERROR
+	CALL_FUNC(2);
+	CALL_FUNC(3);
 	/*char FileAllPath[100] = { 0 };
 	time_t _time;
 	time(&_time);

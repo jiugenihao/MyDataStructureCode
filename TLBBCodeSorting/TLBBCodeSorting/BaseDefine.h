@@ -78,3 +78,33 @@ public:
 		m_pNext = nullptr;
 	}
 };
+
+// 二叉树的二叉链表结点
+template <class T>
+class BinaryNode
+{
+public:
+	T m_Data;
+	BinaryNode<T>* m_pLeft;
+	BinaryNode<T>* m_pRight;
+
+public:
+	BinaryNode()
+	{
+		m_pLeft = nullptr;
+		m_pRight = nullptr;
+	}
+
+	BinaryNode(T data, BinaryNode<T>* left = nullptr, BinaryNode<T>* right = nullptr)
+	{
+		m_Data   = data;
+		m_pLeft  = left;
+		m_pRight = right;
+	}
+
+	~BinaryNode()
+	{
+		m_pLeft = nullptr;
+		m_pRight = nullptr;
+	}
+};

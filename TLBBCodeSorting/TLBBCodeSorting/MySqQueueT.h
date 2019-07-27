@@ -39,23 +39,23 @@ public:
 	{
 		out << "The elements of queue are:" << endl;
 		out << "head = " << queue.m_Head << " tail = " << queue.m_Tail << endl;
-		out << queue.m_Data[queue.m_Head];
+		out << queue.m_pData[queue.m_Head];
 		if (queue.m_Head <= queue.m_Tail)
 		{
 			for (int i = queue.m_Head + 1; i < queue.m_Tail; ++i)
 			{
-				out << "-" << queue.m_Data[i];
+				out << "-" << queue.m_pData[i];
 			}
 		}
 		else
 		{
 			for (int i = queue.m_Head + 1; i < queue.m_Size; ++i)
 			{
-				out << "-" << queue.m_Data[i];
+				out << "-" << queue.m_pData[i];
 			}
 			for (int i = 0; i < queue.m_Tail; ++i)
 			{
-				out << "-" << queue.m_Data[i];
+				out << "-" << queue.m_pData[i];
 			}
 		}
 		
@@ -64,7 +64,7 @@ public:
 	}
 
 private:
-	T*  m_Data;
+	T*  m_pData;
 	int m_Head;		// ¶ÓÍ·
 	int m_Tail;		// ¶ÓÎ²
 	int m_Size;
