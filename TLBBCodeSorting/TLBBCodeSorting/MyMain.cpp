@@ -15,7 +15,9 @@
 #include "MyDLinkedListT.cpp"
 #include "MyLinkStackT.cpp"
 #include "MyLinkQueueT.cpp"
+#include "MyBinaryTreeT.cpp"
 
+#include "CreateBinaryTree.h"
 #include <time.h>
 
 enum enum111 {
@@ -49,16 +51,16 @@ static inline uint32_t bswap_32(uint32_t x)
 #define CALL_FUNC(x) get_rate##x()
 int main()
 {
-	uint32_t u_test1 = bswap_32(0);
-	uint32_t u_test2 = bswap_32(1);
-	uint32_t u_test3 = bswap_32(10);
-	uint32_t u_test4 = bswap_32(12345);
-	uint32_t u_test5 = bswap_32(234567);
-	int index = 0;
-	int new_index = index + 1;
-	//CALL_FUNC(new_index);   // ERROR
-	CALL_FUNC(2);
-	CALL_FUNC(3);
+	//uint32_t u_test1 = bswap_32(0);
+	//uint32_t u_test2 = bswap_32(1);
+	//uint32_t u_test3 = bswap_32(10);
+	//uint32_t u_test4 = bswap_32(12345);
+	//uint32_t u_test5 = bswap_32(234567);
+	//int index = 0;
+	//int new_index = index + 1;
+	////CALL_FUNC(new_index);   // ERROR
+	//CALL_FUNC(2);
+	//CALL_FUNC(3);
 	/*char FileAllPath[100] = { 0 };
 	time_t _time;
 	time(&_time);
@@ -79,6 +81,14 @@ int main()
 	int elements2[] = { 1,2,3,4,5,6,7,8,9 };
 
 	int old = 0;
+	/*--------------- MyBinaryTreeT ---------------*/
+	cout << "/*--------------- MyBinaryTreeT ---------------*/" << endl;
+	MyBinaryTreeT<char> char_bittree;
+	Question::CreateCharBiT(char_bittree);
+	char_bittree.PreOrder();
+	char_bittree.InOrder();
+	char_bittree.PostOrder();
+
 	/*--------------- MyLinkQueueT ---------------*/
 	cout << "/*--------------- MyLinkQueueT ---------------*/" << endl;
 	MyLinkQueueT<int> int_link_queue;

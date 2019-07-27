@@ -11,9 +11,55 @@ template <class T>
 class MyBinaryTreeT
 {
 public:
-	MyBinaryTreeT();
+	MyBinaryTreeT();								// 构造空二叉树
+	MyBinaryTreeT(T preList[], int n);				// 以先序序列构造一棵二叉树
+	MyBinaryTreeT(T preList[], T inList[], int n);	// 以先序和中序序列构造一棵二叉树
 	~MyBinaryTreeT();
 
+	bool IsEmpty();
+	BinaryNode<T>* GetRoot();
+	void SetRoot(BinaryNode<T>* node);
+	
+public:
+	// recursion traversal
+	void PreOrder();
+	void InOrder();
+	void PostOrder();
+	int  Count();
+	int  Height();
+
+private:
+	// 递归结束条件是：nullptr == node
+	void PreOrder(BinaryNode<T>* node);		// 前序遍历子树
+	void InOrder(BinaryNode<T>* node);		// 中序遍历子树
+	void PostOrder(BinaryNode<T>* node);	// 后续遍历子树
+	int  Count(BinaryNode<T>* node);		// 返回子树结点个数
+	int  Height(BinaryNode<T>* node);		// 返回子树高度
+
+public:
+	BinaryNode<T>* Search(T value);			// 查找首次出现的值为value的结点
+	BinaryNode<T>* GetParent(BinaryNode<T>* node);
+	void           PrintGList();			// 以广义表输出二叉树
+
+private:
+	BinaryNode<T>* Search(BinaryNode<T>* node, T value);
+	BinaryNode<T>* GetParent(BinaryNode<T>* p, BinaryNode<T>* node);
+	void		   PrintGList(BinaryNode<T>* node);
+
+public:
+	BinaryNode<T>* InsertChild(BinaryNode<T>* node, T value, bool left = true);
+	void RemoveChild(BinaryNode<T>* node, bool left = true);
+
+	// non-recursive traversal
+	void PreOrderTraverse();
+	void InOrderTraverse();
+	void PostOrderTraverse();
+	void LevelOrder();
+
+private:
+	BinaryNode<T>* Create(T preList[], int n, int& i);	// 以标明空子树的先序遍历序列创建子树
+	BinaryNode<T>* Create(T preList[], T inList[], int preStart, int inStart, int n);	// 以先序和中序序列创建子树
+	void Destroy(BinaryNode<T>* node);		// 用后序遍历销毁二叉树
 private:
 	BinaryNode<T>* m_pRoot;
 };

@@ -108,3 +108,37 @@ public:
 		m_pRight = nullptr;
 	}
 };
+
+// 二叉树的三叉链表结点
+template <class T>
+class BinaryThrNode
+{
+private:
+	T m_Data;
+	BinaryThrNode<T>* m_pParent;
+	BinaryThrNode<T>* m_pLeft;
+	BinaryThrNode<T>* m_pRight;
+
+public:
+	BinaryThrNode()
+	{
+		m_pParent = nullptr;
+		m_pLeft   = nullptr;
+		m_pRight  = nullptr;
+	}
+
+	BinaryThrNode(T data, BinaryThrNode<T>* parent, BinaryThrNode<T>* left, BinaryThrNode<T>* right)
+	{
+		m_Data	  = data;
+		m_pParent = parent;
+		m_pLeft   = left;
+		m_pRight  = right;
+	}
+
+	~BinaryThrNode()
+	{
+		m_pParent = nullptr;
+		m_pLeft = nullptr;
+		m_pRight = nullptr;
+	}
+};

@@ -111,6 +111,8 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <EnablePREfast>true</EnablePREfast>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -157,6 +159,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BaseDefine.h" />
+    <ClInclude Include="CreateBinaryTree.h" />
     <ClInclude Include="MyBinaryTreeT.h" />
     <ClInclude Include="MyDLinkedListT.h" />
     <ClInclude Include="MyLinkedListT.h" />
