@@ -88,6 +88,11 @@ int main()
 	char_bittree.PreOrder();
 	char_bittree.InOrder();
 	char_bittree.PostOrder();
+	cout << "Count = " << char_bittree.Count() << endl;
+	cout << "Height = " << char_bittree.Height() << endl;
+	BinaryNode<char>* binode = char_bittree.Search('D');
+	BinaryNode<char>* parent = char_bittree.GetParent(binode);
+	cout << "D's parent is:" << parent->m_Data << endl;
 
 	/*--------------- MyLinkQueueT ---------------*/
 	cout << "/*--------------- MyLinkQueueT ---------------*/" << endl;

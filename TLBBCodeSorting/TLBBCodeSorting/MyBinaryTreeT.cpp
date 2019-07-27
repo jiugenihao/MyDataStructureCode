@@ -130,5 +130,77 @@ int MyBinaryTreeT<T>::Count(BinaryNode<T>* node)
 template <class T>
 int MyBinaryTreeT<T>::Height()
 {
+	return Height(m_pRoot);
+}
+
+// 采用后序层次遍历
+template <class T>
+int MyBinaryTreeT<T>::Height(BinaryNode<T>* node)
+{
+	if (node)
+	{
+		int lh = Height(node->m_pLeft);
+		int rh = Height(node->m_pRight);
+		
+		return (lh >= rh) ? lh+1 : rh+1;
+	}
 	return 0;
+}
+
+template <class T>
+BinaryNode<T>* MyBinaryTreeT<T>::Search(T value)
+{
+	return Search(m_pRoot, value);
+}
+
+// 采用先序遍历查找
+template <class T>
+BinaryNode<T>* MyBinaryTreeT<T>::Search(BinaryNode<T>* node, T value)
+{
+	BinaryNode<T>* pFind = nullptr;
+
+	if (!node)
+		return nullptr;
+	
+	if (node->m_Data == value)
+	{
+		return node;
+	}
+	pFind = Search(node->m_pLeft, value);
+	if (!pFind)
+	{
+		pFind = Search(node->m_pRight, value);
+	}
+
+	return pFind;
+}
+
+template <class T>
+BinaryNode<T>* MyBinaryTreeT<T>::GetParent(BinaryNode<T>* node)
+{
+	if (!m_pRoot || !node || node == m_pRoot)
+	{
+		return nullptr;
+	}
+	return GetParent(m_pRoot, node);
+}
+
+// 采用先序遍历获取
+template <class T>
+BinaryNode<T>* MyBinaryTreeT<T>::GetParent(BinaryNode<T>* parent, BinaryNode<T>* node)
+{
+	BinaryNode<T>* pFind = nullptr;
+
+	if (parent)
+	{
+		if (parent->m_pLeft == node || parent->m_pRight == node)
+			return parent;
+		pFind = GetParent(parent->m_pLeft, node);
+		if (!pFind)
+		{
+			pFind = GetParent(parent->m_pRight, node);
+		}
+	}
+
+	return pFind;
 }

@@ -18,7 +18,8 @@ namespace Question
 	//        D   E   F
 	//         \     /
 	//          G   H
-	//
+	// 缺点：1.只能按照一种规则创建一种特定的二叉树，无通用性
+	//      2.执行析构会重复释放空间(有待商榷)
 	void CreateCharBiT(MyBinaryTreeT<char>& bittree)
 	{
 		BinaryNode<char>* child_G = new BinaryNode<char>('G');
