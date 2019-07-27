@@ -1,15 +1,19 @@
 # 数据结构代码整理
 ### 顺序表
-MySqListT
+- [x] MySqListT
 ### 单链表
-MySinglyLinkedListT
+- [x] MySinglyLinkedListT
+### 带头结点的单链表
+- [ ] MyHSinglyLinkedListT
 ### 双链表
-MyDLinkedListT
+- [x] MyDLinkedListT
+### 带头结点的双链表
+- [ ] MyHDlinkedListT  
 ### 栈的的顺序实现
-MySqStackT
+- [x] MySqStackT
 ### 栈的的链式实现
-MyLinkStackT
+- [x] MyLinkStackT
 ### 队列的顺序实现
-MySqQueueT
+- [x] MySqQueueT
 ### 队列的链式实现
-MyLinkQueueT
+- [x] MyLinkQueueT
