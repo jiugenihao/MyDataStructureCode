@@ -10,6 +10,7 @@
 
 namespace Question
 {
+	//+++++++++++++++++++++++++++++++++++++++++++++++++//
 	// 创建一个char类型的二叉树
 	//            A
 	//           / \
@@ -20,6 +21,13 @@ namespace Question
 	//          G   H
 	// 缺点：1.只能按照一种规则创建一种特定的二叉树，无通用性
 	//      2.执行析构会重复释放空间(有待商榷)
+	// 
+	// 先序：ABDGCEFH
+	// 中序：DGBAECHF
+	// 后序：GDBEHFCA
+	//
+	// 标明空子树先序表示：ABD^G^^^CE^^FH^^^
+	//+++++++++++++++++++++++++++++++++++++++++++++++++//
 	void CreateCharBiT(MyBinaryTreeT<char>& bittree)
 	{
 		BinaryNode<char>* child_G = new BinaryNode<char>('G');

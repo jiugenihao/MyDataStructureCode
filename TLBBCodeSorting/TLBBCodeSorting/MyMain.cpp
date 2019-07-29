@@ -94,6 +94,33 @@ int main()
 	BinaryNode<char>* parent = char_bittree.GetParent(binode);
 	cout << "D's parent is:" << parent->m_Data << endl;
 
+	char preList[] = { 'A','B', 'D', NULL, 'G', NULL, NULL, NULL, 'C',
+		'E', NULL, NULL, 'F', 'H', NULL, NULL, NULL };
+	MyBinaryTreeT<char> char_bittree2(preList, sizeof(preList));
+	char_bittree2.PreOrder();
+	char_bittree2.InOrder();
+	char_bittree2.PostOrder();
+	cout << "Count = " << char_bittree.Count() << endl;
+	cout << "Height = " << char_bittree.Height() << endl;
+	char find_c = 'H';
+	BinaryNode<char> *find = char_bittree2.Search(find_c);
+	if (find)
+	{
+		BinaryNode<char>* parent = char_bittree2.GetParent(find);
+		cout << find_c << "的祖先结点是：";
+		while (parent)
+		{
+			cout << parent->m_Data << " ";
+			parent = char_bittree2.GetParent(parent);
+		}
+		cout << endl;
+	}
+	else
+	{
+		cout << "can not find ..." << endl;
+	}
+	char_bittree2.GetAllAncestorNode('D');
+
 	/*--------------- MyLinkQueueT ---------------*/
 	cout << "/*--------------- MyLinkQueueT ---------------*/" << endl;
 	MyLinkQueueT<int> int_link_queue;

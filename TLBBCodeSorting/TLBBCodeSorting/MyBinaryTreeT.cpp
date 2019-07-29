@@ -10,7 +10,8 @@ MyBinaryTreeT<T>::MyBinaryTreeT()
 template <class T>
 MyBinaryTreeT<T>::MyBinaryTreeT(T prelist[], int n)
 {
-	
+	int i = 0;
+	m_pRoot = Create(prelist, n, i);
 }
 
 template <class T>
@@ -37,6 +38,7 @@ void MyBinaryTreeT<T>::SetRoot(BinaryNode<T>* node)
 	m_pRoot = node;
 }
 
+// 后序遍历来删除，先删左右结点再删自身
 template <class T>
 void MyBinaryTreeT<T>::Destroy(BinaryNode<T>* node)
 {
@@ -203,4 +205,44 @@ BinaryNode<T>* MyBinaryTreeT<T>::GetParent(BinaryNode<T>* parent, BinaryNode<T>*
 	}
 
 	return pFind;
+}
+
+template <class T>
+void MyBinaryTreeT<T>::GetAllAncestorNode(T value)
+{
+	BinaryNode<T>* find = Search(value);
+	if (find)
+	{
+		cout << value << "的祖先结点是：";
+		BinaryNode<T>* parent = GetParent(find);
+		while (parent)
+		{
+			cout << parent->m_Data << " ";
+			parent = GetParent(parent);
+		}
+		cout << endl;
+	}
+	else
+		cout << "没有找到该结点" << endl;
+}
+
+// 用标明空子树的先序序列创建二叉树，先构造左子树，再构造右子树
+template <class T>
+BinaryNode<T>* MyBinaryTreeT<T>::Create(T preList[], int n, int& i)
+{
+	BinaryNode<T>* p = nullptr;
+
+	if (i < n)
+	{
+		T elem = preList[i];
+		i++;
+		if (NULL != elem)
+		{
+			p = new BinaryNode<T>(elem);
+			p->m_pLeft = Create(preList, n, i);
+			p->m_pRight = Create(preList, n, i);
+		}
+	}
+
+	return p;
 }

@@ -1,7 +1,8 @@
 /////////////////////////////////////////////////////////////////////////////////
 //文件名称：MyBinaryTreeT.h
 //功能描述：二叉链表实现的二叉树
-//        
+//   
+//标明空子树：结点为空用^表示
 /////////////////////////////////////////////////////////////////////////////////
 #pragma once
 
@@ -39,6 +40,7 @@ private:
 public:
 	BinaryNode<T>* Search(T value);			// 查找首次出现的值为value的结点
 	BinaryNode<T>* GetParent(BinaryNode<T>* node);
+	void		   GetAllAncestorNode(T value);	// 获取value的结点的祖先结点
 	void           PrintGList();			// 以广义表输出二叉树
 
 private:
