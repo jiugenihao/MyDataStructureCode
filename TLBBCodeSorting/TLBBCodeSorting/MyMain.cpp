@@ -88,6 +88,8 @@ int main()
 	char_bittree.PreOrder();
 	char_bittree.InOrder();
 	char_bittree.PostOrder();
+	char_bittree.PreOrderTraverse();
+	char_bittree.InOrderTraverse();
 	cout << "Count = " << char_bittree.Count() << endl;
 	cout << "Height = " << char_bittree.Height() << endl;
 	BinaryNode<char>* binode = char_bittree.Search('D');

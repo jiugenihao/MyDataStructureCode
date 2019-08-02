@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "MyBinaryTreeT.h"
+#include "MyLinkStackT.h"
 
 template <class T>
 MyBinaryTreeT<T>::MyBinaryTreeT()
@@ -245,4 +246,115 @@ BinaryNode<T>* MyBinaryTreeT<T>::Create(T preList[], int n, int& i)
 	}
 
 	return p;
+}
+
+
+template <class T>
+void MyBinaryTreeT<T>::PreOrderTraverse()
+{
+	MyLinkStackT<BinaryNode<T>*> stack;
+	BinaryNode<T>* p = m_pRoot;
+
+	cout << "非递归先序遍历二叉树：";
+	while (p || !stack.IsEmpty())
+	{
+		// 遍历左子树
+		while (p) 
+		{
+			cout << p->m_Data;
+			stack.Push(p);
+			p = p->m_pLeft;
+		}//endwhile
+
+		// 通过下一次循环中的内嵌while实现右子树遍历
+		if (!stack.IsEmpty()) 
+		{
+			p = stack.Pop();
+			p = p->m_pRight;
+		}//endif
+	}
+	cout << endl;
+}
+
+template <class T>
+void MyBinaryTreeT<T>::InOrderTraverse()
+{
+	MyLinkStackT<BinaryNode<T>*> stack;
+	BinaryNode<T>* p = m_pRoot;
+
+	cout << "非递归中序遍历二叉树：";
+	while (p || !stack.IsEmpty())
+	{
+		// 遍历左子树
+		while (p) 
+		{
+			stack.Push(p);
+			p = p->m_pLeft;
+		}//endwhile
+
+		if (!stack.IsEmpty())
+		{
+			p = stack.Pop();
+			cout << p->m_Data;
+			p = p->m_pRight;		//通过下一次循环实现右子树遍历
+		}//endif 
+
+	}//endwhile
+	cout << endl;
+}
+
+template <class T>
+void MyBinaryTreeT<T>::PostOrderTraverse()
+{
+	MyLinkStackT<BinaryNode<T>*> stack;
+	BinaryNode<T>* p = m_pRoot;
+
+	cout << "非递归后续遍历二叉树";
+
+	int  Tag[20];       // 栈，用于标识从左（0）或右（1）返回  
+	//while (p || !stack.IsEmpty())
+	//{
+	//	while (p)
+	//	{
+	//		stack.Push(p);
+	//		Tag[stack.top] = 0;
+	//		p = p->m_pLeft;
+	//	}
+	//	while (!isempty(st) && Tag[st->top] == 1)
+	//	{
+	//		p = pop(st);
+	//		cout << p->data << "    ";
+	//	}
+	//	if (!isempty(st))
+	//	{
+	//		Tag[st->top] = 1;    // 设置标记右子树已经访问  
+	//		p = gettop(st);
+	//		p = p->rchild;
+	//	}
+	//	else   
+	//		break;
+	//}
+	//do
+	//{
+	//	while (p) //遍历左子树
+	//	{
+	//		x.ptr = p;
+	//		x.tag = L; //标记为左子树
+	//		push(s, x);
+	//		p = p->lchild;
+	//	}
+
+	//	while (!StackEmpty(s) && s.Elem[s.top].tag == R)
+	//	{
+	//		x = pop(s);
+	//		p = x.ptr;
+	//		visite(p->data); //tag为R，表示右子树访问完毕，故访问根结点 
+	//	}
+
+	//	if (!StackEmpty(s))
+	//	{
+	//		s.Elem[s.top].tag = R; //遍历右子树
+	//		p = s.Elem[s.top].ptr->rchild;
+	//	}
+	//} while (!StackEmpty(s));
 }

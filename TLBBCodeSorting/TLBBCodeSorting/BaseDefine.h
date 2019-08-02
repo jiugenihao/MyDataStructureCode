@@ -142,3 +142,36 @@ public:
 		m_pRight = nullptr;
 	}
 };
+
+// 线索二叉树结点
+template <class T>
+class ThreadBinaryNode
+{
+public:
+	ThreadBinaryNode()
+	{
+		m_pLeft = nullptr;
+		m_pRight = nullptr;
+		lTag = rTag = 0;
+	}
+
+	ThreadBinaryNode(T data, ThreadBinaryNode<T>* left, ThreadBinaryNode<T>* right)
+	{
+		m_Data = data;
+		m_pLeft = left;
+		m_pRight = right;
+		lTag = rTag = false;
+	}
+	~ThreadBinaryNode()
+	{
+		m_pLeft = nullptr;
+		m_pRight = nullptr;
+		lTag = rTag = false;
+	}
+
+private:
+	T m_Data;
+	ThreadBinaryNode<T>* m_pLeft;
+	ThreadBinaryNode<T>* m_pRight;
+	bool lTag, rTag;
+};
