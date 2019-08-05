@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "MyBinaryTreeT.h"
 #include "MyLinkStackT.h"
+#include "MyLinkQueueT.h"
 
 template <class T>
 MyBinaryTreeT<T>::MyBinaryTreeT()
@@ -288,6 +289,7 @@ template <class T>
 void MyBinaryTreeT<T>::PrintGList()
 {
 	PrintGList(m_pRoot);
+	cout << endl;
 }
 
 template <class T>
@@ -309,6 +311,18 @@ void MyBinaryTreeT<T>::PrintGList(BinaryNode<T>* node)
 	{
 		cout << "^";
 	}
+}
+
+template <class T>
+BinaryNode<T>* MyBinaryTreeT<T>::InsertChild(BinaryNode<T>* node, T value, bool bLeft)
+{
+	return nullptr;
+}
+
+template <class T>
+void MyBinaryTreeT<T>::RemoveChild(BinaryNode<T>* node, bool bLeft)
+{
+
 }
 
 template <class T>
@@ -371,7 +385,7 @@ void MyBinaryTreeT<T>::PostOrderTraverse()
 	MyLinkStackT<BinaryNode<T>*> stack;
 	BinaryNode<T>* p = m_pRoot;
 
-	cout << "非递归后续遍历二叉树";
+	cout << "非递归后续遍历二叉树：";
 
 	int  Tag[20];       // 栈，用于标识从左（0）或右（1）返回  
 	//while (p || !stack.IsEmpty())
@@ -419,4 +433,39 @@ void MyBinaryTreeT<T>::PostOrderTraverse()
 	//		p = s.Elem[s.top].ptr->rchild;
 	//	}
 	//} while (!StackEmpty(s));
+}
+
+// 层次遍历算法，借助辅助队列
+// 1.访问结点p，将结点p的左、右孩子(如果有)入队
+// 2.如果队列不空，出队1个结点，使p指向它，重复1，直到队列为空
+template <class T>
+void MyBinaryTreeT<T>::LevelOrder()
+{
+	MyLinkQueueT<BinaryNode<T>*> queue;
+	BinaryNode<T>* p = m_pRoot;
+	
+	cout << "层次遍历二叉树：";
+	while (p)
+	{
+		cout << p->m_Data;
+		if (p->m_pLeft)
+		{
+			queue.EnQueue(p->m_pLeft);
+		}
+		if (p->m_pRight)
+		{
+			queue.EnQueue(p->m_pRight);
+		}
+		
+		if (!queue.IsEmpty())
+		{
+			p = queue.DeQueue();
+		}
+		else
+		{
+			p = nullptr;
+		}
+	}
+
+	cout << endl;
 }
