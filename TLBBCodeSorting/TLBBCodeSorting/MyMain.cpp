@@ -83,6 +83,15 @@ int main()
 	int old = 0;
 	/*--------------- MyBinaryTreeT ---------------*/
 	cout << "/*--------------- MyBinaryTreeT ---------------*/" << endl;
+	MyBinaryTreeT<char> glist_bittree;
+	char gList[] = "A(B(D(^,H),E(I,^)),C(^,F(G,^)))";
+	Question::CreateBiTByGList(glist_bittree, gList);
+	glist_bittree.PrintGList();
+	glist_bittree.PreOrder();
+	glist_bittree.InOrder();
+	cout << "Count = " << glist_bittree.Count() << endl;
+	cout << "Height = " << glist_bittree.Height() << endl;
+
 	MyBinaryTreeT<char> char_bittree;
 	Question::CreateCharBiT(char_bittree);
 	char_bittree.PreOrder();
@@ -90,6 +99,7 @@ int main()
 	char_bittree.PostOrder();
 	char_bittree.PreOrderTraverse();
 	char_bittree.InOrderTraverse();
+	char_bittree.PrintGList();
 	cout << "Count = " << char_bittree.Count() << endl;
 	cout << "Height = " << char_bittree.Height() << endl;
 	BinaryNode<char>* binode = char_bittree.Search('D');

@@ -27,8 +27,9 @@ namespace Question
 	// 后序：GDBEHFCA
 	//
 	// 标明空子树先序表示：ABD^G^^^CE^^FH^^^
+	// 广义表表示：A(B(D(^,G),^),C(E,F(H,^)))
 	//+++++++++++++++++++++++++++++++++++++++++++++++++//
-	void CreateCharBiT(MyBinaryTreeT<char>& bittree)
+	void CreateCharBiT(MyBinaryTreeT<char>& bitTree)
 	{
 		BinaryNode<char>* child_G = new BinaryNode<char>('G');
 		BinaryNode<char>* child_D = new BinaryNode<char>('D', nullptr, child_G);
@@ -40,6 +41,40 @@ namespace Question
 		BinaryNode<char>* child_C = new BinaryNode<char>('C', child_E, child_F);
 
 		BinaryNode<char>* child_A = new BinaryNode<char>('A', child_B, child_C);
-		bittree.SetRoot(child_A);
+		bitTree.SetRoot(child_A);
 	}
+
+	BinaryNode<char>* CreateBiTByGList(char gList[], int& i)
+	{
+		BinaryNode<char>* p = nullptr;
+
+		if (gList[i] >= 'A' && gList[i] <= 'Z')
+		{
+			p = new BinaryNode<char>(gList[i]);
+			i++;
+			if (gList[i] == '(')
+			{
+				i++;	// 跳过左括号
+				p->m_pLeft = CreateBiTByGList(gList, i);
+				i++;	// 跳过逗号
+				p->m_pRight = CreateBiTByGList(gList, i);
+				i++;	// 跳过右括号
+			}
+		}
+
+		if (gList[i] == '^')
+		{
+			i++;
+		}
+
+		return p;
+	}
+
+	void CreateBiTByGList(MyBinaryTreeT<char>& bitTree, char gList[])
+	{
+		int i = 0;
+		bitTree.SetRoot(CreateBiTByGList(gList, i));
+	}
+
+	
 }

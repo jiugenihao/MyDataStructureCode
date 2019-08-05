@@ -9,16 +9,16 @@ MyBinaryTreeT<T>::MyBinaryTreeT()
 }
 
 template <class T>
-MyBinaryTreeT<T>::MyBinaryTreeT(T prelist[], int n)
+MyBinaryTreeT<T>::MyBinaryTreeT(T preList[], int n)
 {
 	int i = 0;
-	m_pRoot = Create(prelist, n, i);
+	m_pRoot = Create(preList, n, i);
 }
 
 template <class T>
-MyBinaryTreeT<T>::MyBinaryTreeT(T prelist[], T inlist[], int n)
+MyBinaryTreeT<T>::MyBinaryTreeT(T preList[], T inList[], int n)
 {
-	
+	m_pRoot = Create(preList, inList, 0, 0, n);
 }
 
 template <class T>
@@ -248,6 +248,68 @@ BinaryNode<T>* MyBinaryTreeT<T>::Create(T preList[], int n, int& i)
 	return p;
 }
 
+// 用先序序列和中序序列创建唯一二叉树
+// 原理：
+// 1.先序序列的第一个结点是根节点preList[preStart]，循环中序序列找到根节点的位置i。
+// 2.中序序列中根节点左边的是左子树(inStart,i-1)，右边的是右子树(i+1, n)
+// 3.先序序列中           左子树(preStart+1, i),     右子树(i+1, n)
+// 3.左子树和右子树又分别是一棵完整二叉树，重复1
+template <class T>
+BinaryNode<T>* MyBinaryTreeT<T>::Create(T preList[], T inList[], int preStart, int inStart, int n)
+{
+	BinaryNode<T>* p = nullptr;
+
+	if (n > 0)
+	{
+		T elem = preList[preStart];
+		p = new BinaryNode<T>(elem);
+
+		int i = 0;
+
+		// 找到中序序列中根节点的位置 条件：elem==inList[i]
+		while (i < n && elem != inList[i])
+		{
+			i++;
+		}
+		//preList[0]是根节点，inList[i]是根节点
+		//preList[]:ABDGCEFH 0 1 2 3 ... i i+1 i+2 ... n
+		//inList[] :DGBAECHF 0 1 2 3 ... i i+1 i+2 ... n
+		//A是根节点 i=3 第一次分割之后,左右子树如下图所示
+		//pre: A B D G   | C E F H
+		//in :   D G B A | E C H F
+		p->m_pLeft = Create(preList, inList, preStart + 1, inStart, i);
+		p->m_pRight = Create(preList, inList, preStart + 1 + i, inStart + 1 + i, n - i - 1);
+	}
+
+	return p;
+}
+
+template <class T>
+void MyBinaryTreeT<T>::PrintGList()
+{
+	PrintGList(m_pRoot);
+}
+
+template <class T>
+void MyBinaryTreeT<T>::PrintGList(BinaryNode<T>* node)
+{
+	if (node)
+	{
+		cout << node->m_Data;
+		if (node->m_pLeft || node->m_pRight)
+		{
+			cout << "(";
+			PrintGList(node->m_pLeft);
+			cout << ",";
+			PrintGList(node->m_pRight);
+			cout << ")";
+		}
+	}
+	else
+	{
+		cout << "^";
+	}
+}
 
 template <class T>
 void MyBinaryTreeT<T>::PreOrderTraverse()
