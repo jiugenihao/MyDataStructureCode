@@ -49,8 +49,9 @@ private:
 	void		   PrintGList(BinaryNode<T>* node);
 
 public:
-	BinaryNode<T>* InsertChild(BinaryNode<T>* node, T value, bool left = true);
-	void RemoveChild(BinaryNode<T>* node, bool left = true);
+	BinaryNode<T>* InsertChild(BinaryNode<T>* node, T value, bool left = true);	// 插入一个结点
+	void RemoveChild(BinaryNode<T>* node, bool left = true);					// 删除一棵子树
+	//void Remove();
 
 	// non-recursive traversal
 	void PreOrderTraverse();

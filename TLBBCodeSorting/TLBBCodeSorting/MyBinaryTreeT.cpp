@@ -316,13 +316,41 @@ void MyBinaryTreeT<T>::PrintGList(BinaryNode<T>* node)
 template <class T>
 BinaryNode<T>* MyBinaryTreeT<T>::InsertChild(BinaryNode<T>* node, T value, bool bLeft)
 {
-	return nullptr;
+	BinaryNode<T>* q = nullptr;
+
+	if (node)
+	{
+		q = new BinaryNode<T>(value);
+		if (bLeft)
+		{
+			q->m_pLeft = node->m_pLeft;
+			node->m_pLeft = q;
+		}
+		else
+		{
+			q->m_pRight = node->m_pRight;
+			node->m_pRight = q;
+		}
+	}
+	return q;
 }
 
 template <class T>
 void MyBinaryTreeT<T>::RemoveChild(BinaryNode<T>* node, bool bLeft)
 {
-
+	if (node)
+	{
+		if (bLeft)
+		{
+			Destroy(node->m_pLeft);
+			node->m_pLeft = nullptr;
+		}
+		else
+		{
+			Destroy(node->m_pRight);
+			node->m_pRight = nullptr;
+		}
+	}
 }
 
 template <class T>
