@@ -20,63 +20,8 @@
 #include "CreateBinaryTree.h"
 #include <time.h>
 
-enum enum111 {
-	x1,
-	x2,
-	x3 = 10,
-	x4,
-	x5,
-} x;
-
-void get_rate1() 
-{
-	cout << "rate1" << endl;
-}
-void get_rate2()
-{
-	cout << "rate2" << endl;
-}
-void get_rate3()
-{
-	cout << "rate3" << endl;
-}
-
-// 交换4个字节，比如x=12345 16进制0x00003039 bswap_32(x)=0x39300000
-static inline uint32_t bswap_32(uint32_t x)
-{
-	x = ((x << 8) & 0xFF00FF00) | ((x >> 8) & 0x00FF00FF);
-	return (x >> 16) | (x << 16);
-}
-
-#define CALL_FUNC(x) get_rate##x()
 int main()
 {
-	//uint32_t u_test1 = bswap_32(0);
-	//uint32_t u_test2 = bswap_32(1);
-	//uint32_t u_test3 = bswap_32(10);
-	//uint32_t u_test4 = bswap_32(12345);
-	//uint32_t u_test5 = bswap_32(234567);
-	//int index = 0;
-	//int new_index = index + 1;
-	////CALL_FUNC(new_index);   // ERROR
-	//CALL_FUNC(2);
-	//CALL_FUNC(3);
-	/*char FileAllPath[100] = { 0 };
-	time_t _time;
-	time(&_time);
-	struct tm _tm;
-	localtime_s(&_tm, &_time);
-
-	struct tm *ptm = &_tm;
-	snprintf(FileAllPath, sizeof(FileAllPath) - 1, "%s%s.%d-%02d-%02d.%02d%02d%02d.svr_%d.log",
-		"hello", "-world", 1900 + ptm->tm_year, 1 + ptm->tm_mon, ptm->tm_mday, ptm->tm_hour, ptm->tm_min, ptm->tm_sec, 111);
-
-	cout << FileAllPath << endl;
-	int len = strnlen_s(FileAllPath, 100);
-	cout << "len=" << len << "   " << FileAllPath[len - 1] << endl;
-	FileAllPath[len] = '\0';
-	len = strnlen_s(FileAllPath, 100);
-	cout << "len=" << len << "   " << FileAllPath[len - 1] << endl;*/
 	int elements[] = { 111,222,333,444,777,888,999 };
 	int elements2[] = { 1,2,3,4,5,6,7,8,9 };
 
@@ -91,6 +36,7 @@ int main()
 	glist_bittree.PostOrder();
 	glist_bittree.PreOrderTraverse();
 	glist_bittree.InOrderTraverse();
+	glist_bittree.PostOrderTraverse();
 	glist_bittree.PrintGList();
 	glist_bittree.LevelOrder();
 	cout << "Count = " << glist_bittree.Count() << endl;
@@ -104,6 +50,7 @@ int main()
 	char_bittree.PostOrder();
 	char_bittree.PreOrderTraverse();
 	char_bittree.InOrderTraverse();
+	char_bittree.PostOrderTraverse();
 	char_bittree.PrintGList();
 	char_bittree.LevelOrder();
 	cout << "Count = " << char_bittree.Count() << endl;

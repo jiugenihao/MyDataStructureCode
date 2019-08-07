@@ -407,60 +407,41 @@ void MyBinaryTreeT<T>::InOrderTraverse()
 	cout << endl;
 }
 
+
+// 1.stack<node> 根结点压栈
+// 2.stack<node> 如果结点栈不空，出栈栈顶结点p
+// 3.stack<value> 结点p的值压栈
+// 4.stack<node> 压栈结点p的左结点和右节点
+// 5.重复2,3，4，直到栈空
+// 5.stack<value> 出栈，直到栈空
 template <class T>
 void MyBinaryTreeT<T>::PostOrderTraverse()
 {
-	MyLinkStackT<BinaryNode<T>*> stack;
-	BinaryNode<T>* p = m_pRoot;
+	MyLinkStackT<BinaryNode<T>*> node_stack;	// 二叉树结点堆栈
+	MyLinkStackT<T> val_stack;					// 结点值堆栈
+	BinaryNode<T>* p = nullptr;
+
+	if (!m_pRoot) return;
 
 	cout << "非递归后续遍历二叉树：";
-
-	int  Tag[20];       // 栈，用于标识从左（0）或右（1）返回  
-	//while (p || !stack.IsEmpty())
-	//{
-	//	while (p)
-	//	{
-	//		stack.Push(p);
-	//		Tag[stack.top] = 0;
-	//		p = p->m_pLeft;
-	//	}
-	//	while (!isempty(st) && Tag[st->top] == 1)
-	//	{
-	//		p = pop(st);
-	//		cout << p->data << "    ";
-	//	}
-	//	if (!isempty(st))
-	//	{
-	//		Tag[st->top] = 1;    // 设置标记右子树已经访问  
-	//		p = gettop(st);
-	//		p = p->rchild;
-	//	}
-	//	else   
-	//		break;
-	//}
-	//do
-	//{
-	//	while (p) //遍历左子树
-	//	{
-	//		x.ptr = p;
-	//		x.tag = L; //标记为左子树
-	//		push(s, x);
-	//		p = p->lchild;
-	//	}
-
-	//	while (!StackEmpty(s) && s.Elem[s.top].tag == R)
-	//	{
-	//		x = pop(s);
-	//		p = x.ptr;
-	//		visite(p->data); //tag为R，表示右子树访问完毕，故访问根结点 
-	//	}
-
-	//	if (!StackEmpty(s))
-	//	{
-	//		s.Elem[s.top].tag = R; //遍历右子树
-	//		p = s.Elem[s.top].ptr->rchild;
-	//	}
-	//} while (!StackEmpty(s));
+	node_stack.Push(m_pRoot);
+	while (!node_stack.IsEmpty()) 
+	{
+		p = node_stack.Pop();
+		val_stack.Push(p->m_Data);
+		
+		if (p->m_pLeft)
+			node_stack.Push(p->m_pLeft);
+		if (p->m_pRight)
+			node_stack.Push(p->m_pRight);
+	}
+	
+	while (!val_stack.IsEmpty())
+	{
+		T val = val_stack.Pop();
+		cout << val;
+	}
+	cout << endl;
 }
 
 // 层次遍历算法，借助辅助队列
