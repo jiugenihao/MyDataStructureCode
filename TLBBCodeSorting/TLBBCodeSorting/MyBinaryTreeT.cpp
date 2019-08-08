@@ -480,6 +480,7 @@ void MyBinaryTreeT<T>::LevelOrder()
 }
 
 // 注意这里必须用this指针，否则会报错，找不到m_pRoot
+// 模板成员函数必须要显示指定参数（ 类指针） ： this->
 // https://forum.ubuntu.org.cn/viewtopic.php?t=240044
 template <class T>
 CompleteBinaryTree<T>::CompleteBinaryTree(T levelList[], int n)
