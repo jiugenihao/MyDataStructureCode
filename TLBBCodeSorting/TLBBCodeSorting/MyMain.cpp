@@ -24,10 +24,20 @@ int main()
 {
 	int elements[] = { 111,222,333,444,777,888,999 };
 	int elements2[] = { 1,2,3,4,5,6,7,8,9 };
-
+	char levelList[] = "ABCDEFGHIJ";
 	int old = 0;
 	/*--------------- MyBinaryTreeT ---------------*/
 	cout << "/*--------------- MyBinaryTreeT ---------------*/" << endl;
+	CompleteBinaryTree<char> comBiT(levelList, strlen(levelList));
+	comBiT.PreOrder();
+	comBiT.InOrder();
+	comBiT.PostOrder();
+	comBiT.PreOrderTraverse();
+	comBiT.InOrderTraverse();
+	comBiT.PostOrderTraverse();
+	comBiT.PrintGList();
+	comBiT.LevelOrder();
+
 	MyBinaryTreeT<char> glist_bittree;
 	char gList[] = "A(B(D(^,H),E(I,^)),C(^,F(G,^)))";
 	Question::CreateBiTByGList(glist_bittree, gList);

@@ -63,7 +63,20 @@ private:
 	BinaryNode<T>* Create(T preList[], int n, int& i);	// 以标明空子树的先序遍历序列创建子树
 	BinaryNode<T>* Create(T preList[], T inList[], int preStart, int inStart, int n);	// 以先序和中序序列创建子树
 	void Destroy(BinaryNode<T>* node);		// 用后序遍历销毁二叉树
-private:
+
+protected:
 	BinaryNode<T>* m_pRoot;
 };
 
+
+// 完全二叉树
+template <class T>
+class CompleteBinaryTree : public MyBinaryTreeT<T>
+{
+public:
+	CompleteBinaryTree(T levelList[], int n);
+
+private:
+	BinaryNode<T>* Create(T levelList[], int n, int i);
+
+};

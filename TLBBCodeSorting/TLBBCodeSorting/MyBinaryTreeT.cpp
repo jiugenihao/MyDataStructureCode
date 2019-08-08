@@ -478,3 +478,27 @@ void MyBinaryTreeT<T>::LevelOrder()
 
 	cout << endl;
 }
+
+// 注意这里必须用this指针，否则会报错，找不到m_pRoot
+// https://forum.ubuntu.org.cn/viewtopic.php?t=240044
+template <class T>
+CompleteBinaryTree<T>::CompleteBinaryTree(T levelList[], int n)
+{
+	if (n > 0)
+	{
+		this->m_pRoot = Create(levelList, n, 0);
+	}
+}
+
+template <class T>
+BinaryNode<T>* CompleteBinaryTree<T>::Create(T levelList[], int n, int i)
+{
+	BinaryNode<T>* p = nullptr;
+	if (i < n)
+	{
+		p = new BinaryNode<T>(levelList[i]);
+		p->m_pLeft = Create(levelList, n, 2 * i + 1);
+		p->m_pRight = Create(levelList, n, 2 * i + 2);
+	}
+	return p;
+}
