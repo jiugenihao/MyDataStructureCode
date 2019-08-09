@@ -15,7 +15,7 @@ public:
 	MyBinaryTreeT();								// 构造空二叉树
 	MyBinaryTreeT(T preList[], int n);				// 以先序序列构造一棵二叉树
 	MyBinaryTreeT(T preList[], T inList[], int n);	// 以先序和中序序列构造一棵二叉树
-	~MyBinaryTreeT();
+	virtual ~MyBinaryTreeT();
 
 	bool IsEmpty();
 	BinaryNode<T>* GetRoot();
