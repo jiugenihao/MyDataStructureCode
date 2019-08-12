@@ -228,7 +228,7 @@ void MyBinaryTreeT<T>::GetAllAncestorNode(T value)
 		cout << "没有找到该结点" << endl;
 }
 
-// 用标明空子树的先序序列创建二叉树，先构造左子树，再构造右子树
+// 用标明空子树的先序序列创建二叉树，构造所有子树的根结点
 template <class T>
 BinaryNode<T>* MyBinaryTreeT<T>::Create(T preList[], int n, int& i)
 {

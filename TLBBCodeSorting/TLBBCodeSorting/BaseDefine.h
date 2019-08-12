@@ -143,6 +143,26 @@ public:
 	}
 };
 
+template <class T>
+class TriNode
+{
+public:
+	TriNode()
+	{
+		m_nParent = m_nLeft = m_nRight = -1;
+	}
+	~TriNode()
+	{
+
+	}
+
+public:
+	T	m_Data;
+	int m_nParent;
+	int m_nLeft;
+	int m_nRight;
+};
+
 // 线索二叉树结点
 template <class T>
 class ThreadBinaryNode

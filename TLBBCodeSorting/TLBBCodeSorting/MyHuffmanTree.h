@@ -1,0 +1,26 @@
+/////////////////////////////////////////////////////////////////////////////////
+//文件名称：MyHuffmanTree.h
+//功能描述：哈夫曼树，变长编码用于无损压缩
+//   
+/////////////////////////////////////////////////////////////////////////////////
+#pragma once
+
+#include "BaseDefine.h"
+
+class MyHuffmanTree
+{
+public:
+	MyHuffmanTree();
+	~MyHuffmanTree();
+
+private:
+
+};
+
+MyHuffmanTree::MyHuffmanTree()
+{
+}
+
+MyHuffmanTree::~MyHuffmanTree()
+{
+}
