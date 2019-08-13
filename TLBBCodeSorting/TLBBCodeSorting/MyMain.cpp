@@ -16,6 +16,7 @@
 #include "MyLinkStackT.cpp"
 #include "MyLinkQueueT.cpp"
 #include "MyBinaryTreeT.cpp"
+#include "MyHuffmanTree.h"
 
 #include "CreateBinaryTree.h"
 #include <time.h>
@@ -26,6 +27,12 @@ int main()
 	int elements2[] = { 1,2,3,4,5,6,7,8,9 };
 	char levelList[] = "ABCDEFGHIJ";
 	int old = 0;
+	int weight[] = {5, 29, 7, 8, 14, 23, 3, 11};
+
+	cout << "/*--------------- MyHaffmanTree ---------------*/" << endl;
+	MyHuffmanTree haffmanTree(weight, sizeof(weight) / sizeof(int));
+	haffmanTree.Print();
+
 	/*--------------- MyBinaryTreeT ---------------*/
 	cout << "/*--------------- MyBinaryTreeT ---------------*/" << endl;
 	CompleteBinaryTree<char> comBiT(levelList, strlen(levelList));

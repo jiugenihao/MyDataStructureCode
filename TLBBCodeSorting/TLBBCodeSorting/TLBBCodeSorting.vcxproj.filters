@@ -75,6 +75,9 @@
     <ClInclude Include="CreateBinaryTree.h">
       <Filter>Question</Filter>
     </ClInclude>
+    <ClInclude Include="MyHuffmanTree.h">
+      <Filter>TreeTemplate</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

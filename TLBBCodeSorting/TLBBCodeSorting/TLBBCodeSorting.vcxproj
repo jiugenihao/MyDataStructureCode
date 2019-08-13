@@ -162,6 +162,7 @@
     <ClInclude Include="CreateBinaryTree.h" />
     <ClInclude Include="MyBinaryTreeT.h" />
     <ClInclude Include="MyDLinkedListT.h" />
+    <ClInclude Include="MyHuffmanTree.h" />
     <ClInclude Include="MyLinkedListT.h" />
     <ClInclude Include="MyLinkQueueT.h" />
     <ClInclude Include="MyLinkStackT.h" />
