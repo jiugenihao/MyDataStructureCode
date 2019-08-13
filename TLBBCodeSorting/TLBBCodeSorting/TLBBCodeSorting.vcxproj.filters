@@ -78,6 +78,9 @@
     <ClInclude Include="MyHuffmanTree.h">
       <Filter>TreeTemplate</Filter>
     </ClInclude>
+    <ClInclude Include="MyBinarySortTree.h">
+      <Filter>TreeTemplate</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -117,6 +120,9 @@
       <Filter>SequenceTemplate</Filter>
     </ClCompile>
     <ClCompile Include="MyBinaryTreeT.cpp">
+      <Filter>TreeTemplate</Filter>
+    </ClCompile>
+    <ClCompile Include="MyBinarySortTree.cpp">
       <Filter>TreeTemplate</Filter>
     </ClCompile>
   </ItemGroup>

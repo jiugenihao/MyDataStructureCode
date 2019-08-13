@@ -49,7 +49,7 @@ private:
 	void		   PrintGList(BinaryNode<T>* node);
 
 public:
-	BinaryNode<T>* InsertChild(BinaryNode<T>* node, T value, bool left = true);	// 插入一个结点
+	BinaryNode<T>* Insert(BinaryNode<T>* node, T value, bool left = true);		// 插入一个结点
 	void RemoveChild(BinaryNode<T>* node, bool left = true);					// 删除一棵子树
 	//void Remove();
 
@@ -74,6 +74,7 @@ template <class T>
 class CompleteBinaryTree : public MyBinaryTreeT<T>
 {
 public:
+	CompleteBinaryTree() {}
 	CompleteBinaryTree(T levelList[], int n);
 
 private:

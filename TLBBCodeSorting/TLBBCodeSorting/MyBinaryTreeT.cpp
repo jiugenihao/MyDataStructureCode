@@ -314,7 +314,7 @@ void MyBinaryTreeT<T>::PrintGList(BinaryNode<T>* node)
 }
 
 template <class T>
-BinaryNode<T>* MyBinaryTreeT<T>::InsertChild(BinaryNode<T>* node, T value, bool bLeft)
+BinaryNode<T>* MyBinaryTreeT<T>::Insert(BinaryNode<T>* node, T value, bool bLeft)
 {
 	BinaryNode<T>* q = nullptr;
 

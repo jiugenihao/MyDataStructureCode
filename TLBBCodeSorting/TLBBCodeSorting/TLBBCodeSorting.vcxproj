@@ -160,6 +160,7 @@
   <ItemGroup>
     <ClInclude Include="BaseDefine.h" />
     <ClInclude Include="CreateBinaryTree.h" />
+    <ClInclude Include="MyBinarySortTree.h" />
     <ClInclude Include="MyBinaryTreeT.h" />
     <ClInclude Include="MyDLinkedListT.h" />
     <ClInclude Include="MyHuffmanTree.h" />
@@ -175,6 +176,7 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="MyBinarySortTree.cpp" />
     <ClCompile Include="MyBinaryTreeT.cpp" />
     <ClCompile Include="MyDLinkedListT.cpp" />
     <ClCompile Include="MyLinkedListT.cpp" />
