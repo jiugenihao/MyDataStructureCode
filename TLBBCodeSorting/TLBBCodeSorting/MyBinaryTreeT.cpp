@@ -71,7 +71,7 @@ void MyBinaryTreeT<T>::PreOrder(BinaryNode<T>* node)
 {
 	if (node)
 	{
-		cout << node->m_Data;
+		cout << node->m_Data << " ";
 		PreOrder(node->m_pLeft);
 		PreOrder(node->m_pRight);
 	}
@@ -91,7 +91,7 @@ void MyBinaryTreeT<T>::InOrder(BinaryNode<T>* node)
 	if (node)
 	{
 		InOrder(node->m_pLeft);
-		cout << node->m_Data;
+		cout << node->m_Data << " ";
 		InOrder(node->m_pRight);
 	}
 }
@@ -111,7 +111,7 @@ void MyBinaryTreeT<T>::PostOrder(BinaryNode<T>* node)
 	{
 		PostOrder(node->m_pLeft);
 		PostOrder(node->m_pRight);
-		cout << node->m_Data;
+		cout << node->m_Data << " ";
 	}
 }
 
@@ -365,7 +365,7 @@ void MyBinaryTreeT<T>::PreOrderTraverse()
 		// 遍历左子树
 		while (p) 
 		{
-			cout << p->m_Data;
+			cout << p->m_Data << " ";
 			stack.Push(p);
 			p = p->m_pLeft;
 		}//endwhile
@@ -399,7 +399,7 @@ void MyBinaryTreeT<T>::InOrderTraverse()
 		if (!stack.IsEmpty())
 		{
 			p = stack.Pop();
-			cout << p->m_Data;
+			cout << p->m_Data << " ";
 			p = p->m_pRight;		//通过下一次循环实现右子树遍历
 		}//endif 
 
@@ -439,7 +439,7 @@ void MyBinaryTreeT<T>::PostOrderTraverse()
 	while (!val_stack.IsEmpty())
 	{
 		T val = val_stack.Pop();
-		cout << val;
+		cout << val << " ";
 	}
 	cout << endl;
 }

@@ -17,6 +17,8 @@
 #include "MyLinkQueueT.cpp"
 #include "MyBinaryTreeT.cpp"
 #include "MyHuffmanTree.h"
+#include "MyBinarySortTree.h"
+#include "MyBinarySortTree.cpp"
 
 #include "CreateBinaryTree.h"
 #include <time.h>
@@ -27,7 +29,23 @@ int main()
 	int elements2[] = { 1,2,3,4,5,6,7,8,9 };
 	char levelList[] = "ABCDEFGHIJ";
 	int old = 0;
+	int sortList[] = {54, 18, 66, 87, 36, 12, 54, 81, 15, 76, 57, 6, 40, 99, 85, 99};
 	int weight[] = {5, 29, 7, 8, 14, 23, 3, 11};
+
+	cout << "/*--------------- MyBinarySortTree ---------------*/" << endl;
+	MyBinarySortTree<int> sortBiT;
+	for (size_t i = 0; i < sizeof(sortList) / sizeof(int); ++i)
+	{
+		if (sortBiT.RInsert(sortList[i]))
+		{
+			cout << sortList[i] << " ";
+		}
+	}
+	cout << endl;
+	sortBiT.InOrder();
+	int N = 16;
+	cout << "查找" << sortList[N - 1] << "," << (sortBiT.Search(sortList[N - 1]) ? "" : "不") << "成功" << endl;
+	
 
 	cout << "/*--------------- MyHaffmanTree ---------------*/" << endl;
 	MyHuffmanTree haffmanTree(weight, sizeof(weight) / sizeof(int));

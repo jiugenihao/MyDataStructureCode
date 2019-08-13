@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////////////////
-//鏂囦欢鍚嶇О锛歁yBinarySortTree.h
-//鍔熻兘鎻忚堪锛氫簩鍙夋帓搴忔爲
-//   
+// 文件名称：MyBinarySortTree.h
+// 功能描述：二叉排序树，也叫二叉查找树
+// 解决问题：以查找为主要操作，支持插入和删除操作，具有排序性的数据列  
 //
 /////////////////////////////////////////////////////////////////////////////////
 
@@ -16,11 +16,18 @@ public:
 	~MyBinarySortTree();
 
 public:
+	// recursion
+	BinaryNode<T>* RSearch(T value);
+	BinaryNode<T>* RInsert(T value);
+	bool 		   RRemove(T value);
+
+	// non-recursion
 	BinaryNode<T>* Search(T value);
 	BinaryNode<T>* Insert(T value);
 	bool 		   Remove(T value);
 
 private:
+	BinaryNode<T>* Search(BinaryNode<T>* pNode, T value);
 	BinaryNode<T>* Insert(BinaryNode<T>* pNode, T value);
 	bool 		   Remove(T value, BinaryNode<T>* pNode, BinaryNode<T>* pParent);
 
