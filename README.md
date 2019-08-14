@@ -19,3 +19,7 @@
 - [x] MyLinkQueueT
 ### 二叉树的二叉链表实现
 - [x] MyBinaryTreeT
+### 哈夫曼树
+- [x] MyHuffmanTree
+### 二叉排序树
+- [x] MyBinarySortTree
