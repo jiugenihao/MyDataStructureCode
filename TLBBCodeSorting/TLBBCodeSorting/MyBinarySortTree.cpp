@@ -13,13 +13,13 @@ MyBinarySortTree<T>::~MyBinarySortTree()
 }
 
 template <class T>
-BinaryNode<T>* MyBinarySortTree<T>::RSearch(T value)
+BinaryNode<T>* MyBinarySortTree<T>::RecursiveSearch(T value)
 {
-   return Search(this->m_pRoot, value);
+   return RecursiveSearch(this->m_pRoot, value);
 }
 
 template <class T>
-BinaryNode<T>* MyBinarySortTree<T>::Search(BinaryNode<T>* pNode, T value)
+BinaryNode<T>* MyBinarySortTree<T>::RecursiveSearch(BinaryNode<T>* pNode, T value)
 {
     BinaryNode<T>* pFind = nullptr;
     if (!pNode) return nullptr;
@@ -29,11 +29,11 @@ BinaryNode<T>* MyBinarySortTree<T>::Search(BinaryNode<T>* pNode, T value)
     }
     else if (value < pNode->m_Data)
     {
-        pFind = Search(pNode->m_pLeft);
+        pFind = RecursiveSearch(pNode->m_pLeft, value);
     }
     else
     {
-        pFind = Search(pNode->m_pRight);
+        pFind = RecursiveSearch(pNode->m_pRight, value);
     }
     
     return pFind;
@@ -65,7 +65,7 @@ BinaryNode<T>* MyBinarySortTree<T>::Search(T value)
 }
 
 template <class T>
-BinaryNode<T>* MyBinarySortTree<T>::RInsert(T value)
+BinaryNode<T>* MyBinarySortTree<T>::RecursiveInsert(T value)
 {
     // 头结点这个容易出错，记住
     if (!this->m_pRoot)
@@ -74,44 +74,41 @@ BinaryNode<T>* MyBinarySortTree<T>::RInsert(T value)
         return this->m_pRoot;
     }
     
-    return Insert(this->m_pRoot, value);
+    return RecursiveInsert(this->m_pRoot, value);
 }
 
 template <class T>
-BinaryNode<T>* MyBinarySortTree<T>::Insert(BinaryNode<T>* pNode, T value)
+BinaryNode<T>* MyBinarySortTree<T>::RecursiveInsert(BinaryNode<T>* pNode, T value)
 {
     BinaryNode<T>* q = nullptr;
-    if (pNode)
+    if (value == pNode->m_Data)
     {
-        if (value == pNode->m_Data)
+        return nullptr;
+    }
+    else if (value < pNode->m_Data)
+    {
+        if (pNode->m_pLeft)
         {
-            return nullptr;
-        }
-        else if (value < pNode->m_Data)
-        {
-            if (pNode->m_pLeft)
-            {
-                return Insert(pNode->m_pLeft, value);
-            }
-            else
-            {
-                q = new BinaryNode<T>(value);
-                pNode->m_pLeft = q;
-                return q;
-            }
+            return RecursiveInsert(pNode->m_pLeft, value);
         }
         else
         {
-            if (pNode->m_pRight)
-            {
-                return Insert(pNode->m_pRight, value);
-            }
-            else
-            {
-                q = new BinaryNode<T>(value);
-                pNode->m_pRight = q;
-                return q;
-            }
+            q = new BinaryNode<T>(value);
+            pNode->m_pLeft = q;
+            return q;
+        }
+    }
+    else
+    {
+        if (pNode->m_pRight)
+        {
+            return RecursiveInsert(pNode->m_pRight, value);
+        }
+        else
+        {
+            q = new BinaryNode<T>(value);
+            pNode->m_pRight = q;
+            return q;
         }
     }
     
@@ -122,17 +119,57 @@ BinaryNode<T>* MyBinarySortTree<T>::Insert(BinaryNode<T>* pNode, T value)
 template <class T>
 BinaryNode<T>* MyBinarySortTree<T>::Insert(T value)
 {
-    return nullptr;
+    if (this->m_pRoot)
+    {
+        BinaryNode<T>* p = this->m_pRoot;
+        BinaryNode<T>* q = nullptr;
+        while (p->m_Data != value)
+        {
+            if (value < p->m_Data)
+            {
+                if (p->m_pLeft)
+                {
+                    p = p->m_pLeft;
+                }
+                else
+                {
+                    q = new BinaryNode<T>(value);
+                    p->m_pLeft = q;
+                }
+                
+            }
+            else
+            {
+                if (p->m_pRight)
+                {
+                    p = p->m_pRight;
+                }
+                else
+                {
+                    q = new BinaryNode<T>(value);
+                    p->m_pRight = q;
+                }
+                
+            }
+        }
+        
+        return q;
+    }
+    else
+    {
+        this->m_pRoot = new BinaryNode<T>(value);
+        return this->m_pRoot;
+    }
 }
 
 template <class T>
-bool MyBinarySortTree<T>::Remove(T value)
+bool MyBinarySortTree<T>::RecursiveRemove(T value)
 {
     return true;
 }
 
 template <class T>
-bool MyBinarySortTree<T>::Remove(T value, BinaryNode<T>* pNode, BinaryNode<T>* pParent)
+bool MyBinarySortTree<T>::RecursiveRemove(T value, BinaryNode<T>* pNode, BinaryNode<T>* pParent)
 {
     return true;
 }

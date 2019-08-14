@@ -34,9 +34,10 @@ int main()
 
 	cout << "/*--------------- MyBinarySortTree ---------------*/" << endl;
 	MyBinarySortTree<int> sortBiT;
+	cout << "递归插入结点：" << endl;
 	for (size_t i = 0; i < sizeof(sortList) / sizeof(int); ++i)
 	{
-		if (sortBiT.RInsert(sortList[i]))
+		if (sortBiT.RecursiveInsert(sortList[i]))
 		{
 			cout << sortList[i] << " ";
 		}
@@ -45,7 +46,26 @@ int main()
 	sortBiT.InOrder();
 	int N = 16;
 	cout << "查找" << sortList[N - 1] << "," << (sortBiT.Search(sortList[N - 1]) ? "" : "不") << "成功" << endl;
+
+	MyBinarySortTree<int> sortBit2;
+	cout << "非递归插入结点：" << endl;
+	for (size_t i = 0; i < sizeof(sortList) / sizeof(int); ++i)
+	{
+		if (sortBit2.Insert(sortList[i]))
+		{
+			cout << sortList[i] << " ";
+		}
+	}
+	cout << endl;
+	sortBit2.InOrder();
+	sortBit2.InOrderTraverse();
+	cout << "查找" << sortList[N - 1] << "," << (sortBit2.RecursiveSearch(sortList[N - 1]) ? "" : "不") << "成功" << endl;
+	cout << "查找 36," << (sortBit2.RecursiveSearch(36) ? "" : "不") << "成功" << endl;
+	cout << "查找 66," << (sortBit2.RecursiveSearch(66) ? "" : "不") << "成功" << endl;
 	
+	cout << "查找" << sortList[N - 1] << "," << (sortBit2.Search(sortList[N - 1]) ? "" : "不") << "成功" << endl;
+	cout << "查找 36," << (sortBit2.Search(36) ? "" : "不") << "成功" << endl;
+	cout << "查找 66," << (sortBit2.Search(66) ? "" : "不") << "成功" << endl;
 
 	cout << "/*--------------- MyHaffmanTree ---------------*/" << endl;
 	MyHuffmanTree haffmanTree(weight, sizeof(weight) / sizeof(int));
