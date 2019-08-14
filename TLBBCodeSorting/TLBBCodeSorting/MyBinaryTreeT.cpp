@@ -61,7 +61,7 @@ bool MyBinaryTreeT<T>::IsEmpty()
 template <class T>
 void MyBinaryTreeT<T>::PreOrder()
 {
-	cout << "先序遍历二叉树：";
+	cout << setw(25) << "先序遍历二叉树：";
 	PreOrder(m_pRoot);
 	cout << endl;
 }
@@ -80,7 +80,7 @@ void MyBinaryTreeT<T>::PreOrder(BinaryNode<T>* node)
 template <class T>
 void MyBinaryTreeT<T>::InOrder()
 {
-	cout << "中序遍历二叉树：";
+	cout << setw(25) << "中序遍历二叉树：";
 	InOrder(m_pRoot);
 	cout << endl;
 }
@@ -99,7 +99,7 @@ void MyBinaryTreeT<T>::InOrder(BinaryNode<T>* node)
 template <class T>
 void MyBinaryTreeT<T>::PostOrder()
 {
-	cout << "后序遍历二叉树：";
+	cout << setw(25) << "后序遍历二叉树：";
 	PostOrder(m_pRoot);
 	cout << endl;
 }
@@ -359,7 +359,7 @@ void MyBinaryTreeT<T>::PreOrderTraverse()
 	MyLinkStackT<BinaryNode<T>*> stack;
 	BinaryNode<T>* p = m_pRoot;
 
-	cout << "非递归先序遍历二叉树：";
+	cout << setw(25) << "非递归先序遍历二叉树：";
 	while (p || !stack.IsEmpty())
 	{
 		// 遍历左子树
@@ -386,7 +386,7 @@ void MyBinaryTreeT<T>::InOrderTraverse()
 	MyLinkStackT<BinaryNode<T>*> stack;
 	BinaryNode<T>* p = m_pRoot;
 
-	cout << "非递归中序遍历二叉树：";
+	cout << setw(25) << "非递归中序遍历二叉树：";
 	while (p || !stack.IsEmpty())
 	{
 		// 遍历左子树
@@ -423,7 +423,7 @@ void MyBinaryTreeT<T>::PostOrderTraverse()
 
 	if (!m_pRoot) return;
 
-	cout << "非递归后续遍历二叉树：";
+	cout << setw(25) << "非递归后续遍历二叉树：";
 	node_stack.Push(m_pRoot);
 	while (!node_stack.IsEmpty()) 
 	{
@@ -453,7 +453,7 @@ void MyBinaryTreeT<T>::LevelOrder()
 	MyLinkQueueT<BinaryNode<T>*> queue;
 	BinaryNode<T>* p = m_pRoot;
 	
-	cout << "层次遍历二叉树：";
+	cout << setw(25) << "层次遍历二叉树：";
 	while (p)
 	{
 		cout << p->m_Data;

@@ -67,7 +67,7 @@ BinaryNode<T>* MyBinarySortTree<T>::Search(T value)
 template <class T>
 BinaryNode<T>* MyBinarySortTree<T>::RecursiveInsert(T value)
 {
-    // 头结点这个容易出错，记住
+    // 头结点这�?容易出错，�?�住
     if (!this->m_pRoot)
     {
         this->m_pRoot = new BinaryNode<T>(value);
@@ -165,11 +165,83 @@ BinaryNode<T>* MyBinarySortTree<T>::Insert(T value)
 template <class T>
 bool MyBinarySortTree<T>::RecursiveRemove(T value)
 {
-    return true;
+    return this->m_pRoot && RecursiveRemove(value, this->m_pRoot, nullptr);    
 }
 
 template <class T>
 bool MyBinarySortTree<T>::RecursiveRemove(T value, BinaryNode<T>* pNode, BinaryNode<T>* pParent)
 {
-    return true;
+    if (pNode)
+    {
+        if (value < pNode->m_Data)
+        {
+            return RecursiveRemove(value, pNode->m_pLeft, pNode);
+        }
+        else if (value > pNode->m_Data)
+        {
+            return RecursiveRemove(value, pNode->m_pRight, pNode);
+        }
+        else
+        {
+            if (pNode->m_pLeft && pNode->m_pRight)
+            {
+                // pNode�?2度结点，不直接删�?pNode结点�?
+                // 而是先�?�找pNode在中根序列中的后继结点pInNext�?
+                // 用pInNext的值替�?pNode结点的值，再删�?pInNext的结点，
+                // 这样就将2度结点的�?题转化为1度结点或者叶子结点的�?题来处理
+                BinaryNode<T>* pInNext = pNode->m_pRight;
+                while (pInNext->m_pLeft)
+                {
+                    pInNext = pInNext->m_pLeft;
+                }
+                // 用后继结点pInNext的值替�?pNode的�?
+                pNode->m_Data = pInNext->m_Data;
+                return RecursiveRemove(pNode->m_Data, pNode->m_pRight, pNode);
+            }
+            else
+            {
+                // 1度或0度结�?
+                if (!pParent)   // pNode==m_pRoot
+                {
+                    if (pNode->m_pLeft)
+                    {
+                        this->m_pRoot = pNode->m_pLeft;
+                    }
+                    else
+                    {
+                        this->m_pRoot = pNode->m_pRight;
+                    }
+                    return true;
+                }
+                
+                if (pNode == pParent->m_pLeft)
+                {
+                    if (pNode->m_pLeft)
+                    {
+                        pParent->m_pLeft = pNode->m_pLeft;
+                    }
+                    else
+                    {
+                        pParent->m_pLeft = pNode->m_pRight;
+                    }
+                    
+                }
+                else
+                {
+                    if (pNode->m_pLeft)
+                    {
+                        pParent->m_pRight = pNode->m_pLeft;
+                    }
+                    else
+                    {
+                        pParent->m_pRight = pNode->m_pRight;
+                    }
+                }
+                return true;
+            }
+            
+        }
+    }
+    
+    return false;
 }

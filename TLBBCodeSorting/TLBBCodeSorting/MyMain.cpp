@@ -34,7 +34,7 @@ int main()
 
 	cout << "/*--------------- MyBinarySortTree ---------------*/" << endl;
 	MyBinarySortTree<int> sortBiT;
-	cout << "递归插入结点：" << endl;
+	cout << setw(25) << "递归插入结点：";
 	for (size_t i = 0; i < sizeof(sortList) / sizeof(int); ++i)
 	{
 		if (sortBiT.RecursiveInsert(sortList[i]))
@@ -43,12 +43,27 @@ int main()
 		}
 	}
 	cout << endl;
+	sortBiT.PreOrder();
 	sortBiT.InOrder();
 	int N = 16;
 	cout << "查找" << sortList[N - 1] << "," << (sortBiT.Search(sortList[N - 1]) ? "" : "不") << "成功" << endl;
+	if (sortBiT.RecursiveRemove(54))
+	{
+		cout << "remove 54 success..." << endl;
+	}
+	else
+	{
+		cout << "remove 54 failed..." << endl;
+	}
+	sortBiT.PreOrder();
+	sortBiT.InOrder();
+	sortBiT.RecursiveInsert(54);
+	sortBiT.PreOrder();
+	sortBiT.InOrder();
+
 
 	MyBinarySortTree<int> sortBit2;
-	cout << "非递归插入结点：" << endl;
+	cout << setw(25) << "非递归插入结点：";
 	for (size_t i = 0; i < sizeof(sortList) / sizeof(int); ++i)
 	{
 		if (sortBit2.Insert(sortList[i]))
