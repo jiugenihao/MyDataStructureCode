@@ -360,22 +360,38 @@ void MyBinaryTreeT<T>::PreOrderTraverse()
 	BinaryNode<T>* p = m_pRoot;
 
 	cout << setw(25) << "非递归先序遍历二叉树：";
+	// while (p || !stack.IsEmpty())
+	// {
+	// 	// 遍历左子树
+	// 	while (p) 
+	// 	{
+	// 		cout << p->m_Data << " ";
+	// 		stack.Push(p);
+	// 		p = p->m_pLeft;
+	// 	}//endwhile
+
+	// 	// 通过下一次循环中的内嵌while实现右子树遍历
+	// 	if (!stack.IsEmpty()) 
+	// 	{
+	// 		p = stack.Pop();
+	// 		p = p->m_pRight;
+	// 	}//endif
+	// }
+	// cout << endl;
 	while (p || !stack.IsEmpty())
 	{
-		// 遍历左子树
-		while (p) 
+		if (p)
 		{
 			cout << p->m_Data << " ";
 			stack.Push(p);
 			p = p->m_pLeft;
-		}//endwhile
-
-		// 通过下一次循环中的内嵌while实现右子树遍历
-		if (!stack.IsEmpty()) 
+		}
+		else
 		{
 			p = stack.Pop();
 			p = p->m_pRight;
-		}//endif
+		}
+		
 	}
 	cout << endl;
 }
@@ -387,23 +403,39 @@ void MyBinaryTreeT<T>::InOrderTraverse()
 	BinaryNode<T>* p = m_pRoot;
 
 	cout << setw(25) << "非递归中序遍历二叉树：";
+	// while (p || !stack.IsEmpty())
+	// {
+	// 	// 遍历左子树
+	// 	while (p) 
+	// 	{
+	// 		stack.Push(p);
+	// 		p = p->m_pLeft;
+	// 	}//endwhile
+
+	// 	if (!stack.IsEmpty())
+	// 	{
+	// 		p = stack.Pop();
+	// 		cout << p->m_Data << " ";
+	// 		p = p->m_pRight;		//通过下一次循环实现右子树遍历
+	// 	}//endif 
+
+	// }//endwhile
+	// cout << endl;
+
 	while (p || !stack.IsEmpty())
 	{
-		// 遍历左子树
-		while (p) 
+		if (p)
 		{
 			stack.Push(p);
 			p = p->m_pLeft;
-		}//endwhile
-
-		if (!stack.IsEmpty())
+		}
+		else
 		{
 			p = stack.Pop();
 			cout << p->m_Data << " ";
-			p = p->m_pRight;		//通过下一次循环实现右子树遍历
-		}//endif 
-
-	}//endwhile
+			p = p->m_pRight;
+		}
+	}
 	cout << endl;
 }
 

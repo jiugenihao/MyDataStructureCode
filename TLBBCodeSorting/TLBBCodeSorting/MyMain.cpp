@@ -32,6 +32,7 @@ int main()
 	int sortList[] = {54, 18, 66, 87, 36, 12, 54, 81, 15, 76, 57, 6, 40, 99, 85, 99};
 	int weight[] = {5, 29, 7, 8, 14, 23, 3, 11};
 
+	
 	cout << "/*--------------- MyBinarySortTree ---------------*/" << endl;
 	MyBinarySortTree<int> sortBiT;
 	cout << setw(25) << "递归插入结点：";
