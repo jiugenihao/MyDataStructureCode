@@ -21,227 +21,227 @@ BinaryNode<T>* MyBinarySortTree<T>::RecursiveSearch(T value)
 template <class T>
 BinaryNode<T>* MyBinarySortTree<T>::RecursiveSearch(BinaryNode<T>* pNode, T value)
 {
-    BinaryNode<T>* pFind = nullptr;
-    if (!pNode) return nullptr;
-    if (value == pNode->m_Data)
-    {
-        pFind = pNode;
-    }
-    else if (value < pNode->m_Data)
-    {
-        pFind = RecursiveSearch(pNode->m_pLeft, value);
-    }
-    else
-    {
-        pFind = RecursiveSearch(pNode->m_pRight, value);
-    }
-    
-    return pFind;
+	BinaryNode<T>* pFind = nullptr;
+	if (!pNode) return nullptr;
+	if (value == pNode->m_Data)
+	{
+		pFind = pNode;
+	}
+	else if (value < pNode->m_Data)
+	{
+		pFind = RecursiveSearch(pNode->m_pLeft, value);
+	}
+	else
+	{
+		pFind = RecursiveSearch(pNode->m_pRight, value);
+	}
+	
+	return pFind;
 }
 
 template <class T>
 BinaryNode<T>* MyBinarySortTree<T>::Search(T value)
 {
-    BinaryNode<T>* p = this->m_pRoot;
+	BinaryNode<T>* p = this->m_pRoot;
 
-    while (p)
-    {
-        if (p->m_Data == value)
-        {
-            return p;
-        }
-        else if (p->m_Data > value)
-        {
-            p = p->m_pLeft;
-        }
-        else
-        {
-            p = p->m_pRight;
-        }
-        
-    }
-    
-    return nullptr;
+	while (p)
+	{
+		if (p->m_Data == value)
+		{
+			return p;
+		}
+		else if (p->m_Data > value)
+		{
+			p = p->m_pLeft;
+		}
+		else
+		{
+			p = p->m_pRight;
+		}
+		
+	}
+	
+	return nullptr;
 }
 
 template <class T>
 BinaryNode<T>* MyBinarySortTree<T>::RecursiveInsert(T value)
 {
-    // 澶寸粨鐐硅繖涓?瀹规槗鍑洪敊锛岃?颁綇
-    if (!this->m_pRoot)
-    {
-        this->m_pRoot = new BinaryNode<T>(value);
-        return this->m_pRoot;
-    }
-    
-    return RecursiveInsert(this->m_pRoot, value);
+	// 头结点这个容易出错，记住
+	if (!this->m_pRoot)
+	{
+		this->m_pRoot = new BinaryNode<T>(value);
+		return this->m_pRoot;
+	}
+	
+	return RecursiveInsert(this->m_pRoot, value);
 }
 
 template <class T>
 BinaryNode<T>* MyBinarySortTree<T>::RecursiveInsert(BinaryNode<T>* pNode, T value)
 {
-    BinaryNode<T>* q = nullptr;
-    if (value == pNode->m_Data)
-    {
-        return nullptr;
-    }
-    else if (value < pNode->m_Data)
-    {
-        if (pNode->m_pLeft)
-        {
-            return RecursiveInsert(pNode->m_pLeft, value);
-        }
-        else
-        {
-            q = new BinaryNode<T>(value);
-            pNode->m_pLeft = q;
-            return q;
-        }
-    }
-    else
-    {
-        if (pNode->m_pRight)
-        {
-            return RecursiveInsert(pNode->m_pRight, value);
-        }
-        else
-        {
-            q = new BinaryNode<T>(value);
-            pNode->m_pRight = q;
-            return q;
-        }
-    }
-    
-    return q;
-    
+	BinaryNode<T>* q = nullptr;
+	if (value == pNode->m_Data)
+	{
+		return nullptr;
+	}
+	else if (value < pNode->m_Data)
+	{
+		if (pNode->m_pLeft)
+		{
+			return RecursiveInsert(pNode->m_pLeft, value);
+		}
+		else
+		{
+			q = new BinaryNode<T>(value);
+			pNode->m_pLeft = q;
+			return q;
+		}
+	}
+	else
+	{
+		if (pNode->m_pRight)
+		{
+			return RecursiveInsert(pNode->m_pRight, value);
+		}
+		else
+		{
+			q = new BinaryNode<T>(value);
+			pNode->m_pRight = q;
+			return q;
+		}
+	}
+	
+	return q;
+	
 }
 
 template <class T>
 BinaryNode<T>* MyBinarySortTree<T>::Insert(T value)
 {
-    if (this->m_pRoot)
-    {
-        BinaryNode<T>* p = this->m_pRoot;
-        BinaryNode<T>* q = nullptr;
-        while (p->m_Data != value)
-        {
-            if (value < p->m_Data)
-            {
-                if (p->m_pLeft)
-                {
-                    p = p->m_pLeft;
-                }
-                else
-                {
-                    q = new BinaryNode<T>(value);
-                    p->m_pLeft = q;
-                }
-                
-            }
-            else
-            {
-                if (p->m_pRight)
-                {
-                    p = p->m_pRight;
-                }
-                else
-                {
-                    q = new BinaryNode<T>(value);
-                    p->m_pRight = q;
-                }
-                
-            }
-        }
-        
-        return q;
-    }
-    else
-    {
-        this->m_pRoot = new BinaryNode<T>(value);
-        return this->m_pRoot;
-    }
+	if (this->m_pRoot)
+	{
+		BinaryNode<T>* p = this->m_pRoot;
+		BinaryNode<T>* q = nullptr;
+		while (p->m_Data != value)
+		{
+			if (value < p->m_Data)
+			{
+				if (p->m_pLeft)
+				{
+					p = p->m_pLeft;
+				}
+				else
+				{
+					q = new BinaryNode<T>(value);
+					p->m_pLeft = q;
+				}
+				
+			}
+			else
+			{
+				if (p->m_pRight)
+				{
+					p = p->m_pRight;
+				}
+				else
+				{
+					q = new BinaryNode<T>(value);
+					p->m_pRight = q;
+				}
+				
+			}
+		}
+		
+		return q;
+	}
+	else
+	{
+		this->m_pRoot = new BinaryNode<T>(value);
+		return this->m_pRoot;
+	}
 }
 
 template <class T>
 bool MyBinarySortTree<T>::RecursiveRemove(T value)
 {
-    return this->m_pRoot && RecursiveRemove(value, this->m_pRoot, nullptr);    
+	return this->m_pRoot && RecursiveRemove(value, this->m_pRoot, nullptr);    
 }
 
 template <class T>
 bool MyBinarySortTree<T>::RecursiveRemove(T value, BinaryNode<T>* pNode, BinaryNode<T>* pParent)
 {
-    if (pNode)
-    {
-        if (value < pNode->m_Data)
-        {
-            return RecursiveRemove(value, pNode->m_pLeft, pNode);
-        }
-        else if (value > pNode->m_Data)
-        {
-            return RecursiveRemove(value, pNode->m_pRight, pNode);
-        }
-        else
-        {
-            if (pNode->m_pLeft && pNode->m_pRight)
-            {
-                // pNode鏄?2搴︾粨鐐癸紝涓嶇洿鎺ュ垹闄?pNode缁撶偣锛?
-                // 鑰屾槸鍏堝?绘壘pNode鍦ㄤ腑鏍瑰簭鍒椾腑鐨勫悗缁х粨鐐筽InNext锛?
-                // 鐢╬InNext鐨勫�兼浛鎹?pNode缁撶偣鐨勫�硷紝鍐嶅垹闄?pInNext鐨勭粨鐐癸紝
-                // 杩欐牱灏卞皢2搴︾粨鐐圭殑闂?棰樿浆鍖栦负1搴︾粨鐐规垨鑰呭彾瀛愮粨鐐圭殑闂?棰樻潵澶勭悊
-                BinaryNode<T>* pInNext = pNode->m_pRight;
-                while (pInNext->m_pLeft)
-                {
-                    pInNext = pInNext->m_pLeft;
-                }
-                // 鐢ㄥ悗缁х粨鐐筽InNext鐨勫�兼浛鎹?pNode鐨勫�?
-                pNode->m_Data = pInNext->m_Data;
-                return RecursiveRemove(pNode->m_Data, pNode->m_pRight, pNode);
-            }
-            else
-            {
-                // 1搴︽垨0搴︾粨鐐?
-                if (!pParent)   // pNode==m_pRoot
-                {
-                    if (pNode->m_pLeft)
-                    {
-                        this->m_pRoot = pNode->m_pLeft;
-                    }
-                    else
-                    {
-                        this->m_pRoot = pNode->m_pRight;
-                    }
-                    return true;
-                }
-                
-                if (pNode == pParent->m_pLeft)
-                {
-                    if (pNode->m_pLeft)
-                    {
-                        pParent->m_pLeft = pNode->m_pLeft;
-                    }
-                    else
-                    {
-                        pParent->m_pLeft = pNode->m_pRight;
-                    }
-                    
-                }
-                else
-                {
-                    if (pNode->m_pLeft)
-                    {
-                        pParent->m_pRight = pNode->m_pLeft;
-                    }
-                    else
-                    {
-                        pParent->m_pRight = pNode->m_pRight;
-                    }
-                }
-                return true;
-            }
-            
-        }
-    }
-    
-    return false;
+	if (pNode)
+	{
+		if (value < pNode->m_Data)
+		{
+			return RecursiveRemove(value, pNode->m_pLeft, pNode);
+		}
+		else if (value > pNode->m_Data)
+		{
+			return RecursiveRemove(value, pNode->m_pRight, pNode);
+		}
+		else
+		{
+			if (pNode->m_pLeft && pNode->m_pRight)
+			{
+				// pNode是2度结点，不直接删除pNode结点，
+				// 而是先寻找pNode在中根序列中的后继结点pInNext，
+				// 用pInNext的值替换pNode结点的值，再删除pInNext的结点，
+				// 这样就将2度结点的问题转化为1度结点或者叶子结点的问题来处理
+				BinaryNode<T>* pInNext = pNode->m_pRight;
+				while (pInNext->m_pLeft)
+				{
+					pInNext = pInNext->m_pLeft;
+				}
+				// 用后继结点pInNext的值替换pNode的值
+				pNode->m_Data = pInNext->m_Data;
+				return RecursiveRemove(pNode->m_Data, pNode->m_pRight, pNode);
+			}
+			else
+			{
+				// 1度或0度结点
+				if (!pParent)   // pNode==m_pRoot
+				{
+					if (pNode->m_pLeft)
+					{
+						this->m_pRoot = pNode->m_pLeft;
+					}
+					else
+					{
+						this->m_pRoot = pNode->m_pRight;
+					}
+					return true;
+				}
+				
+				if (pNode == pParent->m_pLeft)
+				{
+					if (pNode->m_pLeft)
+					{
+						pParent->m_pLeft = pNode->m_pLeft;
+					}
+					else
+					{
+						pParent->m_pLeft = pNode->m_pRight;
+					}
+					
+				}
+				else
+				{
+					if (pNode->m_pLeft)
+					{
+						pParent->m_pRight = pNode->m_pLeft;
+					}
+					else
+					{
+						pParent->m_pRight = pNode->m_pRight;
+					}
+				}
+				return true;
+			}
+			
+		}
+	}
+	
+	return false;
 }
