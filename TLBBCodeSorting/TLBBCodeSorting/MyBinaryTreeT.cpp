@@ -393,6 +393,20 @@ void MyBinaryTreeT<T>::PreOrderTraverse()
 		}
 		
 	}
+
+	// 方法2
+	// stack.Push(p);
+	// while ( !stack.IsEmpty() ) 
+	// {
+	// 	p = stack.Pop()
+	// 	if ( p ) 
+	// 	{
+	// 		cout << p->m_Data << " ";
+	// 		stack.Push(p->m_pRight);	// 先进栈，后访问，所以这里先让右子树进栈
+	// 		stack.Push(p->m_pLeft);
+	// 	}
+	// }
+
 	cout << endl;
 }
 
