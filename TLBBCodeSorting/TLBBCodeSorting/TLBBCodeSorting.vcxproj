@@ -173,6 +173,7 @@
     <ClInclude Include="MySqQueueT.h" />
     <ClInclude Include="MySqStackT.h" />
     <ClInclude Include="MyIntStack.h" />
+    <ClInclude Include="MyTreeT.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>

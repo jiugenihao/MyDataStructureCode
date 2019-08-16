@@ -35,3 +35,14 @@ private:
 
 
 // TODO:¶þ²æÆ½ºâÊ÷
+template <class T>
+class MyAVLTree : public MyBinaryTreeT<T>
+{
+public:
+	MyAVLTree();
+	~MyAVLTree();
+
+public:
+
+
+};

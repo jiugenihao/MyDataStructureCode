@@ -81,6 +81,9 @@
     <ClInclude Include="MyBinarySortTree.h">
       <Filter>TreeTemplate</Filter>
     </ClInclude>
+    <ClInclude Include="MyTreeT.h">
+      <Filter>TreeTemplate</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
