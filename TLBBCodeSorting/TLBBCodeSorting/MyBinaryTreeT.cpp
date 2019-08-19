@@ -151,6 +151,31 @@ int MyBinaryTreeT<T>::Height(BinaryNode<T>* node)
 	return 0;
 }
 
+// 求叶子结点个数
+template <class T>
+int MyBinaryTreeT<T>::LeafCount()
+{
+	return LeafCount(m_pRoot);
+}
+
+template <class T>
+int MyBinaryTreeT<T>::LeafCount(BinaryNode<T>* node)
+{
+	if (!node)
+	{
+		return 0;
+	}
+	else if (!node->m_pLeft && !node->m_pRight)
+	{
+		return 1;
+	}
+	else
+	{
+		return LeafCount(node->m_pLeft) + LeafCount(node->m_pRight);
+	}
+	
+}
+
 template <class T>
 BinaryNode<T>* MyBinaryTreeT<T>::Search(T value)
 {

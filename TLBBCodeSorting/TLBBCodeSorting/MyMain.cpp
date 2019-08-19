@@ -46,6 +46,9 @@ int main()
 	cout << endl;
 	sortBiT.PreOrder();
 	sortBiT.InOrder();
+	cout << setw(14) << "Count = " << sortBiT.Count() << endl;
+	cout << setw(14) << "Height = " << sortBiT.Height() << endl;
+	cout << setw(14) << "Leaf Count = " << sortBiT.LeafCount() << endl;
 	int N = 16;
 	cout << "查找" << sortList[N - 1] << "," << (sortBiT.Search(sortList[N - 1]) ? "" : "不") << "成功" << endl;
 	if (sortBiT.RecursiveRemove(54))
@@ -61,7 +64,9 @@ int main()
 	sortBiT.RecursiveInsert(54);
 	sortBiT.PreOrder();
 	sortBiT.InOrder();
-
+	cout << setw(14) << "Count = " << sortBiT.Count() << endl;
+	cout << setw(14) << "Height = " << sortBiT.Height() << endl;
+	cout << setw(14) << "Leaf Count = " << sortBiT.LeafCount() << endl;
 
 	MyBinarySortTree<int> sortBit2;
 	cout << setw(25) << "非递归插入结点：";
@@ -110,9 +115,9 @@ int main()
 	glist_bittree.PostOrderTraverse();
 	glist_bittree.PrintGList();
 	glist_bittree.LevelOrder();
-	cout << "Count = " << glist_bittree.Count() << endl;
-	cout << "Height = " << glist_bittree.Height() << endl;
-
+	cout << setw(14) << "Count = " << glist_bittree.Count() << endl;
+	cout << setw(14) << "Height = " << glist_bittree.Height() << endl;
+	cout << setw(14) << "Leaf Count = " << glist_bittree.LeafCount() << endl;
 
 	MyBinaryTreeT<char> char_bittree;
 	Question::CreateCharBiT(char_bittree);
@@ -124,8 +129,9 @@ int main()
 	char_bittree.PostOrderTraverse();
 	char_bittree.PrintGList();
 	char_bittree.LevelOrder();
-	cout << "Count = " << char_bittree.Count() << endl;
-	cout << "Height = " << char_bittree.Height() << endl;
+	cout << setw(14) << "Count = " << char_bittree.Count() << endl;
+	cout << setw(14) << "Height = " << char_bittree.Height() << endl;
+	cout << setw(14) << "Leaf Count = " << char_bittree.LeafCount() << endl;
 	BinaryNode<char>* binode = char_bittree.Search('D');
 	BinaryNode<char>* parent = char_bittree.GetParent(binode);
 	cout << "D's parent is:" << parent->m_Data << endl;
@@ -137,8 +143,11 @@ int main()
 	char_bittree2.InOrder();
 	char_bittree2.PostOrder();
 	char_bittree2.LevelOrder();
-	cout << "Count = " << char_bittree.Count() << endl;
-	cout << "Height = " << char_bittree.Height() << endl;
+	
+	cout << setw(14) << "Count = " << char_bittree.Count() << endl;
+	cout << setw(14) << "Height = " << char_bittree.Height() << endl;
+	cout << setw(14) << "Leaf Count = " << char_bittree.LeafCount() << endl;
+
 	char find_c = 'H';
 	BinaryNode<char> *find = char_bittree2.Search(find_c);
 	if (find)

@@ -28,6 +28,7 @@ public:
 	void PostOrder();
 	int  Count();
 	int  Height();
+	int  LeafCount();
 
 private:
 	// 递归结束条件是：nullptr == node
@@ -36,6 +37,7 @@ private:
 	void PostOrder(BinaryNode<T>* node);	// 后续遍历子树
 	int  Count(BinaryNode<T>* node);		// 返回子树结点个数
 	int  Height(BinaryNode<T>* node);		// 返回子树高度
+	int  LeafCount(BinaryNode<T>* node);	// 返回子树叶子结点个数
 
 public:
 	BinaryNode<T>* Search(T value);			// 查找首次出现的值为value的结点
