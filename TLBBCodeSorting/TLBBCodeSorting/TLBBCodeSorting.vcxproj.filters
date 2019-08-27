@@ -31,6 +31,9 @@
     <Filter Include="TreeTemplate">
       <UniqueIdentifier>{e1d459d4-772d-4595-88dc-6099073a517c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GraphTemplate">
+      <UniqueIdentifier>{64dadba1-4fc0-47d8-9eb1-26082c8dfe78}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -84,6 +87,12 @@
     <ClInclude Include="MyTreeT.h">
       <Filter>TreeTemplate</Filter>
     </ClInclude>
+    <ClInclude Include="EdgeT.h">
+      <Filter>GraphTemplate</Filter>
+    </ClInclude>
+    <ClInclude Include="AdjMatrixGraph.h">
+      <Filter>GraphTemplate</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -127,6 +136,9 @@
     </ClCompile>
     <ClCompile Include="MyBinarySortTree.cpp">
       <Filter>TreeTemplate</Filter>
+    </ClCompile>
+    <ClCompile Include="AdjMatrixGraph.cpp">
+      <Filter>GraphTemplate</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

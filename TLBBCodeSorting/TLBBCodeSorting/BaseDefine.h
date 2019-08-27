@@ -176,3 +176,6 @@ private:
 	ThreadBinaryNode<T>* m_pRight;
 	bool lTag, rTag;
 };
+
+
+// 
