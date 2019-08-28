@@ -160,6 +160,7 @@
   <ItemGroup>
     <ClInclude Include="AdjMatrixGraph.h" />
     <ClInclude Include="BaseDefine.h" />
+    <ClInclude Include="ConstDefine.h" />
     <ClInclude Include="CreateBinaryTree.h" />
     <ClInclude Include="EdgeT.h" />
     <ClInclude Include="MyBinarySortTree.h" />

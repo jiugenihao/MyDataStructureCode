@@ -93,6 +93,9 @@
     <ClInclude Include="AdjMatrixGraph.h">
       <Filter>GraphTemplate</Filter>
     </ClInclude>
+    <ClInclude Include="ConstDefine.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

@@ -10,13 +10,9 @@
 
 #include <iostream>
 #include <iomanip>
+#include "ConstDefine.h"
 
 using namespace std;
-
-// consts and defines
-#define MAX_LIST_SIZE  4
-#define MAX_STACK_SIZE 4
-#define MAX_QUEUE_SIZE 4
 
 #ifndef SAFE_DELETE
 #define SAFE_DELETE(x) if(nullptr!=(x)){delete (x); (x)=nullptr;}

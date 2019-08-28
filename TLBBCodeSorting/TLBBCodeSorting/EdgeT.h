@@ -8,7 +8,6 @@
 
 #include "BaseDefine.h"
 
-template <class T>
 class EdgeT
 {
 public:

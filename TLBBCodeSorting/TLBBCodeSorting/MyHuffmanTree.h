@@ -7,8 +7,6 @@
 
 #include "BaseDefine.h"
 
-#define MAX_WEIGHT 9999
-
 class TriNode
 {
 public:

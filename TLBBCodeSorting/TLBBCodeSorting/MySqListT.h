@@ -8,8 +8,6 @@
 
 #include "BaseDefine.h"
 
-#define MAX_SQLIST_SIZE 64
-
 template <class T>
 class MySqListT
 {

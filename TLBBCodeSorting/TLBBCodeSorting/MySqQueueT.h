@@ -21,7 +21,7 @@ template <class T>
 class MySqQueueT
 {
 public:
-	MySqQueueT(int size = MAX_QUEUE_SIZE);
+	MySqQueueT(int size = MAX_SQQUEUE_SIZE);
 	~MySqQueueT();
 
 	// immutable

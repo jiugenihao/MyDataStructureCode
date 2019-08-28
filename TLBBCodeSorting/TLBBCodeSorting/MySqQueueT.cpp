@@ -2,9 +2,9 @@
 #include "MySqQueueT.h"
 
 template <class T>
-MySqQueueT<T>::MySqQueueT(int size /*= MAX_QUEUE_SIZE*/)
+MySqQueueT<T>::MySqQueueT(int size /*= MAX_SQQUEUE_SIZE*/)
 {
-	m_Size = size < MAX_QUEUE_SIZE ? MAX_QUEUE_SIZE : size;
+	m_Size = size < MAX_SQQUEUE_SIZE ? MAX_SQQUEUE_SIZE : size;
 	m_pData = new T[m_Size];
 	m_Head = m_Tail = 0;
 }
