@@ -29,6 +29,7 @@ template <class T>
 MySqListT<T>::~MySqListT()
 {
 	SAFE_DELETE_ARRAY(m_pData);
+	//delete[] m_pData;
 }
 
 template <class T>

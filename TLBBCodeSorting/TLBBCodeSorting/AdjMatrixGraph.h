@@ -22,28 +22,32 @@ private:
 	void Init(int size);	// 初始化图的邻接矩阵
 
 public:
-	int  GetVertexCount();
-	bool GetVertexData(int i, T& value);
-	void InsertVertex(T vertex);
-	bool InsertEdge(int i, int j, int weight);
-	bool InsertEdge(EdgeT edge);
-	bool RemoveEdge(int i, int j, int weight);
-	bool RemoveVertex(int i, T& old);
+	int  GetVertexCount();						// 获取顶点个数
+	bool GetVertexData(int i, T& value);		// 获得顶点的数据
+	void InsertVertex(T vertex);				// 插入一个顶点
+	bool InsertEdge(int i, int j, int weight);	// 插入一条边
+	bool InsertEdge(EdgeT edge);				// 插入一条边
+	bool RemoveEdge(int i, int j);				// 删除一条存在的边
+	bool RemoveVertex(int i, T& old);			// 删除一个存在的顶点
 
 	friend ostream& operator << (ostream& out, AdjMatrixGraph<T>& graph)
 	{
+		out << "带权无向图的邻接矩阵表示：" << endl;
 		out << "顶点集合：" << graph.m_vertexList << endl;
 		out << "邻接矩阵：" << endl;
 		int n = graph.m_vertexCount;
-		for (size_t i = 0; i < n; i++)
+		for (int i = 0; i < n; i++)
 		{
-			for (size_t j = 0; j < n; j++)
+			for (int j = 0; j < n; j++)
 			{
 				if (MAX_WEIGHT == graph.m_pAdjMatrix[i][j])
 				{
 					out << " *";
 				}
-				out << " " << graph.m_pAdjMatrix[i][j];
+				else
+				{
+					out << " " << graph.m_pAdjMatrix[i][j];
+				}
 			}
 			out << endl;
 		}

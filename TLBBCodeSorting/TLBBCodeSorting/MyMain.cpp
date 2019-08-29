@@ -19,6 +19,8 @@
 #include "MyHuffmanTree.h"
 #include "MyBinarySortTree.h"
 #include "MyBinarySortTree.cpp"
+#include "AdjMatrixGraph.h"
+#include "AdjMatrixGraph.cpp"
 
 #include "CreateBinaryTree.h"
 #include <time.h>
@@ -32,7 +34,33 @@ int main()
 	int sortList[] = {54, 18, 66, 87, 36, 12, 54, 81, 15, 76, 57, 6, 40, 99, 85, 99};
 	int weight[] = {5, 29, 7, 8, 14, 23, 3, 11};
 
+	MySqListT<char> char_sqList(10);
+	char_sqList.Insert('A');
+	char_sqList.Insert('B');
+	char_sqList.Insert('C');
+	cout << char_sqList;
+	char_sqList.Insert('D');
+	char_sqList.Insert('E');
+	cout << char_sqList;
+
+	cout << "/*--------------- AdjMatrixGraph ---------------*/" << endl;
+	char vertices[] = "ABCDE";
+	EdgeT edges[] = {{0,1,5}, {0,3,2}, {1,0,5}, {1,2,7}, {1,3,6}, {2,1,7}, {2,3,8}, {2,4,3},
+					{3,0,2}, {3,1,6}, {3,2,8}, {3,4,9}, {4,2,3}, {4,3,9}};
+	AdjMatrixGraph<char> adjGraph(vertices, strlen(vertices), edges, sizeof(edges) / sizeof(EdgeT));
+	cout << adjGraph;
+	adjGraph.InsertVertex('F');
+	cout << "插入顶点F，插入边(A,F,20)?" << adjGraph.InsertEdge(0, 5, 20) << endl;
 	
+	cout << adjGraph;
+	char oldChar = ' ';
+	if (adjGraph.RemoveVertex(2, oldChar))
+	{
+		cout << "删除顶点 " << oldChar << endl;
+	}
+	cout << "删除边(2,3)," << (adjGraph.RemoveEdge(2, 3) && adjGraph.RemoveEdge(3, 2)) << endl;
+	cout << adjGraph;
+
 	cout << "/*--------------- MyBinarySortTree ---------------*/" << endl;
 	MyBinarySortTree<int> sortBiT;
 	cout << setw(25) << "递归插入结点：";
