@@ -34,7 +34,7 @@ public:
 	// C++语言规定，流对象不允许复制，只能使用引用
 	// 如果MySqListT<T>这里不使用引用，那么就会发生参数复制，函数执行完后，复制出来的参数需要析构
 	// 但是如果是引用的话，就无需产生复制，是同一个对象的操作
-	friend ostream& operator << (ostream& out, MySqListT<T>& list)
+	friend ostream& operator << (ostream& out, const MySqListT<T>& list)
 	{
 		out << "output all elements:" << endl;
 		if (list.m_Len > 0)

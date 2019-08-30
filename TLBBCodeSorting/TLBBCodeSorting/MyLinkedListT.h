@@ -36,7 +36,7 @@ public:
 	void Concat(MySinglyLinkedListT<T>& list);
 	void Visit();
 
-	friend ostream& operator << (ostream& out, MySinglyLinkedListT<T>& list)
+	friend ostream& operator << (ostream& out, const MySinglyLinkedListT<T>& list)
 	{
 		out << "output all elements:" << endl;
 		LinkListNode<T>* p = list.m_pHead;

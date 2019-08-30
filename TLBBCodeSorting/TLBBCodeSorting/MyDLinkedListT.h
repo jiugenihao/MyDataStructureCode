@@ -39,7 +39,7 @@ public:
 	void Clear();
 	void Concat(MyDLinkedListT<T>& list);
 	
-	friend ostream& operator << (ostream& out, MyDLinkedListT<T>& list)
+	friend ostream& operator << (ostream& out, const MyDLinkedListT<T>& list)
 	{
 		//out << "dlinklist's size is:" << Size() << endl;
 		out << "output all elements:" << endl;

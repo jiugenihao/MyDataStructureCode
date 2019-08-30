@@ -23,3 +23,7 @@
 - [x] MyHuffmanTree
 ### 二叉排序树
 - [x] MyBinarySortTree
+### 邻接矩阵表示的带权图类
+- [x] AdjMatrixGraph
+### 邻接表表示的带权图
+- [ ] AdjListGraph

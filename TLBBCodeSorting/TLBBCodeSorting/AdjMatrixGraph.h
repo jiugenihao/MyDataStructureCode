@@ -30,7 +30,7 @@ public:
 	bool RemoveEdge(int i, int j);				// 删除一条存在的边
 	bool RemoveVertex(int i, T& old);			// 删除一个存在的顶点
 
-	friend ostream& operator << (ostream& out, AdjMatrixGraph<T>& graph)
+	friend ostream& operator << (ostream& out, const AdjMatrixGraph<T>& graph)
 	{
 		out << "带权无向图的邻接矩阵表示：" << endl;
 		out << "顶点集合：" << graph.m_vertexList << endl;

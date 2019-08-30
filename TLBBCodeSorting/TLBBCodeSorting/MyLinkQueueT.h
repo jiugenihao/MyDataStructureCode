@@ -21,7 +21,7 @@ public:
 	void EnQueue(T value);
 	T    DeQueue();
 
-	friend ostream& operator << (ostream& out, MyLinkQueueT<T>& queue)
+	friend ostream& operator << (ostream& out, const MyLinkQueueT<T>& queue)
 	{
 		out << "The elements of queue are:" << endl;
 		LinkListNode<T>* p = queue.m_pHead;

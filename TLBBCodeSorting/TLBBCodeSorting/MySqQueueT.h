@@ -35,7 +35,7 @@ public:
 	void EnQueue(T value);
 	T    DeQueue();
 
-	friend ostream& operator << (ostream& out, MySqQueueT& queue)
+	friend ostream& operator << (ostream& out, const MySqQueueT& queue)
 	{
 		out << "The elements of queue are:" << endl;
 		out << "head = " << queue.m_Head << " tail = " << queue.m_Tail << endl;
