@@ -42,7 +42,7 @@ public:
 	bool RemoveEdge(int i, int j);				// 删除一条存在的边
 	bool RemoveVertex(int i, T& old);			// 删除一个存在的顶点
 
-	friend ostream& operator << (ostream& out, AdjListGraph<T>& graph)
+	friend ostream& operator << (ostream& out, const AdjListGraph<T>& graph)
 	{
 		out << "带权无向图的邻接表表示：" << endl;
 		
