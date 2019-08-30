@@ -17,3 +17,4 @@
 #define MAX_WEIGHT			9999	// 最大权值
 
 #define MAX_ADJMATRIX_SIZE	10		// 带权图的邻接矩阵容量
+#define MAX_ADJLIST_SIZE	10		// 带权图的邻接表容量
