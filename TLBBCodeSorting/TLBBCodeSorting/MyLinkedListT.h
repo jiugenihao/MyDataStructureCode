@@ -25,6 +25,15 @@ public:
 	~MySinglyLinkedListT();
 
 public:
+	LinkListNode<T>* GetRoot() 
+	{
+		return this->m_pHead;
+	}
+	void SetRoot(LinkListNode<T>* node)
+	{
+		this->m_pHead = node;
+	}
+public:
 	bool IsEmpty();
 	int	 Size();
 	bool Get(int pos, T& value);
