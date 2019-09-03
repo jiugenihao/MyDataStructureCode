@@ -44,12 +44,13 @@ public:
 
 	friend ostream& operator << (ostream& out, const AdjListGraph<T>& graph)
 	{
-		out << "带权无向图的邻接表表示：" << endl;
 		for (int i = 0; i < graph.m_vertexCount; i++)
 		{
 			out << "顶点[" << i << "] :" << graph.m_pVertexList[i].m_data << endl;
-			out << "出边表:" << graph.m_pVertexList[i].m_pAdjLink;
-			
+			if (graph.m_pVertexList[i].m_pAdjLink.IsEmpty())
+				out << "出边表:" << " ()";
+			else
+				out << "出边表:" << graph.m_pVertexList[i].m_pAdjLink;
 		}
 		return out;
 	}

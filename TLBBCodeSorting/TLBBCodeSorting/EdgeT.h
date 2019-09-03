@@ -34,8 +34,7 @@ public:
 public:
     friend ostream& operator << (ostream& out, const EdgeT& edge)
     {
-        out << "output edges: ";
-        out << "(" << edge.m_start << "," << edge.m_dest << "," << edge.m_weight << ")" << endl;
+        out << " (" << edge.m_start << "," << edge.m_dest << "," << edge.m_weight << ")";
 
         return out;
     }

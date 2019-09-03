@@ -36,7 +36,7 @@ public:
 	// 但是如果是引用的话，就无需产生复制，是同一个对象的操作
 	friend ostream& operator << (ostream& out, const MySqListT<T>& list)
 	{
-		out << "output all elements:" << endl;
+		//out << "output all elements:" << endl;
 		if (list.m_Len > 0)
 		{
 			out << list.m_pData[0];

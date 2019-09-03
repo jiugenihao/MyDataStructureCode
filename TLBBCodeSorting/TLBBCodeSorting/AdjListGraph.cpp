@@ -91,7 +91,7 @@ bool AdjListGraph<T>::InsertEdge(int i, int j, int weight)
 				return true;
 			}
 			
-			do
+			while (pNode && j >= pNode->m_Data.m_dest)
 			{
 				if (j == pNode->m_Data.m_dest)
 				{
@@ -99,7 +99,11 @@ bool AdjListGraph<T>::InsertEdge(int i, int j, int weight)
 				}
 				pFront = pNode;
 				pNode = pNode->m_pNext;
-			} while (j < pNode->m_Data.m_dest);
+			}
+
+			pInsert->m_pNext = pNode;
+			pFront->m_pNext = pInsert;
+			return true;
 		}
 	}
 	
@@ -109,17 +113,83 @@ bool AdjListGraph<T>::InsertEdge(int i, int j, int weight)
 template <class T>
 bool AdjListGraph<T>::InsertEdge(EdgeT edge)
 {
-	return false;
+	return InsertEdge(edge.m_start, edge.m_dest, edge.m_weight);
 }
 
 template <class T>
 bool AdjListGraph<T>::RemoveEdge(int i, int j)
 {
+	if (0 <= i && i < this->m_vertexCount && 0 <= j && j < this->m_vertexCount && i != j)
+	{
+		LinkListNode<EdgeT>* pNode = this->m_pVertexList[i].m_pAdjLink.GetRoot();
+		LinkListNode<EdgeT>* pFront = nullptr;
+		if (pNode && j == pNode->m_Data.m_dest )
+		{
+			this->m_pVertexList[i].m_pAdjLink.SetRoot(pNode->m_pNext);
+			delete pNode;
+			return true;
+		}
+		while (pNode && j != pNode->m_Data.m_dest)
+		{
+			pFront = pNode;
+			pNode = pNode->m_pNext;
+		}
+		if (pNode)
+		{
+			pFront->m_pNext = pNode->m_pNext;
+			delete pNode;
+			return true;
+		}
+	}
 	return false;
 }
 
 template <class T>
 bool AdjListGraph<T>::RemoveVertex(int i, T& old)
 {
-	return false;
+	if (i < 0 || i > this->m_vertexCount)
+	{
+		return false;
+	}
+	// 删除此顶点的边链表 (i, dest)
+	old = this->m_pVertexList[i].m_data;
+	this->m_pVertexList[i].m_pAdjLink.Clear();
+
+	// 删除此顶点作为目标点的边,也就是对称的边 (dest, i)
+	LinkListNode<EdgeT>* pNode = this->m_pVertexList[i].m_pAdjLink.GetRoot();
+	while (pNode)
+	{
+		this->RemoveEdge(pNode->m_Data.m_dest, pNode->m_Data.m_start);
+		pNode = pNode->m_pNext;
+	}
+
+	// 顶点元素向前移动一行
+	for (int j = i; j < this->m_vertexCount - 1; j++)
+	{
+		this->m_pVertexList[j].m_data = this->m_pVertexList[j + 1].m_data;
+		this->m_pVertexList[j].m_pAdjLink.SetRoot(this->m_pVertexList[j + 1].m_pAdjLink.GetRoot());
+		this->m_pVertexList[j + 1].m_pAdjLink.SetRoot(nullptr);
+	}
+	
+	this->m_vertexCount--;
+
+	// 未删除的边结点更改某些顶点序号
+	for (int k = 0; k < this->m_vertexCount; k++)
+	{
+		pNode = this->m_pVertexList[k].m_pAdjLink.GetRoot();
+		while (pNode)
+		{
+			if (pNode->m_Data.m_start > i)
+			{
+				pNode->m_Data.m_start--;
+			}
+			if (pNode->m_Data.m_dest > i)
+			{
+				pNode->m_Data.m_dest--;
+			}
+			pNode = pNode->m_pNext;
+		}
+	}
+
+	return true;
 }

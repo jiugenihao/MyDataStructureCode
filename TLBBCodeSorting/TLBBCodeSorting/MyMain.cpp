@@ -21,6 +21,8 @@
 #include "MyBinarySortTree.cpp"
 #include "AdjMatrixGraph.h"
 #include "AdjMatrixGraph.cpp"
+#include "AdjListGraph.h"
+#include "AdjListGraph.cpp"
 
 #include "CreateBinaryTree.h"
 #include <time.h>
@@ -43,8 +45,23 @@ int main()
 	char_sqList.Insert('E');
 	cout << char_sqList;
 
-	cout << "/*--------------- AdjMatrixGraph ---------------*/" << endl;
 	char vertices[] = "ABCDE";
+	char oldChar = ' ';
+
+	cout << "/*--------------- AdjListGraph ---------------*/" << endl;
+	EdgeT edge0[] = {{0,1,5}, {0,3,2}, {1,0,6}, {1,2,7}, {2,4,3}, {3,2,8}, {3,4,9}};
+	AdjListGraph<char> adjListGraph(vertices, strlen(vertices), edge0, sizeof(edge0) / sizeof(EdgeT));
+	cout << "带权有向图：" << endl;
+	cout << adjListGraph;
+	if (adjListGraph.RemoveVertex(2, oldChar))
+	{
+		cout << "删除顶点 " << oldChar << endl;
+	}
+	cout << "删除边(2, 3) ," << adjListGraph.RemoveEdge(2, 3) << endl;
+	cout << adjListGraph << endl;
+
+	cout << "/*--------------- AdjMatrixGraph ---------------*/" << endl;
+	
 	EdgeT edges[] = {{0,1,5}, {0,3,2}, {1,0,5}, {1,2,7}, {1,3,6}, {2,1,7}, {2,3,8}, {2,4,3},
 					{3,0,2}, {3,1,6}, {3,2,8}, {3,4,9}, {4,2,3}, {4,3,9}};
 	AdjMatrixGraph<char> adjGraph(vertices, strlen(vertices), edges, sizeof(edges) / sizeof(EdgeT));
@@ -53,7 +70,7 @@ int main()
 	cout << "插入顶点F，插入边(A,F,20)?" << adjGraph.InsertEdge(0, 5, 20) << endl;
 	
 	cout << adjGraph;
-	char oldChar = ' ';
+	
 	if (adjGraph.RemoveVertex(2, oldChar))
 	{
 		cout << "删除顶点 " << oldChar << endl;

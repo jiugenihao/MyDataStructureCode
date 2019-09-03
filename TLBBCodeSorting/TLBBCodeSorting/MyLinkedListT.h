@@ -47,14 +47,14 @@ public:
 
 	friend ostream& operator << (ostream& out, const MySinglyLinkedListT<T>& list)
 	{
-		out << "output all elements:" << endl;
+		//out << "output all elements:" << endl;
 		LinkListNode<T>* p = list.m_pHead;
 		while (nullptr != p)
 		{
 			out << p->m_Data;
 			p = p->m_pNext;
 			if (nullptr != p)
-				out << "-";
+				out << " ";
 		}
 		out << endl;
 		return out;
