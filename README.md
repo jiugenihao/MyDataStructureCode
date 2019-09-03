@@ -26,4 +26,8 @@
 ### 邻接矩阵表示的带权图类
 - [x] AdjMatrixGraph
 ### 邻接表表示的带权图
-- [ ] AdjListGraph
+- [x] AdjListGraph
+### 无向图的邻接多重表
+- [ ] AdjMultilistUnDirectedGraph
+### 有向图的邻接多重表
+- [ ] AdjMultilistDirectedGraph
