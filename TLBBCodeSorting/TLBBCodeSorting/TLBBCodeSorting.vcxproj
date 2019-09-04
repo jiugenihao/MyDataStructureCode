@@ -158,6 +158,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractGraph.h" />
     <ClInclude Include="AdjListGraph.h" />
     <ClInclude Include="AdjMatrixGraph.h" />
     <ClInclude Include="BaseDefine.h" />

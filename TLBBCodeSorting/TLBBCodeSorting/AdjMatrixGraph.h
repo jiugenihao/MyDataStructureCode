@@ -9,9 +9,10 @@
 #include "BaseDefine.h"
 #include "EdgeT.h"
 #include "MySqListT.h"
+#include "AbstractGraph.h"
 
 template <class T>
-class AdjMatrixGraph
+class AdjMatrixGraph : public AbstractGraph<T>
 {
 public:
 	AdjMatrixGraph(int size = MAX_ADJMATRIX_SIZE);
@@ -22,13 +23,16 @@ private:
 	void Init(int size);	// 初始化图的邻接矩阵
 
 public:
-	int  GetVertexCount();						// 获取顶点个数
-	bool GetVertexData(int i, T& value);		// 获得顶点的数据
-	void InsertVertex(T vertex);				// 插入一个顶点
-	bool InsertEdge(int i, int j, int weight);	// 插入一条边
-	bool InsertEdge(EdgeT edge);				// 插入一条边
-	bool RemoveEdge(int i, int j);				// 删除一条存在的边
-	bool RemoveVertex(int i, T& old);			// 删除一个存在的顶点
+	int  GetVertexCount() override;					// 获取顶点个数
+	bool GetVertexData(int v, T& value) override;	// 获得顶点的数据
+	int  GetFirstNeighbor(int v) override;			// 获取顶点v第一个邻接顶点的序号
+	int  GetNextNeighbor(int v, int w) override;	// 获取顶点v在w后的下一个邻接顶点的序号
+
+	void InsertVertex(T vertex);					// 插入一个顶点
+	bool InsertEdge(int i, int j, int weight);		// 插入一条边
+	bool InsertEdge(EdgeT edge);					// 插入一条边
+	bool RemoveEdge(int i, int j);					// 删除一条存在的边
+	bool RemoveVertex(int i, T& old);				// 删除一个存在的顶点
 
 	friend ostream& operator << (ostream& out, const AdjMatrixGraph<T>& graph)
 	{

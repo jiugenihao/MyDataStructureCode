@@ -61,6 +61,30 @@ bool AdjMatrixGraph<T>::GetVertexData(int i, T& value)
     return m_vertexList.Get(i, value);
 }
 
+template<class T>
+int AdjMatrixGraph<T>::GetFirstNeighbor(int v)
+{
+	// 返回v的第一个邻接点序号，如果不存在返回-1
+	return GetNextNeighbor(v, -1);
+}
+
+template<class T>
+int AdjMatrixGraph<T>::GetNextNeighbor(int v, int w)
+{
+	if (0 <= v && v < m_vertexCount && -1 <= w && w < m_vertexCount && v != w)
+	{
+		for (int i = w+1; i < m_vertexCount; i++)
+		{
+			// w=-1时，j从0开始寻找下一个邻接点
+			if (m_pAdjMatrix[v][i] > 0 && m_pAdjMatrix[v][i] < MAX_WEIGHT)
+			{
+				return i;
+			}
+		}
+	}
+	return -1;
+}
+
 template <class T>
 void AdjMatrixGraph<T>::InsertVertex(T vertex)
 {

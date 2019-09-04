@@ -193,3 +193,15 @@ bool AdjListGraph<T>::RemoveVertex(int i, T& old)
 
 	return true;
 }
+
+template<class T>
+int AdjListGraph<T>::GetFirstNeighbor(int v)
+{
+	return 0;
+}
+
+template<class T>
+int AdjListGraph<T>::GetNextNeighbor(int v, int w)
+{
+	return 0;
+}

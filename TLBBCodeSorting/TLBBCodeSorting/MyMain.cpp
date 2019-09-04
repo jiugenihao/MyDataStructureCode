@@ -29,6 +29,11 @@
 
 int main()
 {
+	int cardid = 500102;
+	int originid = cardid / 10 * 10 + 1;
+	int modid = cardid % 10;
+	cout << originid << endl;
+	cout << modid << endl;
 	int elements[] = { 111,222,333,444,777,888,999 };
 	int elements2[] = { 1,2,3,4,5,6,7,8,9 };
 	char levelList[] = "ABCDEFGHIJ";
@@ -46,11 +51,14 @@ int main()
 	cout << char_sqList;
 
 	char vertices[] = "ABCDE";
+	EdgeT directedEdges[]	= { {0,1,5}, {0,3,2}, {1,0,6}, {1,2,7}, {2,4,3}, {3,2,8}, {3,4,9} };
+	EdgeT undirectedEdges[] = { {0,1,5}, {0,3,2}, {1,0,5}, {1,2,7}, {1,3,6}, {2,1,7}, {2,3,8}, {2,4,3},
+					{3,0,2}, {3,1,6}, {3,2,8}, {3,4,9}, {4,2,3}, {4,3,9} };
 	char oldChar = ' ';
 
 	cout << "/*--------------- AdjListGraph ---------------*/" << endl;
-	EdgeT edge0[] = {{0,1,5}, {0,3,2}, {1,0,6}, {1,2,7}, {2,4,3}, {3,2,8}, {3,4,9}};
-	AdjListGraph<char> adjListGraph(vertices, strlen(vertices), edge0, sizeof(edge0) / sizeof(EdgeT));
+	
+	AdjListGraph<char> adjListGraph(vertices, strlen(vertices), directedEdges, sizeof(directedEdges) / sizeof(EdgeT));
 	cout << "带权有向图：" << endl;
 	cout << adjListGraph;
 	if (adjListGraph.RemoveVertex(2, oldChar))
@@ -61,22 +69,31 @@ int main()
 	cout << adjListGraph << endl;
 
 	cout << "/*--------------- AdjMatrixGraph ---------------*/" << endl;
+	AdjMatrixGraph<char> directedAMG(vertices, strlen(vertices), directedEdges, sizeof(directedEdges) / sizeof(EdgeT));
+	cout << directedAMG;
+	for (int i = 0; i < directedAMG.GetVertexCount(); i++)
+	{
+		directedAMG.DFSTraverse(i);
+	}
+
+	AdjMatrixGraph<char> undirectedAMG(vertices, strlen(vertices), undirectedEdges, sizeof(undirectedEdges) / sizeof(EdgeT));
+	cout << undirectedAMG;
+	for (int i = 0; i < undirectedAMG.GetVertexCount(); i++)
+	{
+		undirectedAMG.DFSTraverse(i);
+	}
+
+	undirectedAMG.InsertVertex('F');
+	cout << "插入顶点F，插入边(A,F,20)?" << undirectedAMG.InsertEdge(0, 5, 20) << endl;
 	
-	EdgeT edges[] = {{0,1,5}, {0,3,2}, {1,0,5}, {1,2,7}, {1,3,6}, {2,1,7}, {2,3,8}, {2,4,3},
-					{3,0,2}, {3,1,6}, {3,2,8}, {3,4,9}, {4,2,3}, {4,3,9}};
-	AdjMatrixGraph<char> adjGraph(vertices, strlen(vertices), edges, sizeof(edges) / sizeof(EdgeT));
-	cout << adjGraph;
-	adjGraph.InsertVertex('F');
-	cout << "插入顶点F，插入边(A,F,20)?" << adjGraph.InsertEdge(0, 5, 20) << endl;
+	cout << undirectedAMG;
 	
-	cout << adjGraph;
-	
-	if (adjGraph.RemoveVertex(2, oldChar))
+	if (undirectedAMG.RemoveVertex(2, oldChar))
 	{
 		cout << "删除顶点 " << oldChar << endl;
 	}
-	cout << "删除边(2,3)," << (adjGraph.RemoveEdge(2, 3) && adjGraph.RemoveEdge(3, 2)) << endl;
-	cout << adjGraph;
+	cout << "删除边(2,3)," << (undirectedAMG.RemoveEdge(2, 3) && undirectedAMG.RemoveEdge(3, 2)) << endl;
+	cout << undirectedAMG;
 
 	cout << "/*--------------- MyBinarySortTree ---------------*/" << endl;
 	MyBinarySortTree<int> sortBiT;

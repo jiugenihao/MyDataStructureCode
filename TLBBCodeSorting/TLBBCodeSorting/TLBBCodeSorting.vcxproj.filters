@@ -99,6 +99,9 @@
     <ClInclude Include="AdjListGraph.h">
       <Filter>GraphTemplate</Filter>
     </ClInclude>
+    <ClInclude Include="AbstractGraph.h">
+      <Filter>GraphTemplate</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
