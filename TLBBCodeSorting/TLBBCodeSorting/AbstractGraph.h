@@ -7,6 +7,7 @@
 #pragma once
 
 #include "BaseDefine.h"
+#include "MySqQueueT.h"
 
 template <class T>
 class AbstractGraph
@@ -30,6 +31,7 @@ private:
 template<class T>
 inline void AbstractGraph<T>::DFSTraverse(int v)
 {
+	cout << "深度优先遍历：" << endl;
 	bool* visited = new bool[this->GetVertexCount()];
 	int i = 0;
 	for (i = 0; i < this->GetVertexCount(); i++)
@@ -59,6 +61,27 @@ inline void AbstractGraph<T>::DFSTraverse(int v)
 template<class T>
 inline void AbstractGraph<T>::BFSTraverse(int v)
 {
+	cout << "广度优先遍历：" << endl;
+	bool* visited = new bool[this->GetVertexCount()];
+	int i = 0;
+	for (i = 0; i < this->GetVertexCount(); i++)
+	{
+		visited[i] = false;
+	}
+	i = v;
+	do
+	{
+		if (!visited[i])
+		{
+			cout << "{ ";
+			BFSTraverse(i, visited);
+			cout << "}";
+		}
+		i = (i + 1) % this->GetVertexCount();
+	} while (i != v);
+
+	cout << endl;
+	delete[] visited;
 }
 
 template<class T>
@@ -85,4 +108,30 @@ inline void AbstractGraph<T>::DFSTraverse(int v, bool bVisited[])
 template<class T>
 inline void AbstractGraph<T>::BFSTraverse(int v, bool bVisited[])
 {
+	T vertInfo;
+	this->GetVertexData(v, vertInfo);
+	cout << vertInfo << " ";
+	bVisited[v] = true;
+
+	MySqQueueT<int> queue(this->GetVertexCount());
+	queue.EnQueue(v);
+
+	while (!queue.IsEmpty())
+	{
+		int v = queue.DeQueue();
+		int w = this->GetFirstNeighbor(v);
+		while (-1 != w)
+		{
+			if (!bVisited[w])
+			{
+				T vertInfo2;
+				this->GetVertexData(w, vertInfo2);
+				cout << vertInfo2 << " ";
+				bVisited[w] = true;
+
+				queue.EnQueue(w);
+			}
+			w = this->GetNextNeighbor(v, w);
+		}
+	}
 }

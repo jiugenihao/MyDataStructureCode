@@ -62,14 +62,16 @@ int main()
 	for (int i = 0; i < undirectedALG.GetVertexCount(); i++)
 	{
 		undirectedALG.DFSTraverse(i);
+		undirectedALG.BFSTraverse(i);
 	}
-
+	
 	AdjListGraph<char> directedALG(vertices, strlen(vertices), directedEdges, sizeof(directedEdges) / sizeof(EdgeT));
 	cout << "带权有向图：" << endl;
 	cout << directedALG;
 	for (int i = 0; i < directedALG.GetVertexCount(); i++)
 	{
 		directedALG.DFSTraverse(i);
+		directedALG.BFSTraverse(i);
 	}
 
 	if (directedALG.RemoveVertex(2, oldChar))
