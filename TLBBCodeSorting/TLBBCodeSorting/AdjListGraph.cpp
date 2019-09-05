@@ -73,24 +73,19 @@ bool AdjListGraph<T>::InsertEdge(int i, int j, int weight)
 	if (0 <= i && i < this->m_vertexCount && 0 <= j && j < this->m_vertexCount && i != j)
 	{
 		EdgeT edge(i, j, weight);
-		LinkListNode<EdgeT>* pInsert = new LinkListNode<EdgeT>(edge);
+		
 		LinkListNode<EdgeT>* pNode = this->m_pVertexList[i].m_pAdjLink.GetRoot();
 		LinkListNode<EdgeT>* pFront = nullptr;
-		if (!pNode)
+		LinkListNode<EdgeT>* pInsert = nullptr;
+
+		if (!pNode || (pNode && j < pNode->m_Data.m_dest))
 		{
+			pInsert = new LinkListNode<EdgeT>(edge, pNode);
 			this->m_pVertexList[i].m_pAdjLink.SetRoot(pInsert);
 			return true;
 		}
 		else
-		{
-			// 头结点插入
-			if (j < pNode->m_Data.m_dest)
-			{
-				pInsert->m_pNext = pNode;
-				this->m_pVertexList[i].m_pAdjLink.SetRoot(pInsert);
-				return true;
-			}
-			
+		{	
 			while (pNode && j >= pNode->m_Data.m_dest)
 			{
 				if (j == pNode->m_Data.m_dest)
@@ -101,7 +96,7 @@ bool AdjListGraph<T>::InsertEdge(int i, int j, int weight)
 				pNode = pNode->m_pNext;
 			}
 
-			pInsert->m_pNext = pNode;
+			pInsert = new LinkListNode<EdgeT>(edge, pNode);
 			pFront->m_pNext = pInsert;
 			return true;
 		}
@@ -197,11 +192,23 @@ bool AdjListGraph<T>::RemoveVertex(int i, T& old)
 template<class T>
 int AdjListGraph<T>::GetFirstNeighbor(int v)
 {
-	return 0;
+	return GetNextNeighbor(v, -1);
 }
 
 template<class T>
 int AdjListGraph<T>::GetNextNeighbor(int v, int w)
 {
-	return 0;
+	if (0 <= v && v < m_vertexCount && -1 <= w && w < m_vertexCount)
+	{
+		LinkListNode<EdgeT>* pNode = m_pVertexList[v].m_pAdjLink.GetRoot();
+		while (pNode)
+		{
+			if (pNode->m_Data.m_dest > w)
+			{
+				return pNode->m_Data.m_dest;
+			}
+			pNode = pNode->m_pNext;
+		}
+	}
+	return -1;
 }

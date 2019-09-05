@@ -57,16 +57,27 @@ int main()
 	char oldChar = ' ';
 
 	cout << "/*--------------- AdjListGraph ---------------*/" << endl;
-	
-	AdjListGraph<char> adjListGraph(vertices, strlen(vertices), directedEdges, sizeof(directedEdges) / sizeof(EdgeT));
+	AdjListGraph<char> undirectedALG(vertices, strlen(vertices), undirectedEdges, sizeof(undirectedEdges) / sizeof(EdgeT));
+	cout << undirectedALG;
+	for (int i = 0; i < undirectedALG.GetVertexCount(); i++)
+	{
+		undirectedALG.DFSTraverse(i);
+	}
+
+	AdjListGraph<char> directedALG(vertices, strlen(vertices), directedEdges, sizeof(directedEdges) / sizeof(EdgeT));
 	cout << "带权有向图：" << endl;
-	cout << adjListGraph;
-	if (adjListGraph.RemoveVertex(2, oldChar))
+	cout << directedALG;
+	for (int i = 0; i < directedALG.GetVertexCount(); i++)
+	{
+		directedALG.DFSTraverse(i);
+	}
+
+	if (directedALG.RemoveVertex(2, oldChar))
 	{
 		cout << "删除顶点 " << oldChar << endl;
 	}
-	cout << "删除边(2, 3) ," << adjListGraph.RemoveEdge(2, 3) << endl;
-	cout << adjListGraph << endl;
+	cout << "删除边(2, 3) ," << directedALG.RemoveEdge(2, 3) << endl;
+	cout << directedALG << endl;
 
 	cout << "/*--------------- AdjMatrixGraph ---------------*/" << endl;
 	AdjMatrixGraph<char> directedAMG(vertices, strlen(vertices), directedEdges, sizeof(directedEdges) / sizeof(EdgeT));

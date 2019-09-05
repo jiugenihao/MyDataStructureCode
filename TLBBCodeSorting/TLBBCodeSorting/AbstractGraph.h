@@ -42,7 +42,7 @@ inline void AbstractGraph<T>::DFSTraverse(int v)
 		// 从顶点v开始，深度遍历v的邻接点
 		if (!visited[i])
 		{
-			cout << "{";
+			cout << "{ ";
 			DFSTraverse(i, visited);
 			cout << "}";
 		}
