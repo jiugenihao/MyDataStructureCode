@@ -13,6 +13,7 @@ public:
 	TriNode()
 	{
 		m_nParent = m_nLeft = m_nRight = -1;
+		m_nWeight = MAX_WEIGHT;
 	}
 	~TriNode()
 	{
