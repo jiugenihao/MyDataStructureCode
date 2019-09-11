@@ -239,7 +239,7 @@ void AdjMatrixGraph<T>::MinSpanTree_Prim(EdgeT* mst)
 	int minCost = 0;
 	for (i = 0; i < n - 1; ++i)
 	{
-		cout << mst[i].m_weight << " ";
+		cout << mst[i] << " ";
 		minCost += mst[i].m_weight;
 	}
 	cout << endl;
