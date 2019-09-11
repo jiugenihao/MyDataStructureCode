@@ -34,6 +34,9 @@ public:
 	bool RemoveEdge(int i, int j);					// 删除一条存在的边
 	bool RemoveVertex(int i, T& old);				// 删除一个存在的顶点
 
+	void MinSpanTree_Prim(EdgeT* mst);				// 带权无相连通图的最小生成树的Prim算法
+	void MinSpanTree_Kruskal();						// 带权无相连通图的最小生成树的Kruskal算法
+
 	friend ostream& operator << (ostream& out, const AdjMatrixGraph<T>& graph)
 	{
 		out << "带权无向图的邻接矩阵表示：" << endl;

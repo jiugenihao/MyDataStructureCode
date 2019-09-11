@@ -55,6 +55,8 @@ int main()
 	EdgeT undirectedEdges[] = { {0,1,5}, {0,3,2}, {1,0,5}, {1,2,7}, {1,3,6}, {2,1,7}, {2,3,8}, {2,4,3},
 					{3,0,2}, {3,1,6}, {3,2,8}, {3,4,9}, {4,2,3}, {4,3,9} };
 	char oldChar = ' ';
+	EdgeT* mst_u = new EdgeT[sizeof(undirectedEdges) / sizeof(EdgeT) - 1];
+	EdgeT* mst_d = new EdgeT[sizeof(directedEdges) / sizeof(EdgeT) - 1];
 
 	cout << "/*--------------- AdjListGraph ---------------*/" << endl;
 	AdjListGraph<char> undirectedALG(vertices, strlen(vertices), undirectedEdges, sizeof(undirectedEdges) / sizeof(EdgeT));
@@ -88,6 +90,7 @@ int main()
 	{
 		directedAMG.DFSTraverse(i);
 	}
+	directedAMG.MinSpanTree_Prim(mst_d);
 
 	AdjMatrixGraph<char> undirectedAMG(vertices, strlen(vertices), undirectedEdges, sizeof(undirectedEdges) / sizeof(EdgeT));
 	cout << undirectedAMG;
@@ -95,6 +98,7 @@ int main()
 	{
 		undirectedAMG.DFSTraverse(i);
 	}
+	undirectedAMG.MinSpanTree_Prim(mst_u);
 
 	undirectedAMG.InsertVertex('F');
 	cout << "插入顶点F，插入边(A,F,20)?" << undirectedAMG.InsertEdge(0, 5, 20) << endl;

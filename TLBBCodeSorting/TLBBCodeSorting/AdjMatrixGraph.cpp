@@ -186,3 +186,67 @@ bool AdjMatrixGraph<T>::RemoveVertex(int pos, T& old)
     
     return false;
 }
+
+// n个顶点，n-1条边
+template<class T>
+void AdjMatrixGraph<T>::MinSpanTree_Prim(EdgeT* mst)
+{
+	int n = this->m_vertexCount, i, j;
+
+	// 初始化mst数组，保存从v0出发的边，从顶点v0出发构造最小生成树
+	for (i = 0; i < n - 1; ++i)
+	{
+		EdgeT edge(0, i + 1, this->m_pAdjMatrix[0][i + 1]);
+		mst[i] = edge;
+	}
+
+	// 选出n-1条边
+	for (i = 0; i < n - 1; ++i)
+	{
+		int minWeight = MAX_WEIGHT;
+		int min = i;
+
+		// 寻找权值最小的边的顶点
+		for (j = 0; j < n - 1; ++j)
+		{
+			if (mst[j].m_weight < minWeight)
+			{
+				minWeight = mst[j].m_weight;
+				min = j;
+			}
+		}
+
+		EdgeT tmp = mst[i];
+		mst[i] = mst[min];
+		mst[min] = tmp;
+
+		// 刚刚并入U的顶点
+		int u = mst[i].m_dest;
+		// 调整mst[i+1]及其之后元素为权值最小的边
+		for (j = i + 1; j < n - 1; ++j)
+		{
+			int v = mst[j].m_dest;
+			if (this->m_pAdjMatrix[u][v] < mst[j].m_weight)
+			{
+				mst[j].m_weight = this->m_pAdjMatrix[u][v];
+				mst[j].m_start = u;
+			}
+		}
+	}
+
+	cout << endl;
+	cout << "最小生成树的边集合：";
+	int minCost = 0;
+	for (i = 0; i < n - 1; ++i)
+	{
+		cout << mst[i].m_weight << " ";
+		minCost += mst[i].m_weight;
+	}
+	cout << endl;
+	cout << "最小代价为：" << minCost << endl;
+}
+
+template<class T>
+void AdjMatrixGraph<T>::MinSpanTree_Kruskal()
+{
+}
