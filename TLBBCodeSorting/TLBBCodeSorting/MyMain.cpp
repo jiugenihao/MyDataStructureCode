@@ -25,21 +25,28 @@
 #include "AdjListGraph.cpp"
 
 #include "CreateBinaryTree.h"
+#include "RemoveOpe.h"
 #include <time.h>
 
 int main()
 {
-	int cardid = 500102;
-	int originid = cardid / 10 * 10 + 1;
-	int modid = cardid % 10;
-	cout << originid << endl;
-	cout << modid << endl;
 	int elements[] = { 111,222,333,444,777,888,999 };
 	int elements2[] = { 1,2,3,4,5,6,7,8,9 };
 	char levelList[] = "ABCDEFGHIJ";
 	int old = 0;
 	int sortList[] = {54, 18, 66, 87, 36, 12, 54, 81, 15, 76, 57, 6, 40, 99, 85, 99};
 	int weight[] = {5, 29, 7, 8, 14, 23, 3, 11};
+	
+	cout << "/*--------------- Question Start---------------*/" << endl;
+	int data_lw[] = { 2, 3, 4, 2, 5, 7, 2, 2, 2, 8, 2 };
+	int data_me[] = { 2, 3, 4, 2, 5, 7, 2, 2, 2, 8, 2 };
+	int data_zq[] = { 2, 3, 4, 2, 5, 7, 2, 2, 2, 8, 2 };
+	int data_len = sizeof(data_lw) / sizeof(int);
+	cout << "lw:" << Question::RemoveAll_lw(data_lw, 11, 2) << endl;
+	cout << "me:" << Question::RemoveAll_me(data_me, data_len, 2) << endl;
+	cout << "zq:" << Question::RemoveAll_zq(data_zq, 11, 2) << endl;
+
+	cout << "/*--------------- Question End  ---------------*/" << endl;
 
 	MySqListT<char> char_sqList(10);
 	char_sqList.Insert('A');

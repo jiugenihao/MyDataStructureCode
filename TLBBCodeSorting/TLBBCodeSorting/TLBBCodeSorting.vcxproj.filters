@@ -102,6 +102,9 @@
     <ClInclude Include="AbstractGraph.h">
       <Filter>GraphTemplate</Filter>
     </ClInclude>
+    <ClInclude Include="RemoveOpe.h">
+      <Filter>Question</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

@@ -172,7 +172,7 @@ bool MySqListT<T>::Remove(T value)
 template<class T>
 void MySqListT<T>::RemoveAll(T value)
 {
-	// 从后往前删，索引就不会失效了
+	// 从后往前删，索引就不会失效了,算法复杂度为n*n
 	for (int i = m_Len - 1; i >= 0; --i)
 	{
 		if (m_pData[i] == value)
