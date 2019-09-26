@@ -44,6 +44,10 @@ public:
 	void Clear();
 	void Concat(MySinglyLinkedListT<T>& list);
 	void Visit();
+	LinkListNode<T>* Search(T value);
+	LinkListNode<T>* Search(T value, MySinglyLinkedListT<T>* node);
+	bool Contain(T value);
+	bool Remove(T value);
 
 	friend ostream& operator << (ostream& out, const MySinglyLinkedListT<T>& list)
 	{

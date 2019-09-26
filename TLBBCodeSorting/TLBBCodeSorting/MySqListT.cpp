@@ -133,6 +133,84 @@ void MySqListT<T>::Clear()
 	m_Len = 0;
 }
 
+template<class T>
+int MySqListT<T>::Index(T value)
+{
+	for (int i = 0; i < m_Len; ++i)
+	{
+		if (m_pData[i] == value)
+			return i;
+	}
+	return -1;
+}
+
+template<class T>
+bool MySqListT<T>::Contain(T value)
+{
+	return Index(value)!=-1;
+}
+
+template<class T>
+bool MySqListT<T>::Remove(T value)
+{
+	for (int i = 0; i < m_Len; ++i)
+	{
+		if (m_pData[i] == value)
+		{
+			for (int j = i; j < m_Len; ++j)
+			{
+				// m_Len<m_Size 所以这里不会下标越界
+				m_pData[j] = m_pData[j + 1];
+			}
+			m_Len--;
+			return true;
+		}
+	}
+	return false;
+}
+
+template<class T>
+void MySqListT<T>::RemoveAll(T value)
+{
+	// 从后往前删，索引就不会失效了
+	for (int i = m_Len - 1; i >= 0; --i)
+	{
+		if (m_pData[i] == value)
+		{
+			for (int j = i; j < m_Len; ++j)
+			{
+				m_pData[j] = m_pData[j + 1];
+			}
+			m_Len--;
+		}
+	}
+	
+}
+
+template<class T>
+bool MySqListT<T>::Replace(T v1, T v2)
+{
+	int pos = Index(v1);
+	if (pos >= 0)
+	{
+		m_pData[pos] = v2;
+		return true;
+	}
+	return false;
+}
+
+template<class T>
+void MySqListT<T>::ReplaceAll(T v1, T v2)
+{
+	for (int i = 0; i < m_Len; ++i)
+	{
+		if (m_pData[i] == v1)
+		{
+			m_pData[i] = v2;
+		}
+	}
+}
+
 //template <class T>
 //ostream& operator << (ostream& out, MySqListT<T> list)
 //{

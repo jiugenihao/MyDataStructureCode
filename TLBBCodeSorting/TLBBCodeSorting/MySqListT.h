@@ -25,9 +25,15 @@ public:
 	bool Get(int pos, T& value);
 	bool Set(int pos, T value);
 	void Insert(int pos, T value);
-	void Insert(T value);
+	void Insert(T value);				// 尾部插入
 	bool Remove(int pos, T& value);
 	void Clear();
+	int	 Index(T value);
+	bool Contain(T value);
+	bool Remove(T value);				// 删除首次出现的value元素
+	void RemoveAll(T value);			// 删除所有value元素
+	bool Replace(T v1, T v2);			// 将首次出现元素v1替换为v2
+	void ReplaceAll(T v1, T v2);		// 将线性表中所有元素v1替换为v2
 
 	// 如果要为类重载操作符，并将非类的项作为第一个操作数，则可以使用友元来反转操作数的顺序
 	// 通过让函数成为类的友元，可以赋予该函数与类成员函数相同的访问权限

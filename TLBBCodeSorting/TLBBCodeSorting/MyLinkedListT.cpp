@@ -211,3 +211,60 @@ void MySinglyLinkedListT<T>::Visit()
 		p = p->m_pNext;
 	}
 }
+
+template<class T>
+LinkListNode<T>* MySinglyLinkedListT<T>::Search(T value)
+{
+	return Search(value, m_pHead);
+}
+
+template<class T>
+LinkListNode<T>* MySinglyLinkedListT<T>::Search(T value, MySinglyLinkedListT<T>* start)
+{
+	if (IsEmpty())
+		return nullptr;
+
+	LinkListNode<T>* p = start;
+	while (p && p->m_Data != value)
+	{
+		p = p->m_pNext;
+	}
+	return p;
+}
+
+template<class T>
+bool MySinglyLinkedListT<T>::Contain(T value)
+{
+	return Search(value) != nullptr;
+}
+
+template<class T>
+bool MySinglyLinkedListT<T>::Remove(T value)
+{
+	if (IsEmpty())
+		return false;
+
+	LinkListNode<T>* p = m_pHead;
+	if (m_pHead.m_Data == value)
+	{
+		m_pHead = m_pHead->m_pNext;
+		delete p;
+		return true;
+	}
+
+	LinkListNode<T>* front = m_pHead;
+	p = front->m_pNext;
+	while (p && p->m_Data != value)
+	{
+		front = p;
+		p = p->m_pNext;
+	}
+	if (p)
+	{
+		front->m_pNext = p->m_pNext;
+		delete p;
+		return true;
+	}
+
+	return false;
+}
