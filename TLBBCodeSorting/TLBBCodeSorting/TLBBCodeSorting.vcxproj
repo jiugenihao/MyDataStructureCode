@@ -165,6 +165,7 @@
     <ClInclude Include="ConstDefine.h" />
     <ClInclude Include="CreateBinaryTree.h" />
     <ClInclude Include="EdgeT.h" />
+    <ClInclude Include="LinearListSearch.h" />
     <ClInclude Include="MyBinarySortTree.h" />
     <ClInclude Include="MyBinaryTreeT.h" />
     <ClInclude Include="MyDLinkedListT.h" />
