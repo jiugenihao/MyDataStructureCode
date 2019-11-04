@@ -8,9 +8,15 @@
 /////////////////////////////////////////////////////////////////////////////////
 #pragma once
 
+#include <stdint.h>
+#include <string.h>
+
 #include <iostream>
 #include <iomanip>
 #include "ConstDefine.h"
+
+// ½â¾ö¡±error C4996: 'strdup': The POSIX name for this item is deprecated¡°
+#pragma warning(disable:4996)
 
 using namespace std;
 

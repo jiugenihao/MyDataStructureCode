@@ -37,6 +37,9 @@
     <Filter Include="Search">
       <UniqueIdentifier>{dc596f3d-f0e6-42cc-94a7-95398e0aab37}</UniqueIdentifier>
     </Filter>
+    <Filter Include="StringOpe">
+      <UniqueIdentifier>{1ea6a25e-341e-46ee-acb3-2d0a65dc4cb6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -111,6 +114,9 @@
     <ClInclude Include="LinearListSearch.h">
       <Filter>Search</Filter>
     </ClInclude>
+    <ClInclude Include="StringSplit.h">
+      <Filter>StringOpe</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -160,6 +166,9 @@
     </ClCompile>
     <ClCompile Include="AdjListGraph.cpp">
       <Filter>GraphTemplate</Filter>
+    </ClCompile>
+    <ClCompile Include="StringSplit.cpp">
+      <Filter>StringOpe</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

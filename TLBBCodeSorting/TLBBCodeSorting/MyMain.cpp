@@ -24,12 +24,39 @@
 #include "AdjListGraph.h"
 #include "AdjListGraph.cpp"
 
+#include "StringSplit.h"
+
 #include "CreateBinaryTree.h"
 #include "RemoveOpe.h"
 #include <time.h>
 
 int main()
 {
+	cout << "/*--------------- String Start---------------*/" << endl;
+	string test_split_str_i = "1|2|3|4|5";
+	string test_split_str_bi = "11111111111111111111|222222222222222222222|33333333333|44444444444|555555555555555";
+	string test_split_str_f = "11.1|2.22|333.0|44.3|9.2";
+	string test_split_str_s = "abcd|efg|hijklmn|opq|rst";
+	StringSplit split_i(test_split_str_i.c_str(), _STRING_DELIMITER);
+	StringSplit split_bi(test_split_str_bi.c_str(), _STRING_DELIMITER);
+	StringSplit split_f(test_split_str_f.c_str(), _STRING_DELIMITER);
+	StringSplit split_s(test_split_str_s.c_str(), _STRING_DELIMITER);
+	
+	int splitCti = split_i.ConvertToInt();
+	int splitCtbi = split_bi.ConvertToBigInt();
+	int splitCtf = split_f.ConvertToFloat();
+	int splitCts = split_s.ConvertToString();
+	
+	
+	for (int i = 0; i < splitCti; ++i)
+	{
+		cout << "split_i[" << i << "] = " << split_i.GetInt(i) << endl;
+		cout << "split_bi[" << i << "] = " << split_bi.GetBigInt(i) << endl;
+		cout << "split_f[" << i << "] = " << split_f.GetFloat(i) << endl;
+		cout << "split_s[" << i << "] = " << split_s.GetString(i) << endl;
+	}
+
+
 	int elements[] = { 111,222,333,444,777,888,999 };
 	int elements2[] = { 1,2,3,4,5,6,7,8,9 };
 	char levelList[] = "ABCDEFGHIJ";
