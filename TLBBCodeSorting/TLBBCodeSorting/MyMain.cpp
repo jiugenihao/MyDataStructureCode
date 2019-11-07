@@ -37,6 +37,17 @@ int main()
 	string test_split_str_bi = "11111111111111111111|222222222222222222222|33333333333|44444444444|555555555555555";
 	string test_split_str_f = "11.1|2.22|333.0|44.3|9.2";
 	string test_split_str_s = "abcd|efg|hijklmn|opq|rst";
+
+	vector<string> split_vec_i;
+	MyStrTok(test_split_str_f, split_vec_i, "|");
+	for (auto item : split_vec_i)
+	{
+		float value = stof(item, nullptr);
+		//int64_t value = stold(item, nullptr);
+		cout << value << " ";
+	}
+	cout << endl;
+
 	StringSplit split_i(test_split_str_i.c_str(), _STRING_DELIMITER);
 	StringSplit split_bi(test_split_str_bi.c_str(), _STRING_DELIMITER);
 	StringSplit split_f(test_split_str_f.c_str(), _STRING_DELIMITER);
