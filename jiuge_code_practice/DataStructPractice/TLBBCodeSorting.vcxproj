@@ -185,6 +185,7 @@
     <ClInclude Include="MyTreeT.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="RemoveOpe.h" />
+    <ClInclude Include="StringConvert.h" />
     <ClInclude Include="StringSplit.h" />
   </ItemGroup>
   <ItemGroup>

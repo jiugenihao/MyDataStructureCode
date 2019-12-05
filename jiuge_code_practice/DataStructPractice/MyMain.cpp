@@ -29,9 +29,27 @@
 #include "CreateBinaryTree.h"
 #include "RemoveOpe.h"
 #include <time.h>
+#include "StringConvert.h"
 
 int main()
 {
+	char int2_str[20] = { 0 };
+	char int8_str[20] = { 0 };
+	char int10_str[20] = { 0 };
+	char int16_str[20] = { 0 };
+	MyString::itoa(100, int2_str, 2);
+	MyString::itoa(100, int8_str, 8);
+	MyString::itoa(100, int10_str, 10);
+	MyString::itoa(100, int16_str, 16);
+	//cout << itoa(100654, int_str, 10) << endl;
+	cout << int2_str << endl;
+	cout << int8_str << endl;
+	cout << int10_str << endl;
+	cout << int16_str << endl;
+	for (int i = 0; i < strlen(int2_str); i++)
+	{
+		cout << "int2_str[" << i << "] = " << int2_str[i] << endl;
+	}
 	cout << "/*--------------- String Start---------------*/" << endl;
 	string test_split_str_i = "1|2|3|4|5";
 	string test_split_str_bi = "11111111111111111111|222222222222222222222|33333333333|44444444444|555555555555555";

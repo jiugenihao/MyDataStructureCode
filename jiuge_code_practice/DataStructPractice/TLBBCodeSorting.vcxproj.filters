@@ -117,6 +117,9 @@
     <ClInclude Include="StringSplit.h">
       <Filter>StringOpe</Filter>
     </ClInclude>
+    <ClInclude Include="StringConvert.h">
+      <Filter>StringOpe</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
