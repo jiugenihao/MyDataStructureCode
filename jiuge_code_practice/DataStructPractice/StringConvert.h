@@ -135,10 +135,25 @@ namespace MyString
 		if (nullptr == str)
 			return -1;
 
+		int len = strlen(str);
+		bool isNegative = false;
+		int num = 0;
 
+		if ('-' == str[0])
+			isNegative = true;
 
+		for (int i = 0; i < len; ++i)
+		{
+			int temp = str[i] - '0';
+			if (0 <= temp && temp < 10)
+			{
+				num += temp * int(pow(10, len - i - 1));
+			}
+		}
 
-		return 0;
+		if (isNegative)
+			num = -num;
+		return num;
 	}
 }
 
