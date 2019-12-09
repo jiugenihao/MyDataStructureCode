@@ -268,3 +268,23 @@ bool MySinglyLinkedListT<T>::Remove(T value)
 
 	return false;
 }
+
+template<class T>
+LinkListNode<T>* MySinglyLinkedListT<T>::FindMid()
+{
+	if (nullptr == this->m_pHead)
+		return nullptr;
+	if (nullptr == this->m_pHead->m_pNext)
+		return this->m_pHead;
+
+	LinkListNode<T>* pFast = this->m_pHead;
+	LinkListNode<T>* pSlow = this->m_pHead;
+	
+	while (pFast && pFast->m_pNext)
+	{
+		pSlow = pSlow->m_pNext;
+		pFast = pFast->m_pNext->m_pNext;
+	}
+
+	return pSlow;
+}

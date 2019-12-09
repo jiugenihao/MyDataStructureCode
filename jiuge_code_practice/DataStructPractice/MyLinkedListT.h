@@ -49,6 +49,8 @@ public:
 	bool Contain(T value);
 	bool Remove(T value);
 
+	LinkListNode<T>* FindMid();	// 寻找中间结点
+
 	friend ostream& operator << (ostream& out, const MySinglyLinkedListT<T>& list)
 	{
 		//out << "output all elements:" << endl;
