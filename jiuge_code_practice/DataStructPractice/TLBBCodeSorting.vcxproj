@@ -185,6 +185,7 @@
     <ClInclude Include="MyTreeT.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="RemoveOpe.h" />
+    <ClInclude Include="String.h" />
     <ClInclude Include="StringConvert.h" />
     <ClInclude Include="StringSplit.h" />
   </ItemGroup>
@@ -210,6 +211,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="MyMain.cpp" />
+    <ClCompile Include="String.cpp" />
     <ClCompile Include="StringSplit.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "StringSplit.h"
+using namespace MyString;
 
 StringSplit::StringSplit(void)
 {

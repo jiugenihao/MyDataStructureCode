@@ -31,12 +31,14 @@
 #include <time.h>
 #include "StringConvert.h"
 
+using namespace MyString;
+
 int main()
 {
 	cout << MyString::atoi("-1234567") << endl;
 	cout << MyString::atoi("-001200") << endl;
 	cout << MyString::atoi("abcd3456") << endl;
-	cout << atoi("abcd3456") << endl;
+	//cout << atoi("abcd3456") << endl;
 	char int2_str[20] = { 0 };
 	char int8_str[20] = { 0 };
 	char int10_str[20] = { 0 };

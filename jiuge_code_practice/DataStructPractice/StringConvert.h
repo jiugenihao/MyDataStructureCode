@@ -1,4 +1,3 @@
-#pragma once
 /*
 **文件名称：StringConvert.h
 **功能描述：
@@ -7,6 +6,7 @@
 **创建时间：2019-12-5
 **修    改：
 //*/
+#pragma once
 
 #include <math.h>
 namespace MyString 

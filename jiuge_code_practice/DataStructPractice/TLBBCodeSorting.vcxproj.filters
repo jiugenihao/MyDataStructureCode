@@ -120,6 +120,9 @@
     <ClInclude Include="StringConvert.h">
       <Filter>StringOpe</Filter>
     </ClInclude>
+    <ClInclude Include="String.h">
+      <Filter>StringOpe</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -171,6 +174,9 @@
       <Filter>GraphTemplate</Filter>
     </ClCompile>
     <ClCompile Include="StringSplit.cpp">
+      <Filter>StringOpe</Filter>
+    </ClCompile>
+    <ClCompile Include="String.cpp">
       <Filter>StringOpe</Filter>
     </ClCompile>
   </ItemGroup>
