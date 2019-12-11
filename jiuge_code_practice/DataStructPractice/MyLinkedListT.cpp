@@ -43,6 +43,7 @@ void MySinglyLinkedListT<T>::Clear()
 		LinkListNode<T>* q = p;
 		p = p->m_pNext;
 		delete q;
+		q = nullptr;
 	}
 	m_pHead = nullptr;
 //	m_Len = 0;
@@ -285,4 +286,45 @@ LinkListNode<T>* MySinglyLinkedListT<T>::FindMid()
 	}
 
 	return pSlow;
+}
+
+template<class T>
+LinkListNode<T>* MySinglyLinkedListT<T>::Reverse()
+{
+	if (nullptr == this->m_pHead || nullptr == this->m_pHead->m_pNext)
+	{
+		return this->m_pHead;
+	}
+	
+	LinkListNode<T>* pRev = nullptr;
+	LinkListNode<T>* pTmp = nullptr;
+	LinkListNode<T>* pCur = this->m_pHead;
+	
+	while (nullptr != pCur)
+	{
+		pTmp = pCur;
+		pCur = pCur->m_pNext;
+		pTmp->m_pNext = pRev;
+		pRev = pTmp;
+	}
+	this->m_pHead = pRev;
+
+	return pRev;
+}
+
+template<class T>
+LinkListNode<T>* MySinglyLinkedListT<T>::ReverseRecur(LinkListNode<T>* head)
+{
+	if (nullptr == head || nullptr == head->m_pNext)
+	{
+		return head;
+	}
+
+	LinkListNode<T>* pNewHead = ReverseRecur(head->m_pNext);
+	
+	LinkListNode<T>* next = head->m_pNext;
+	next->m_pNext = head;
+	head->m_pNext = nullptr;
+	
+	return pNewHead;
 }

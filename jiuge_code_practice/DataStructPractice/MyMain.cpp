@@ -298,6 +298,13 @@ void TestSinglyLinkedListT()
 	MySinglyLinkedListT<int>* singly_list = new MySinglyLinkedListT<int>(elements, sizeof(elements) / sizeof(int));
 	cout << *singly_list;
 
+	LinkListNode<int>* pReverseNode = singly_list->Reverse();
+	cout << *singly_list;
+
+	LinkListNode<int>* pReverseNode2 = singly_list->ReverseRecur(singly_list->GetRoot());
+	singly_list->SetRoot(pReverseNode2);
+	cout << *singly_list;
+
 	int old = 0;
 	singly_list->Get(0, old);
 	cout << "old=" << old << endl;
@@ -627,28 +634,28 @@ void TestAdjListGraph()
 
 int main()
 {
-	TestMyIntStack();			// int栈
-	TestMyIntQueue();			// int队列
-	TestMyIntList();			// int列表
-	TestQuestion();				//
+	//TestMyIntStack();				// int栈
+	//TestMyIntQueue();				// int队列
+	//TestMyIntList();				// int列表
+	//TestQuestion();				//
 
-	TestSqListT();				// 数组实现的线性表
-	TestSinglyLinkedListT();	// 链表实现的线性表
-	TestSqStackT();				// 数组实现的栈
-	TestLinkStackT();			// 链表实现的栈
-	TestSqQueueT();				// 数组实现的队列
-	TestLinkQueueT();			// 链表实现的队列
-	TestDLinkedListT();			// 双向链表
+	//TestSqListT();				// 数组实现的线性表
+	TestSinglyLinkedListT();		// 链表实现的线性表
+	//TestSqStackT();				// 数组实现的栈
+	//TestLinkStackT();				// 链表实现的栈
+	//TestSqQueueT();				// 数组实现的队列
+	//TestLinkQueueT();				// 链表实现的队列
+	//TestDLinkedListT();			// 双向链表
 
-	TestBinaryTreeT();			// 二叉树
-	TestBinarySortTree();		// 二叉排序树
-	TestHaffmanTree();			// 哈夫曼树
+	//TestBinaryTreeT();			// 二叉树
+	//TestBinarySortTree();			// 二叉排序树
+	//TestHaffmanTree();			// 哈夫曼树
 
-	TestAdjMatrixGraph();		// 邻接矩阵表示的带权图
-	TestAdjListGraph();			// 邻接表表示的带权图
+	//TestAdjMatrixGraph();			// 邻接矩阵表示的带权图
+	//TestAdjListGraph();			// 邻接表表示的带权图
 
-	TestString();
-	TestStringSplit();
+	//TestString();
+	//TestStringSplit();
 
 	
 	

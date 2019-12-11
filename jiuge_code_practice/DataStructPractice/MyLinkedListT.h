@@ -49,7 +49,9 @@ public:
 	bool Contain(T value);
 	bool Remove(T value);
 
-	LinkListNode<T>* FindMid();	// 寻找中间结点
+	LinkListNode<T>* FindMid();			// 寻找中间结点
+	LinkListNode<T>* Reverse();			// 单链表逆序,借助辅助指针后移
+	LinkListNode<T>* ReverseRecur(LinkListNode<T>* head);	// 单链表逆序，递归
 
 	friend ostream& operator << (ostream& out, const MySinglyLinkedListT<T>& list)
 	{
@@ -74,4 +76,52 @@ private:
 
 
 // 带头结点的单链表
+template <class T>
+class MyLinkedList
+{
+public:
+	MyLinkedList()
+	{
+		m_pHead = new LinkListNode<T>();
+		m_pHead->m_pNext = nullptr;
+	}
+	~MyLinkedList()
+	{
+		LinkListNode<T>* p = m_pHead->m_pNext;
+		while (p)
+		{
+			LinkListNode<T>* q = p->m_pNext;
+			delete q;
+			q = nullptr;
+		}
+		delete m_pHead;
+		m_pHead = nullptr;
+	}
 
+protected:
+	LinkListNode<T>* m_pHead;
+};
+
+// 单循环链表
+template <class T>
+class MyCircleList
+{
+public:
+	MyCircleList()
+	{
+		m_pHead = new LinkListNode<T>();
+		m_pHead->m_pNext = m_pHead;
+	}
+
+	~MyCircleList()
+	{
+		LinkListNode<T>* p = m_pHead->m_pNext;
+		while (p->m_pNext != m_pHead->m_pNext)
+		{
+
+		}
+	}
+
+private:
+	LinkListNode<T>* m_pHead;
+};
