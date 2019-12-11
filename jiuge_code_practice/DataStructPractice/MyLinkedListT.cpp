@@ -274,8 +274,6 @@ LinkListNode<T>* MySinglyLinkedListT<T>::FindMid()
 {
 	if (nullptr == this->m_pHead)
 		return nullptr;
-	if (nullptr == this->m_pHead->m_pNext)
-		return this->m_pHead;
 
 	LinkListNode<T>* pFast = this->m_pHead;
 	LinkListNode<T>* pSlow = this->m_pHead;

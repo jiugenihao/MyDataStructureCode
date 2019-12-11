@@ -192,6 +192,17 @@ void TestQuestion()
 	cout << "zq:" << Question::RemoveAll_zq(data_zq, 11, 2) << endl;
 
 	cout << "/*--------------- Question End  ---------------*/" << endl;
+
+	/*MyIntList d;
+	typedef void(*Fun)(void);
+
+	int* AAA = (int*)(&d);
+	int* BBB = (int*) * (AAA);
+
+	Fun fun1 = (Fun) * (BBB);
+
+	Fun fun2 = (Fun) * ((int*) * ((int*)(&d)));
+	Fun fun3 = (Fun) * ((int**)((int*)(&d)));*/
 }
 
 // MySqListT<T>
@@ -639,5 +650,7 @@ int main()
 	TestString();
 	TestStringSplit();
 
+	
+	
 }
 

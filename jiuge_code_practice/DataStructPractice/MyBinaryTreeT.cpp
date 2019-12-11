@@ -49,6 +49,7 @@ void MyBinaryTreeT<T>::Destroy(BinaryNode<T>* node)
 		Destroy(node->m_pLeft);
 		Destroy(node->m_pRight);
 		delete node;
+		node = nullptr;
 	}
 }
 

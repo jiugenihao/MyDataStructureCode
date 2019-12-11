@@ -34,9 +34,7 @@ bool MyIntStack::Push(int value)
 		return false;
 	}
 	
-	m_pData[m_Top].nData = value;
-	m_Top++;
-
+	m_pData[m_Top++].nData = value;
 	return true;
 }
 
@@ -46,11 +44,8 @@ int MyIntStack::Pop()
 	{
 		return 0;
 	}
-	
-	int tmp = m_pData[m_Top-1].nData;
-	m_Top--;
 
-	return tmp;
+	return m_pData[--m_Top].nData;
 }
 
 int MyIntStack::GetTop()
