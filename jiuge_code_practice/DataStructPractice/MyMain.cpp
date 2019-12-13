@@ -30,6 +30,7 @@
 #include "RemoveOpe.h"
 #include <time.h>
 #include "StringConvert.h"
+#include "SortUtility.h"
 
 using namespace MyString;
 
@@ -632,6 +633,28 @@ void TestAdjListGraph()
 	cout << directedALG << endl;
 }
 
+// Sort
+void TestSort()
+{
+	int int_arr[] = { 0,6,3,2,7,5,4,9,1,8 };
+	int len = sizeof(int_arr) / sizeof(int);
+	cout << "InsertSort before:" << endl;
+	for (int i = 0; i < len; ++i)
+	{
+		cout << int_arr[i] << " ";
+	}
+	cout << endl;
+
+	SortUtility::InsertSort(int_arr, len);
+
+	cout << "InsertSort after:" << endl;
+	for (int i = 0; i < len; ++i)
+	{
+		cout << int_arr[i] << " ";
+	}
+	cout << endl;
+}
+
 int main()
 {
 	//TestMyIntStack();				// int栈
@@ -640,7 +663,7 @@ int main()
 	//TestQuestion();				//
 
 	//TestSqListT();				// 数组实现的线性表
-	TestSinglyLinkedListT();		// 链表实现的线性表
+	//TestSinglyLinkedListT();		// 链表实现的线性表
 	//TestSqStackT();				// 数组实现的栈
 	//TestLinkStackT();				// 链表实现的栈
 	//TestSqQueueT();				// 数组实现的队列
@@ -657,7 +680,7 @@ int main()
 	//TestString();
 	//TestStringSplit();
 
-	
+	TestSort();
 	
 }
 

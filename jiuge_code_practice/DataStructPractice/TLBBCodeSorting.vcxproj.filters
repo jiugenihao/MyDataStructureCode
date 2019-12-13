@@ -123,6 +123,9 @@
     <ClInclude Include="String.h">
       <Filter>StringOpe</Filter>
     </ClInclude>
+    <ClInclude Include="SortUtility.h">
+      <Filter>Search</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
