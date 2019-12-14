@@ -37,7 +37,7 @@ namespace SortUtility
 					list[k + 1] = list[k];
 				}
 
-				list[k + 1] = sentry;	// 以为循环的最后一步--k了,所以最后一个需要加回来
+				list[k + 1] = sentry;	// 因为循环的最后一步--k了,所以最后一个需要加回来
 			}
 		}
 	}
@@ -55,6 +55,26 @@ namespace SortUtility
 	template <class T>
 	void ShellSort(T list[], int len)
 	{
+		if (len <= 0)
+		{
+			return;
+		}
 
+		// 将序列分成delta组，增量减半
+		for (int delta = len / 2; delta > 0; delta /= 2)
+		{
+			// 一趟分若干组，一组元素距离delta
+			for (int i = delta; i < len; ++i)
+			{
+				// 组内进行直接插入排序
+				T sentry = list[i];
+				int k = 0;
+				for (k = i - delta; k >= 0 && sentry < list[k]; k -= delta)
+				{
+					list[i] = list[k];
+				}
+				list[k + delta] = sentry;	// 因为循环的最后一步k = k - delta了, 所以这里需要加回来
+			}
+		}
 	}
 }
