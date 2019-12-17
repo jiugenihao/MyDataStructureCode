@@ -7,6 +7,14 @@
 
 namespace SortUtility
 {
+	// 交换元素
+	void Swap(int* a, int* b)
+	{
+		int temp = *b;
+		*b = *a;
+		*a = temp;
+	}
+
 	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 	// 插入排序---直接插入排序---升序
 	// array[len]乱序序列
@@ -98,9 +106,7 @@ namespace SortUtility
 			{
 				if (list[j] > list[j + 1])
 				{
-					T tmp = list[j];
-					list[j] = list[j + 1];
-					list[j + 1] = tmp;
+					Swap(&list[j], &list[j + 1]);
 					exchange = true;
 				}
 			}
@@ -172,24 +178,106 @@ namespace SortUtility
 			}
 			if (min != i)
 			{
-				T tmp = list[i];
-				list[i] = list[min];
-				list[min] = tmp;
+				Swap(&list[i], &list[min]);
 			}
 			
 		}
 	}
 
 	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-	// 交换排序---堆排序---升序
-	// 
-	// 
+	// 交换排序---堆排序---大顶堆---升序
+	// 1.将数据序列建立成堆序列
+	// 2.采用选择排序思路，每趟将根节点交换到最后，再将剩余的数据序列调整成堆序列
+	// 3.如此重复，直到排序完成
 	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 	template <class T>
-	void HeapSort(T list[], int len)
+	void MaxHeapify(T list[], int i, int len)
+	{
+		int left  = i * 2 + 1;
+		int right = i * 2 + 2;
+		int large = i;
+
+		if (left < len && list[left] > list[large])
+		{
+			large = left;
+		}
+		if (right < len && list[right] > list[large])
+		{
+			large = right;
+		}
+		if (large != i)
+		{
+			Swap(&list[large], &list[i]);
+			MaxHeapify(list, large, len);
+		}
+	}
+	template <class T>
+	void CreateMaxHeap(T list[], int len)
+	{
+		int i = len / 2 - 1;
+		for ( ; i >= 0; --i)
+		{
+			MaxHeapify(list, i, len);
+		}
+	}
+	template <class T>
+	void MaxHeapSort(T list[], int len)
 	{
 		if (len <= 0)
 			return;
+		CreateMaxHeap(list, len);
+
+		for (int i = len - 1; i > 0; --i)
+		{
+			Swap(&list[0], &list[i]);
+			MaxHeapify(list, 0, i);
+		}
+	}
+
+	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+	// 交换排序---堆排序---小顶堆---降序
+	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+	template <class T>
+	void MinHeapify(T list[], int start, int end)
+	{
+		// 建立父节点指标和子节点指标
+		int dad = start;
+		int son = dad * 2 + 1;
+		while (son <= end)  //若子节点指标在范围内才做比较
+		{
+			// 先比较两个子节点大小，选择最小的
+			if (son + 1 <= end && list[son] > list[son + 1])
+				son++;
+
+			// 如果父节点大於子节点代表调整完毕，直接跳出函数
+			if (list[dad] <= list[son]) 
+				return;
+			else
+			{
+				//否则交换父子内容再继续子节点和孙节点比较
+				Swap(&list[dad], &list[son]);
+				dad = son;
+				son = dad * 2 + 1;
+			}
+		}
+	}
+	
+	template <class T>
+	void MinHeapSort(T list[], int len)
+	{
+		if (len <= 0)
+			return;
+
+		int i = 0;
+		for (i = len / 2 - 1; i >= 0; i--)
+			MinHeapify(list, i, len - 1);
+
+		//先将第一个元素和已排好元素前一位做交换，再重新调整，直到排序完毕
+		for (i = len - 1; i > 0; i--)
+		{
+			Swap(&list[0], &list[i]);
+			MinHeapify(list, 0, i - 1);
+		}
 	}
 
 
