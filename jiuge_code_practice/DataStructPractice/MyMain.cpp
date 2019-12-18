@@ -650,9 +650,9 @@ void TestSort()
 	//SortUtility::BubbleSort(int_arr, len);
 	//SortUtility::QuickSort(int_arr, len);
 	//SortUtility::SelectSort(int_arr, len);
-	SortUtility::MaxHeapSort(int_arr, len);
+	//SortUtility::MaxHeapSort(int_arr, len);
 	//SortUtility::MinHeapSort(int_arr, len);
-
+	SortUtility::MergeSort(int_arr, len);
 	cout << "InsertSort after:" << endl;
 	for (int i = 0; i < len; ++i)
 	{

@@ -4,15 +4,28 @@
 //        
 /////////////////////////////////////////
 #pragma once
-
+#include "BaseDefine.h"
 namespace SortUtility
 {
 	// 交换元素
-	void Swap(int* a, int* b)
+	template <class T>
+	void Swap(T* a, T* b)
 	{
-		int temp = *b;
+		T temp = *b;
 		*b = *a;
 		*a = temp;
+	}
+
+	// 打印元素
+	template <class T>
+	void Print(T list[], int len)
+	{
+		if (len <= 0) return;
+		for (int i = 0; i < len; i++)
+		{
+			cout << list[i] << " ";
+		}
+		cout << endl;
 	}
 
 	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
@@ -280,5 +293,75 @@ namespace SortUtility
 		}
 	}
 
+
+	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+	// 归并排序---二路归并排序
+	// N个元素的数据序列可看成是由N个长度为1的排序子序列组成，反复将相邻的两个子序列
+	// 合并成一个排序的子序列，直到合并成一个序列，排序完成
+	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+
+	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+	// 单次归并操作，将两个有序子序列归并成一个有序序列
+	// low low+1 ... mid mid+1 mid+2 ... high
+	// |_ _ _ _ _ _ _ |  |_ _ _ _ _ _ _ _ _|
+	// i                 j
+	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+	template <class T>
+	void Merge(T list[], T aux[], int low, int mid, int high)
+	{
+		int i = low, j = mid + 1;
+		// 先将list[low...high]拷贝到aux[low...high]
+		for (int k = low; k <= high; k++)
+		{
+			aux[k] = list[k];
+		}
+		
+		for (int k = low; k <= high; k++)
+		{
+			if		(i > mid)			list[k] = aux[j++];		// 左半边用尽，取右边元素
+			else if (j > high)			list[k] = aux[i++];		// 右半边用尽，取左边元素
+			else if (aux[i] < aux[j])	list[k] = aux[i++];		// 左半边的当前元素小于右半边的当前元素，取左半边的当前元素
+			else						list[k] = aux[j++];		// 左半边的当前元素大于等于右半边的当前元素，取右半边的当前元素
+		}
+	}
+
+	template <class T>
+	void MergeSort(T list[], int len)
+	{
+		if (len <= 0) return;
+
+		T* aux = new T[len];
+		if (!aux) return;
+
+		//Merge(list, aux, 0, len / 2 - 1, len - 1);
+
+		// 0,6,3,2,7,5,4,9,1,8  每2个元素归并
+		Merge(list, aux, 0, 0, 1);
+		Merge(list, aux, 2, 2, 3);
+		Merge(list, aux, 4, 4, 5);
+		Merge(list, aux, 6, 6, 7);
+		Merge(list, aux, 8, 8, 9);
+
+		// step = 1
+		//Merge(list, aux, i * 2, i * 2, i * 2 + 1);			//
+																//
+		// 每4个元素归并											//
+		Merge(list, aux, 0, 1, 3);								//
+		Merge(list, aux, 4, 5, 7);								//
+		Merge(list, aux, 8, 8, 9);								//
+		//Merge(list, aux, i * 4, i * 4 + 1, i * 4 + 3);		//
+																//
+		// 每8个元素归并											//
+		Merge(list, aux, 0, 3, 7);								//
+		Merge(list, aux, 8, 8, 9);								//
+		//Merge(list, aux, i * 8, i * 8 + 3, i * 8 + 7);		//
+																//
+		// 每16个元素归并											//
+		Merge(list, aux, 0, 7, 9);								//
+		//Merge(list, aux, i * 16, i * 16 + 7, i * 16 + 15);	//
+
+		delete[] aux;
+		aux = nullptr;
+	}
 
 } // namespace SortUtility
