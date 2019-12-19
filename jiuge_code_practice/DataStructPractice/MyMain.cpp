@@ -636,14 +636,9 @@ void TestAdjListGraph()
 // Sort
 void TestSort()
 {
-	int int_arr[] = { 0,6,3,2,7,5,4,9,1,8 };
+	//int int_arr[] = { 0,6,3,2,7,5,4,9,1,8 };
+	int int_arr[] = { 54, 18, 66, 87, 36, 12, 54, 81, 15, 76, 57, 6, 40, 99, 85, 99 };
 	int len = sizeof(int_arr) / sizeof(int);
-	cout << "InsertSort before:" << endl;
-	for (int i = 0; i < len; ++i)
-	{
-		cout << int_arr[i] << " ";
-	}
-	cout << endl;
 
 	//SortUtility::InsertSort(int_arr, len);
 	//SortUtility::ShellSort(int_arr, len);
@@ -653,12 +648,6 @@ void TestSort()
 	//SortUtility::MaxHeapSort(int_arr, len);
 	//SortUtility::MinHeapSort(int_arr, len);
 	SortUtility::MergeSort(int_arr, len);
-	cout << "InsertSort after:" << endl;
-	for (int i = 0; i < len; ++i)
-	{
-		cout << int_arr[i] << " ";
-	}
-	cout << endl;
 }
 
 int main()

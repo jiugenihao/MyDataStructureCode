@@ -7,6 +7,16 @@
 #include "BaseDefine.h"
 namespace SortUtility
 {
+	enum class SortType
+	{
+		ST_Insert = 1,
+		ST_Shell,
+		ST_Bubble,
+		ST_Quick,
+		ST_Select,
+		ST_Heap,
+		ST_Merge,
+	};
 	// 交换元素
 	template <class T>
 	void Swap(T* a, T* b)
@@ -16,11 +26,50 @@ namespace SortUtility
 		*a = temp;
 	}
 
+	// 打印头
+	void PrintHead(SortType type)
+	{
+		switch (type)
+		{
+		case SortUtility::SortType::ST_Insert:
+			cout << "直接插入排序：" << endl;
+			break;
+		case SortUtility::SortType::ST_Shell:
+			cout << "希尔排序：" << endl;
+			break;
+		case SortUtility::SortType::ST_Bubble:
+			cout << "冒泡排序：" << endl;
+			break;
+		case SortUtility::SortType::ST_Quick:
+			cout << "快速排序：" << endl;
+			break;
+		case SortUtility::SortType::ST_Select:
+			cout << "直接选择排序：" << endl;
+			break;
+		case SortUtility::SortType::ST_Heap:
+			cout << "堆排序：" << endl;
+			break;
+		case SortUtility::SortType::ST_Merge:
+			cout << "归并排序：" << endl;
+			break;
+		default:
+			break;
+		}
+	}
+
+	// 打印尾
+	void PrintTail()
+	{
+		cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ " << endl;
+		cout << endl;
+	}
+
 	// 打印元素
 	template <class T>
-	void Print(T list[], int len)
+	void Print(T list[], int len, int time)
 	{
 		if (len <= 0) return;
+		cout << "第" << setw(3) << time << " 趟： ";
 		for (int i = 0; i < len; i++)
 		{
 			cout << list[i] << " ";
@@ -46,6 +95,10 @@ namespace SortUtility
 			return;
 		}
 
+		PrintHead(SortType::ST_Insert);
+		int time = 0;					// 趟数
+		Print(list, len, time++);
+
 		// 外层循环从第二个元素开始 list[0]为有序序列
 		for (int i = 1; i < len; ++i)
 		{
@@ -60,7 +113,10 @@ namespace SortUtility
 
 				list[k + 1] = sentry;	// 因为循环的最后一步--k了,所以最后一个需要加回来
 			}
+			Print(list, len, time++);
 		}
+
+		PrintTail();
 	}
 
 	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
@@ -80,6 +136,10 @@ namespace SortUtility
 			return;
 		}
 
+		PrintHead(SortType::ST_Shell);
+		int time = 0;					// 趟数
+		Print(list, len, time++);
+
 		// 将序列分成delta组，增量减半
 		for (int delta = len / 2; delta > 0; delta /= 2)
 		{
@@ -95,7 +155,9 @@ namespace SortUtility
 				}
 				list[k + delta] = sentry;	// 因为循环的最后一步k = k - delta了, 所以这里需要加回来
 			}
+			Print(list, len, time++);
 		}
+		PrintTail();
 	}
 
 	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
@@ -111,6 +173,10 @@ namespace SortUtility
 			return;
 		}
 
+		PrintHead(SortType::ST_Bubble);
+		int time = 0;					// 趟数
+		Print(list, len, time++);
+
 		bool exchange = true;
 		for (int i = 1; i < len && exchange; ++i)
 		{
@@ -123,7 +189,9 @@ namespace SortUtility
 					exchange = true;
 				}
 			}
+			Print(list, len, time++);
 		}
+		PrintTail();
 	}
 
 	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
@@ -135,7 +203,7 @@ namespace SortUtility
 	//   的长度为1，则完成排序
 	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 	template <class T>
-	void QuickSort(T list[], int len, int low, int high)
+	void QuickSort(T list[], int len, int low, int high, int& time)
 	{
 		if (0 <= low && low < len && 0 <= high && high < len && low < high)
 		{
@@ -156,8 +224,9 @@ namespace SortUtility
 				if (i < j) list[j--] = list[i];
 			}
 			list[i] = vote;
-			QuickSort(list, len, low, j - 1);
-			QuickSort(list, len, i + 1, high);
+			Print(list, len, time++);
+			QuickSort(list, len, low, j - 1, time);
+			QuickSort(list, len, i + 1, high, time);
 		}
 	}
 	template <class T>
@@ -165,7 +234,13 @@ namespace SortUtility
 	{
 		if (len <= 0)
 			return;
-		QuickSort(list, len, 0, len - 1);
+
+		PrintHead(SortType::ST_Quick);
+		int time = 0;					// 趟数
+		Print(list, len, time++);
+
+		QuickSort(list, len, 0, len - 1, time);
+		PrintTail();
 	}
 
 	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
@@ -179,6 +254,11 @@ namespace SortUtility
 	{
 		if (len <= 0)
 			return;
+
+		PrintHead(SortType::ST_Select);
+		int time = 0;					// 趟数
+		Print(list, len, time++);
+
 		for (int i = 0; i < len - 1; ++i)
 		{
 			int min = i;
@@ -193,8 +273,9 @@ namespace SortUtility
 			{
 				Swap(&list[i], &list[min]);
 			}
-			
+			Print(list, len, time++);
 		}
+		PrintTail();
 	}
 
 	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
@@ -238,13 +319,21 @@ namespace SortUtility
 	{
 		if (len <= 0)
 			return;
+
+		PrintHead(SortType::ST_Heap);
+		int time = 0;					// 趟数
+		Print(list, len, time++);
+
 		CreateMaxHeap(list, len);
+		Print(list, len, time++);
 
 		for (int i = len - 1; i > 0; --i)
 		{
 			Swap(&list[0], &list[i]);
 			MaxHeapify(list, 0, i);
+			Print(list, len, time++);
 		}
+		PrintTail();
 	}
 
 	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
@@ -281,16 +370,23 @@ namespace SortUtility
 		if (len <= 0)
 			return;
 
+		PrintHead(SortType::ST_Heap);
+		int time = 0;					// 趟数
+		Print(list, len, time++);
+
 		int i = 0;
 		for (i = len / 2 - 1; i >= 0; i--)
 			MinHeapify(list, i, len - 1);
+		Print(list, len, time++);
 
 		//先将第一个元素和已排好元素前一位做交换，再重新调整，直到排序完毕
 		for (i = len - 1; i > 0; i--)
 		{
 			Swap(&list[0], &list[i]);
 			MinHeapify(list, 0, i - 1);
+			Print(list, len, time++);
 		}
+		PrintTail();
 	}
 
 
@@ -326,7 +422,7 @@ namespace SortUtility
 	}
 
 	template <class T>
-	void MergeSort(T list[], int len)
+	void MergeSort1(T list[], int len)
 	{
 		if (len <= 0) return;
 
@@ -335,7 +431,7 @@ namespace SortUtility
 
 		//Merge(list, aux, 0, len / 2 - 1, len - 1);
 
-		// 0,6,3,2,7,5,4,9,1,8  每2个元素归并
+		// 0,6,3,2,7,5,4,9,1,8  每2个元素归并 序列长度为1
 		Merge(list, aux, 0, 0, 1);
 		Merge(list, aux, 2, 2, 3);
 		Merge(list, aux, 4, 4, 5);
@@ -359,6 +455,105 @@ namespace SortUtility
 		// 每16个元素归并											//
 		Merge(list, aux, 0, 7, 9);								//
 		//Merge(list, aux, i * 16, i * 16 + 7, i * 16 + 15);	//
+
+		delete[] aux;
+		aux = nullptr;
+	}
+
+	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+	// 单次归并操作，将两个有序子序列归并成一个有序序列
+	// len为list和aux的长度
+	// start_l为左序列的开始位置，start_r为右序列的开始位置，n为右序列的长度
+	// start_l start_l+1 ... start_r-1 start_r start_r+1 ... start_r+n-1 start_r+n
+	//    |_ _ _ _ _ _ _ _ _ _ _ _|       |_ _ _ _ _ _ _ _ _ _ _ _ |
+	//    i                               j
+	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+	template <class T>
+	void Merge(T list[], int len, T aux[], int start_l, int start_r, int n)
+	{
+		int i = start_l, j = start_r, k = start_l;
+		while (i < start_r && j < start_r + n && j < len)
+		{
+			if (list[i] < list[j])
+			{
+				aux[k++] = list[i++];
+			}
+			else
+			{
+				aux[k++] = list[j++];
+			}
+		}
+		while (i < start_r)
+		{
+			aux[k++] = list[i++];
+		}
+		while (j < start_r + n && j < len)
+		{
+			aux[k++] = list[j++];
+		}
+	}
+
+	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+	// 一趟归并操作
+	// len为list和aux的长度，n为子序列的长度
+	// 0 ... n-1 n n+1 ... 2n-1 2n 2n+1 ... 3n-1 ... ... xn ... len-1
+	// |_ _ _ |  | _ _ _ _ _ |  |_ _ _ _ _ _ _|          |_ _ _ _ |
+	// i         i+n     i+2n-1 i+2n                     i+xn
+	// |_ _ _ _ _ _ _ _ _ _ _|  |_ _ _ _ _ _ _ _ _| |_ _ _ _ _ _ _|
+	//       Merge                    Merge              Merge
+	// 由上图可以推导出 i+2n<len ==> i < len-2n
+	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+	template <class T>
+	void MergePass(T list[], int len, T aux[], int n)
+	{
+		int i = 0;
+		//while (i < len - n * 2 + 1)
+		while (i + n * 2 - 1 < len - 1)
+		{
+			Merge(list, len, aux, i, i + n, n);
+			i += n * 2;
+		}
+		if (i + n < len - 1)
+		{
+			// 再一次归并
+			Merge(list, len, aux, i, i + n, n);
+		}
+		else
+		{
+			// 将剩余元素从list复制到aux
+			for (int j = i; j < len; j++)
+			{
+				aux[j] = list[j];
+			}
+		}
+	}
+	template <class T>
+	void MergeSort(T list[], int len)
+	{
+		if (len <= 0) return;
+
+		T* aux = new T[len];
+		if (!aux) return;
+
+		PrintHead(SortType::ST_Merge);
+		int time = 0;					// 趟数
+		Print(list, len, time++);
+
+		int n = 1;
+		do
+		{
+			MergePass(list, len, aux, n);
+			Print(aux, len, time++);
+			n *= 2;
+			if (n < len)
+			{
+				MergePass(aux, len, list, n);
+				Print(list, len, time++);
+				n *= 2;
+			}
+		} while (n < len);
+
+		PrintTail();
 
 		delete[] aux;
 		aux = nullptr;
