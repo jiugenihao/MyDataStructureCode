@@ -647,7 +647,8 @@ void TestSort()
 	//SortUtility::SelectSort(int_arr, len);
 	//SortUtility::MaxHeapSort(int_arr, len);
 	//SortUtility::MinHeapSort(int_arr, len);
-	SortUtility::MergeSort(int_arr, len);
+	//SortUtility::MergeSort(int_arr, len);
+	SortUtility::MergeSortRecursive(int_arr, len);
 }
 
 int main()

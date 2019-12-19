@@ -420,45 +420,77 @@ namespace SortUtility
 			else						list[k] = aux[j++];		// 左半边的当前元素大于等于右半边的当前元素，取右半边的当前元素
 		}
 	}
-
 	template <class T>
-	void MergeSort1(T list[], int len)
+	void MergeSort(T data[], int start, int end, T aux[], int& time, int len)
+	{
+		if (start < end)
+		{
+			int mid = start + (end - start) / 2;		// 避免溢出int
+			MergeSort(data, start, mid, aux, time, len);			// 对左边进行排序
+			MergeSort(data, mid + 1, end, aux, time, len);			// 对右边进行排序
+			Merge(data, aux, start, mid, end);          // 把排序好的数据合并
+			Print(data, len, time++);
+		}
+	}
+	template <class T>
+	void MergeSortRecursive(T list[], int len)
 	{
 		if (len <= 0) return;
 
 		T* aux = new T[len];
 		if (!aux) return;
 
-		//Merge(list, aux, 0, len / 2 - 1, len - 1);
+		PrintHead(SortType::ST_Merge);
+		int time = 0;					// 趟数
+		Print(list, len, time++);
 
-		// 0,6,3,2,7,5,4,9,1,8  每2个元素归并 序列长度为1
-		Merge(list, aux, 0, 0, 1);
-		Merge(list, aux, 2, 2, 3);
-		Merge(list, aux, 4, 4, 5);
-		Merge(list, aux, 6, 6, 7);
-		Merge(list, aux, 8, 8, 9);
+		MergeSort(list, 0, len - 1, aux, time, len);
 
-		// step = 1
-		//Merge(list, aux, i * 2, i * 2, i * 2 + 1);			//
-																//
-		// 每4个元素归并											//
-		Merge(list, aux, 0, 1, 3);								//
-		Merge(list, aux, 4, 5, 7);								//
-		Merge(list, aux, 8, 8, 9);								//
-		//Merge(list, aux, i * 4, i * 4 + 1, i * 4 + 3);		//
-																//
-		// 每8个元素归并											//
-		Merge(list, aux, 0, 3, 7);								//
-		Merge(list, aux, 8, 8, 9);								//
-		//Merge(list, aux, i * 8, i * 8 + 3, i * 8 + 7);		//
-																//
-		// 每16个元素归并											//
-		Merge(list, aux, 0, 7, 9);								//
-		//Merge(list, aux, i * 16, i * 16 + 7, i * 16 + 15);	//
+		//Print(list, len, time++);
+		PrintTail();
 
 		delete[] aux;
 		aux = nullptr;
 	}
+
+	//template <class T>
+	//void MergeSort1(T list[], int len)
+	//{
+	//	if (len <= 0) return;
+
+	//	T* aux = new T[len];
+	//	if (!aux) return;
+
+	//	//Merge(list, aux, 0, len / 2 - 1, len - 1);
+
+	//	// 0,6,3,2,7,5,4,9,1,8  每2个元素归并 序列长度为1
+	//	Merge(list, aux, 0, 0, 1);
+	//	Merge(list, aux, 2, 2, 3);
+	//	Merge(list, aux, 4, 4, 5);
+	//	Merge(list, aux, 6, 6, 7);
+	//	Merge(list, aux, 8, 8, 9);
+
+	//	// step = 1
+	//	//Merge(list, aux, i * 2, i * 2, i * 2 + 1);			//
+	//															//
+	//	// 每4个元素归并											//
+	//	Merge(list, aux, 0, 1, 3);								//
+	//	Merge(list, aux, 4, 5, 7);								//
+	//	Merge(list, aux, 8, 8, 9);								//
+	//	//Merge(list, aux, i * 4, i * 4 + 1, i * 4 + 3);		//
+	//															//
+	//	// 每8个元素归并											//
+	//	Merge(list, aux, 0, 3, 7);								//
+	//	Merge(list, aux, 8, 8, 9);								//
+	//	//Merge(list, aux, i * 8, i * 8 + 3, i * 8 + 7);		//
+	//															//
+	//	// 每16个元素归并											//
+	//	Merge(list, aux, 0, 7, 9);								//
+	//	//Merge(list, aux, i * 16, i * 16 + 7, i * 16 + 15);	//
+
+	//	delete[] aux;
+	//	aux = nullptr;
+	//}
 
 	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 	// 单次归并操作，将两个有序子序列归并成一个有序序列
