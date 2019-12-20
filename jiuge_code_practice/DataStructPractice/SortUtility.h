@@ -420,15 +420,17 @@ namespace SortUtility
 			else						list[k] = aux[j++];		// 左半边的当前元素大于等于右半边的当前元素，取右半边的当前元素
 		}
 	}
+
+	// 后两个参数完全是为了统计趟数使用，可以去掉
 	template <class T>
 	void MergeSort(T data[], int start, int end, T aux[], int& time, int len)
 	{
 		if (start < end)
 		{
-			int mid = start + (end - start) / 2;		// 避免溢出int
-			MergeSort(data, start, mid, aux, time, len);			// 对左边进行排序
-			MergeSort(data, mid + 1, end, aux, time, len);			// 对右边进行排序
-			Merge(data, aux, start, mid, end);          // 把排序好的数据合并
+			int mid = start + (end - start) / 2;			// 避免溢出int
+			MergeSort(data, start, mid, aux, time, len);	// 对左边进行排序
+			MergeSort(data, mid + 1, end, aux, time, len);	// 对右边进行排序
+			Merge(data, aux, start, mid, end);				// 把排序好的数据合并
 			Print(data, len, time++);
 		}
 	}
