@@ -638,17 +638,19 @@ void TestSort()
 {
 	//int int_arr[] = { 0,6,3,2,7,5,4,9,1,8 };
 	int int_arr[] = { 54, 18, 66, 87, 36, 12, 54, 81, 15, 76, 57, 6, 40, 99, 85, 99 };
+	//int int_arr[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	//int int_arr[] = { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
 	int len = sizeof(int_arr) / sizeof(int);
 
 	//SortUtility::InsertSort(int_arr, len);
 	//SortUtility::ShellSort(int_arr, len);
 	//SortUtility::BubbleSort(int_arr, len);
-	//SortUtility::QuickSort(int_arr, len);
+	SortUtility::QuickSort(int_arr, len);
 	//SortUtility::SelectSort(int_arr, len);
 	//SortUtility::MaxHeapSort(int_arr, len);
 	//SortUtility::MinHeapSort(int_arr, len);
 	//SortUtility::MergeSort(int_arr, len);
-	SortUtility::MergeSortRecursive(int_arr, len);
+	//SortUtility::MergeSortRecursive(int_arr, len);
 }
 
 int main()
