@@ -645,12 +645,14 @@ void TestSort()
 	//SortUtility::InsertSort(int_arr, len);
 	//SortUtility::ShellSort(int_arr, len);
 	//SortUtility::BubbleSort(int_arr, len);
-	SortUtility::QuickSort(int_arr, len);
+	//SortUtility::QuickSort(int_arr, len);
 	//SortUtility::SelectSort(int_arr, len);
 	//SortUtility::MaxHeapSort(int_arr, len);
 	//SortUtility::MinHeapSort(int_arr, len);
 	//SortUtility::MergeSort(int_arr, len);
 	//SortUtility::MergeSortRecursive(int_arr, len);
+
+	Question::FindResult(int_arr, len, 50);
 }
 
 int main()
