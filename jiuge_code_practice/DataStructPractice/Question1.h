@@ -16,6 +16,7 @@ namespace Question
 	// 给定一个序列，查找任意两个数之和为M的所有组合
 	// list   为给定序列
 	// limit  为两数之和
+	// 缺点：如果序列中有重复数据，会错过
 	//+++++++++++++++++++++++++++++++++++++++++++++++++//
 	
 	void FindResult(int list[], int len, int limit)
@@ -28,8 +29,10 @@ namespace Question
 		int end = len - 1;
 		if (list[start] >= limit)
 		{
+			cout << "No Result ..." << endl;
 			return;
 		}
+		cout << "All Result are :" << endl;
 		while (start < end)
 		{
 			if (list[start] + list[end] == limit)
