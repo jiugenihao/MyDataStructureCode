@@ -116,10 +116,12 @@
       <EnablePREfast>true</EnablePREfast>
       <MultiProcessorCompilation>false</MultiProcessorCompilation>
       <MinimalRebuild>true</MinimalRebuild>
+      <AdditionalIncludeDirectories>.\msvc11-x86-debug\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>.\msvc11-x86-debug\lib\bson-static-1.0.lib;.\msvc11-x86-debug\lib\mongoc-static-1.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -194,6 +196,7 @@
   <ItemGroup>
     <ClCompile Include="AdjListGraph.cpp" />
     <ClCompile Include="AdjMatrixGraph.cpp" />
+    <ClCompile Include="MacroDefine.h" />
     <ClCompile Include="MyBinarySortTree.cpp" />
     <ClCompile Include="MyBinaryTreeT.cpp" />
     <ClCompile Include="MyDLinkedListT.cpp" />

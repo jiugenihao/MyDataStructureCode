@@ -33,6 +33,8 @@
 #include "SortUtility.h"
 #include "Question1.h"
 
+#include <bson/bson.h>
+
 using namespace MyString;
 
 // global data
@@ -657,6 +659,98 @@ void TestSort()
 	Question::FindResult(int_arr, len, 99);
 }
 
+void TestRawString()
+{
+	string field = "###";
+	bool is_str = false;
+	bool asc = false;
+	string start = "222";
+	string pagenum = "333";
+
+	std::string jquery = "{ \"$query\" : { \"";
+	jquery.append(field);
+
+	if (is_str)
+	{
+		jquery.append("\" : {\"$gte\" : \"" + start + "\"} }, \"$orderby\" : { \"");
+	}
+	else
+	{
+		jquery.append("\" : { \"$gte\" : " + start + " } }, \"$orderby\" : { \"");
+	}
+	jquery.append(field);
+
+	if (asc)
+	{
+		jquery.append("\" : 1 }, \"$limit\" : " + (pagenum) + "}");
+	}
+	else
+	{
+		jquery.append("\" : -1 }, \"$limit\" : " + (pagenum) + "}");
+	}
+	cout << jquery << endl;
+	cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
+
+	std::string jquery2 = R"({ "$query" : { ")" + field;
+	if (is_str)
+	{
+		jquery2 += R"(" : {"$gte" : ")" + (start) + R"("} }, "$orderby" : { ")";
+	}
+	else
+	{
+		jquery2 += R"(" : { "$gte" : )" + (start) + R"( } }, "$orderby" : { ")";
+	}
+	jquery2 += field;
+
+	if (asc)
+	{
+		jquery2 += R"(" : 1 }, "$limit" : )" + (pagenum) + R"(})";
+	}
+	else
+	{
+		jquery2 += R"(" : -1 }, "$limit" : )" + (pagenum) + R"(})";
+	}
+	cout << jquery2 << endl;
+//	std::string jfields = "{\"account\": 1, \"id\": 1, \"name\": 1, \"player.level.lvl\": 1, \"last_login_time\": 1, \"last_logout_time\": 1";
+//	jfields.append(", \"regist_time\": 1, \"player.headIcon\": 1");
+//	jfields.append(", \"player.tower.lastPassId\": 1, \"player.tower.lasttime\": 1");
+//	jfields.append(", \"player.idlestage.curChapterId\": 1, \"player.idlestage.curStageId\": 1, \"player.idlestage.winStageId\": 1");
+//	jfields.append(", \"player.combat_teams.teams\": 1, \"player.signstr\": 1, \"player.dispalycard\": 1");
+//	jfields.append(", \"player.guild\": 1, \"player.vip.lvl\": 1}");
+//
+//	cout << jfields << endl;
+//
+//	std::string str2 = R"(hello 'world' "wahaha")";
+//	str2 += R"( fuck python)";
+//	//cout << str2 << endl;
+//
+//#ifdef _WIN32
+//	std::string str_3 = R"({"account": 1, "id": 1, "name": 1, "player.level.lvl": 1, "last_login_time": 1, "last_logout_time": 1)";
+//	str_3 += R"(, "regist_time": 1, "player.headIcon": 1, "player.tower.lastPassId": 1, "player.tower.lasttime": 1)";
+//	str_3 += R"(, "player.idlestage.curChapterId": 1, "player.idlestage.curStageId": 1, "player.idlestage.winStageId": 1)";
+//	str_3 += R"(, "player.combat_teams.teams": 1, "player.signstr": 1, "player.dispalycard": 1)";
+//	str_3 += R"(, "player.guild": 1, "player.vip.lvl": 1})";
+//	cout << str_3 << endl;
+//#endif
+//
+//	if (jfields.compare(str_3) == 0)
+//		cout << "same..." << endl;
+}
+
+void TestBson()
+{
+	bson_error_t error;
+	string jfields = R"({"account": 1})";
+
+	bson_t* bfields = bson_new_from_json((const uint8_t*)jfields.c_str(), jfields.length(), &error);
+
+	if (!bfields)
+	{
+		//fprintf(stderr, "%s\n", error.message);
+		return;
+	}
+}
+
 int main()
 {
 	//TestMyIntStack();				// int栈
@@ -682,7 +776,10 @@ int main()
 	//TestString();
 	//TestStringSplit();
 
-	TestSort();
+	//TestSort();
+
+	//TestRawString();
+	TestBson();
 	
 }
 

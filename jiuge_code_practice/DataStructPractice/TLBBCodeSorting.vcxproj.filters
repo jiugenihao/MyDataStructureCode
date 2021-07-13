@@ -185,5 +185,8 @@
     <ClCompile Include="String.cpp">
       <Filter>StringOpe</Filter>
     </ClCompile>
+    <ClCompile Include="MacroDefine.h">
+      <Filter>Search</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
